@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethan Terblanche - Personal Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e88e5;
+            --dark-blue: #0d47a1;
+            --light-blue: #64b5f6;
+            --black: #212121;
+            --dark-gray: #424242;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--white);
+        }
+        
+        header {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--primary-blue);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/random/1600x900/?workspace') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 60px;
+        }
+        
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin: 0 0.5rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--black);
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            height: 4px;
+            width: 60px;
+            background-color: var(--primary-blue);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var (--black);
+        }
+        
+        .skills {
+            margin-top: 2rem;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        
+        .skill-tag {
+            background-color: var(--light-blue);
+            color: var(--black);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .experience-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .experience-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            position: relative;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .experience-date {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .experience-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--black);
+        }
+        
+        .experience-company {
+            font-weight: 500;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .experience-desc {
+            color: var(--dark-gray);
+        }
+        
+        .cv-download {
+            margin-top: 3rem;
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .cv-download h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var (--black);
+        }
+        
+        .cv-download p {
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn-cv {
+            background-color: var(--dark-blue);
+            padding: 0.8rem 1.8rem;
+        }
+        
+        .btn-cv:hover {
+            background-color: var(--primary-blue);
+        }
+        
+        .btn-cv i {
+            margin-right: 8px;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        
+        .project-desc {
+            color: var(--dark-gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-tag {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-item i {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            width: 20px;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            margin: 1.5rem 0;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            color: var(--white);
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-blue);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .copyright {
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin: 0 1rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .vm-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .vision-card, .mission-card {
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .vm-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+            position: relative;
+        }
+
+        .vm-title::after {
+            content: '';
+            height: 3px;
+            width: 40px;
+            background-color: var(--primary-blue);
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+        }
+
+        .education-container {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+
+        .education-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .education-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--black);
+        }
+
+        .education-header p {
+            font-weight: 500;
+            color: var(--primary-blue);
+        }
+
+        .courses-container h4 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1.5rem;
+            color: var (--black);
+            position: relative;
+            display: inline-block;
+        }
+
+        .courses-container h4::after {
+            content: '';
+            height: 3px;
+            width: 30px;
+            background-color: var(--primary-blue);
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .course-card {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .course-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-card h5 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--black);
+        }
+
+        .course-card p {
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+            font-weight: 500;
+        }
+
+        .course-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .course-tab {
+            display: inline-block;
+            font-size: 0.8rem;
+            padding: 0.3rem 0.7rem;
+            background-color: rgba(30, 136, 229, 0.1);
+            color: var(--primary-blue);
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .course-tab:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .course-card.upcoming {
+            opacity: 0.8;
+            border-left: 4px solid var(--light-blue);
+        }
+
+        .pending-badge {
+            display: inline-block;
+            background-color: var(--light-blue);
+            color: var(--dark-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 992px) {
+            .vm-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .course-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .course-skill {
+            display: inline-block;
+            font-size: 0.8rem;
+            padding: 0.3rem 0.7rem;
+            background-color: rgba(30, 136, 229, 0.1);
+            color: var(--primary-blue);
+            border-radius: 30px;
+            transition: all 0.2s ease;
+        }
+
+        .course-skill:hover {
+            background-color: rgba(30, 136, 229, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .course-card.upcoming .course-skills {
+            opacity: 0.7;
+            margin-top: 1rem;
+            margin-bottom: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Ethan<span>T</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Ethan Terblanche</h1>
+                <p>Health Systems Science Specialist & Executive Project Coordinator</p>
+                <div class="hero-buttons">
+                    <a href="#about" class="btn">About Me</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="about" class="section container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://source.unsplash.com/random/600x600/?portrait" alt="Ethan Terblanche">
+                </div>
+                <div class="about-text">
+                    <h3>Hello, I'm Ethan</h3>
+                    <p>I am a dedicated and driven professional currently pursuing my Honours in Health Systems Science (HSS Hons) within the Faculty of Family Medicine and Primary Care. My academic journey is rooted in a deep commitment to advancing healthcare systems, optimizing primary care frameworks, and driving impactful change in community health initiatives.</p>
+                    <p>In addition to my studies, I hold a pivotal leadership role as the Executive Project Coordinator at North-West University (NWU). In this capacity, I spearhead high-level strategic projects, ensuring seamless execution, cross-disciplinary collaboration, and innovative problem-solving to enhance institutional effectiveness.</p>
+                    
+                    <div class="skills">
+                        <h4>My Areas of Expertise</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Health Systems Science</span>
+                            <span class="skill-tag">Project Management</span>
+                            <span class="skill-tag">Primary Care</span>
+                            <span class="skill-tag">Strategic Planning</span>
+                            <span class="skill-tag">Health Policy</span>
+                            <span class="skill-tag">Leadership</span>
+                            <span class="skill-tag">Stakeholder Engagement</span>
+                            <span class="skill-tag">Research Methodology</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="vision-mission" class="section container">
+            <div class="vm-container">
+                <div class="vision-card">
+                    <h2 class="vm-title">Vision Statement</h2>
+                    <p>Pioneering transformative healthcare through innovative systems thinking, collaborative excellence, and evidence-based approaches that bridge research and practice. I envision a future where equitable, accessible, and high-quality healthcare becomes the standard, supported by optimized institutional frameworks that empower both providers and communities.</p>
+                </div>
+                <div class="mission-card">
+                    <h2 class="vm-title">Mission Statement</h2>
+                    <p>I am committed to leveraging my expertise in health systems science and strategic project coordination to bridge the gap between research and practical implementation. Through leadership, innovation, and a results-driven approach, I strive to enhance primary care frameworks, optimize institutional processes, and contribute to the development of sustainable, people-centered solutions that empower communities and drive meaningful progress.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="experience" class="section container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <p class="experience-date">Present</p>
+                    <h3 class="experience-title">Executive Project Coordinator</h3>
+                    <p class="experience-company">North-West University (NWU)</p>
+                    <p class="experience-desc">Spearheading high-level strategic projects, ensuring seamless execution, cross-disciplinary collaboration, and innovative problem-solving to enhance institutional effectiveness. My expertise lies in project management, stakeholder engagement, and the development of sustainable, outcome-driven initiatives that align with NWU's vision for excellence.</p>
+                </div>
+                
+                <!-- Add additional experience cards as needed -->
+            </div>
+            
+            <div class="cv-download">
+                <h3>Interested in my professional background?</h3>
+                <p>Download my full curriculum vitae to learn more about my experience, education, and professional achievements.</p>
+                <a href="assets/ethan-terblanche-cv.pdf" download class="btn btn-cv">
+                    <i class="fas fa-file-pdf"></i> Download CV
+                </a>
+            </div>
+        </section>
+        
+        <section id="education" class="section container">
+            <h2 class="section-title">Education & Coursework</h2>
+            <div class="education-container">
+                <div class="education-header">
+                    <h3>BHSc Hons in Health Systems Science</h3>
+                    <p>Faculty of Family Medicine and Primary Care</p>
+                </div>
+                
+                <div class="courses-container">
+                    <h4>Current Courses</h4>
+                    <div class="courses-grid">
+                        <div class="course-card">
+                            <h5>FAMH4000A</h5>
+                            <p>Contemporary Health</p>
+                            <div class="course-skills">
+                                <span class="course-skill">Health Systems Analysis</span>
+                                <span class="course-skill">Critical Thinking</span>
+                                <span class="course-skill">Policy Evaluation</span>
+                                <span class="course-skill">Comparative Healthcare</span>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <h5>FAMH4001A</h5>
+                            <p>Developing Health Systems Competencies</p>
+                            <div class="course-skills">
+                                <span class="course-skill">Systems Thinking</span>
+                                <span class="course-skill">Communication</span>
+                                <span class="course-skill">Leadership</span>
+                                <span class="course-skill">Professional Development</span>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <h5>FAMH4012A</h5>
+                            <p>Research Methodology</p>
+                            <div class="course-skills">
+                                <span class="course-skill">Data Analysis</span>
+                                <span class="course-skill">Study Design</span>
+                                <span class="course-skill">Statistical Methods</span>
+                                <span class="course-skill">Research Ethics</span>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <h5>GOLD01</h5>
+                            <p>Postgraduate Online Learning and Development</p>
+                            <div class="course-skills">
+                                <span class="course-skill">Digital Literacy</span>
+                                <span class="course-skill">Self-directed Learning</span>
+                                <span class="course-skill">Time Management</span>
+                                <span class="course-skill">Online Collaboration</span>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <h5>MFAHESS40</h5>
+                            <p>BHSc Hons in the field of Health Systems Sciences</p>
+                            <div class="course-skills">
+                                <span class="course-skill">Interdisciplinary Research</span>
+                                <span class="course-skill">Healthcare Innovation</span>
+                                <span class="course-skill">Systems Evaluation</span>
+                                <span class="course-skill">Change Management</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Upcoming Courses</h4>
+                    <div class="courses-grid">
+                        <div class="course-card upcoming">
+                            <h5>FAMH4007A</h5>
+                            <p>Innovative Health</p>
+                            <div class="course-skills">
+                                <span class="course-skill">Design Thinking</span>
+                                <span class="course-skill">Innovation Strategies</span>
+                                <span class="course-skill">Creative Problem-Solving</span>
+                            </div>
+                            <span class="pending-badge">Pending Activation</span>
+                        </div>
+                        
+                        <div class="course-card upcoming">
+                            <h5>FAMH4009A</h5>
+                            <p>Leading Health Systems Research</p>
+                            <div class="course-skills">
+                                <span class="course-skill">Research Leadership</span>
+                                <span class="course-skill">Project Management</span>
+                                <span class="course-skill">Team Coordination</span>
+                            </div>
+                            <span class="pending-badge">Pending Activation</span>
+                        </div>
+                        
+                        <div class="course-card upcoming">
+                            <h5>FAMH4010A</h5>
+                            <p>Managing Health Projects</p>
+                            <span class="pending-badge">Pending Activation</span>
+                        </div>
+                        
+                        <div class="course-card upcoming">
+                            <h5>FAMH4013A</h5>
+                            <p>Research Project</p>
+                            <span class="pending-badge">Pending Activation</span>
+                        </div>
+                        
+                        <div class="course-card upcoming">
+                            <h5>FAMH4014A</h5>
+                            <p>Responsible Health</p>
+                            <span class="pending-badge">Pending Activation</span>
+                        </div>
+                        
+                        <div class="course-card upcoming">
+                            <h5>FAMH4017A</h5>
+                            <p>Learning in the Workplace</p>
+                            <span class="pending-badge">Pending Activation</span>
+                        </div>
+                        
+                        <div class="course-card upcoming">
+                            <h5>FAMH4018A</h5>
+                            <p>Systems Health</p>
+                            <span class="pending-badge">Pending Activation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="section container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>Feel free to reach out if you're interested in health systems research, collaboration opportunities, or just want to connect.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>302408@students.wits.ac.za</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>083 440 0419</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>South Africa</span>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="text" placeholder="Subject">
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="logo">Ethan<span>T</span></div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+            <p class="copyright">© 2025 Ethan Terblanche. All rights reserved.</p>
+        </div>
+    </footer>
+    
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</body>
+</html>
