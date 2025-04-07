@@ -496,7 +496,7 @@
 
         .education-header p {
             font-weight: 500;
-            color: var(--primary-blue);
+            color: var (--primary-blue);
         }
 
         .courses-container h4 {
@@ -580,7 +580,7 @@
         .pending-badge {
             display: inline-block;
             background-color: var(--light-blue);
-            color: var(--dark-blue);
+            color: var (--dark-blue);
             padding: 0.3rem 0.8rem;
             border-radius: 30px;
             font-size: 0.8rem;
@@ -674,6 +674,102 @@
                 max-height: 300px;
             }
         }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-gray);
+        }
+
+        .popup-icon {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* Pop-up Styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .popup-content {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 90%;
+            width: 400px;
+            position: relative;
+            animation: popIn 0.3s ease-out;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-gray);
+        }
+
+        .close-popup:hover {
+            color: var(--black);
+        }
+
+        .popup-icon {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .popup h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .popup p {
+            margin-bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -712,7 +808,7 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-image">
-                    <img src="https://source.unsplash.com/random/600x600/?portrait" alt="Ethan Terblanche">
+                    <img src="assets/cover_photo.jpg" alt="Ethan Terblanche">
                 </div>
                 <div class="about-text">
                     <h3>Hello, I'm Ethan</h3>
@@ -926,11 +1022,16 @@
                 </div>
                 
                 <div class="contact-form">
-                    <form>
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <input type="text" placeholder="Subject">
-                        <textarea placeholder="Your Message" required></textarea>
+                    <form action="https://formsubmit.co/thnsjnr.okelly33@gmail.com" method="POST">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <input type="text" name="subject" placeholder="Subject">
+                        <textarea name="message" placeholder="Your Message" required></textarea>
+                        <input type="hidden" name="_captcha" value="false">
+                        <!-- This will prevent redirect to FormSubmit's success page -->
+                        <input type="hidden" name="_next" value="https://theunus.github.io/ethan-terblanche-portfolio/">
+                        <!-- Add honeypot to prevent spam -->
+                        <input type="text" name="_honey" style="display:none">
                         <button type="submit" class="btn">Send Message</button>
                     </form>
                 </div>
@@ -951,7 +1052,61 @@
         </div>
     </footer>
     
+    <!-- Success Message Pop-up -->
+    <div id="success-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <i class="fas fa-check-circle popup-icon"></i>
+            <h3>Thank You!</h3>
+            <p>Your message has been sent successfully. I will get back to you as soon as possible.</p>
+        </div>
+    </div>
+    
 <!-- Font Awesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- Form Handling Script -->
+<script>
+    // Get the form and popup elements
+    const contactForm = document.querySelector('.contact-form form');
+    const successPopup = document.getElementById('success-popup');
+    const closePopup = document.querySelector('.close-popup');
+    
+    // Function to show the popup
+    function showPopup() {
+        successPopup.style.display = 'flex';
+    }
+    
+    // Function to hide the popup
+    function hidePopup() {
+        successPopup.style.display = 'none';
+    }
+    
+    // Event listener for form submission
+    contactForm.addEventListener('submit', function(e) {
+        // The form will still submit normally to FormSubmit.co
+        // This just adds client-side feedback
+        
+        // Store the form data to clear later
+        const formData = new FormData(contactForm);
+        
+        // Set a timeout to show the popup after form submission
+        // This simulates waiting for the form to be sent
+        setTimeout(function() {
+            showPopup();
+            contactForm.reset(); // Clear the form
+        }, 1000);
+    });
+    
+    // Close popup when clicking the X
+    closePopup.addEventListener('click', hidePopup);
+    
+    // Close popup when clicking outside the popup content
+    window.addEventListener('click', function(e) {
+        if (e.target === successPopup) {
+            hidePopup();
+        }
+    });
+</script>
 </body>
 </html>
