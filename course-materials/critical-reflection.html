@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Critical Reflection - Ethan Terblanche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e88e5;
+            --dark-blue: #0d47a1;
+            --light-blue: #64b5f6;
+            --black: #212121;
+            --dark-gray: #424242;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--light-gray);
+            padding: 0;
+            margin: 0;
+        }
+        
+        header {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--primary-blue);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+            background-color: var(--white);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .back-link:hover {
+            color: var(--dark-blue);
+        }
+        
+        .content-header {
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 1.5rem;
+        }
+        
+        .content-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        
+        .content-header .course-info {
+            color: var(--dark-gray);
+        }
+        
+        .course-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-info i {
+            color: var(--primary-blue);
+        }
+        
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .content-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 1rem;
+        }
+        
+        .content-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+            margin-top: 1.5rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .quote-block {
+            border-left: 4px solid var(--primary-blue);
+            padding: 1rem 1.5rem;
+            background-color: rgba(30, 136, 229, 0.05);
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+        
+        .reflection-box {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .reflection-box h3 {
+            margin-top: 0;
+            color: var(--dark-blue);
+            border-bottom: 1px solid var(--light-blue);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .reflection-box p {
+            margin-bottom: 1rem;
+        }
+        
+        .reflection-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .btn-back:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .btn-back i {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Ethan<span>T</span></div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="../index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
+        </a>
+        
+        <div class="content-header">
+            <h1>Critical Reflection</h1>
+            <div class="course-info">
+                <i class="fas fa-book"></i> 
+                <span>FAMH4000A - Contemporary Health</span>
+            </div>
+            <div class="course-info">
+                <i class="fas fa-calendar"></i> 
+                <span>2025 Academic Year</span>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2>Personal Journey in Health Systems Science</h2>
+            
+            <p>Reflecting on the past seven weeks, there are a few points that stand out and have shifted my perspective on how I understand and engage with the health system. Before, it seemed like a distant concept, but now I see the intricate web that ties together medical practices, policies, and the people they serve. A lot of this learning has helped me piece together how the different components of health systems fit together in a way that is often invisible, but always impactful.</p>
+            
+            <div class="quote-block">
+                "Health is not just about medical interventions; it's about addressing the systems that create and perpetuate inequities."
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2>Key Insights and Learnings</h2>
+            
+            <div class="reflection-box">
+                <h3>The Interconnected Nature of Health Systems</h3>
+                <p>One of the most striking lessons for me is that Health Systems Science (HSS) is not a linear or isolated concept. It's a dynamic, interconnected system where factors like resources, policies, and social structures all play significant roles. Everything, from the most local health concerns to global health trends, feeds into the broader picture.</p>
+                <p>Understanding this interconnectedness has made me realize how change in one area of the health system can ripple across others. It's a reminder that we can't approach health issues in isolation without considering the broader impacts.</p>
+            </div>
+            
+            <div class="reflection-box">
+                <h3>Global and Local Health Inequities</h3>
+                <p>The course also brought to light the global and local health inequities that persist and how deeply they are rooted in social determinants of health. The way socio-economic and socio-political factors such as funding cuts or unequal access continue to shape our health outcomes is stark.</p>
+                <p>For example, the decision to cut AID to South Africa, which was politically motivated, directly impacted people's ability to access critical care. These inequities are not just numbers in reports; they are real barriers to health that affect individuals and communities in profound ways.</p>
+            </div>
+            
+            <div class="reflection-box">
+                <h3>Addressing Local Before Global</h3>
+                <p>Another realization is that before we can address global health issues, we need to address the local health concerns that are often neglected. Issues like non-communicable diseases (NCDs) and the challenges set out in the national development plan are crucial, but they also need to be dealt with within the context of South Africa's unique struggles.</p>
+                <p>We can't move forward with health reforms globally if we haven't first tackled the systemic racism and inequality that exists within our own medical institutions. It's a challenging task, but one that needs to be prioritized if we are to build a health system that is truly equitable.</p>
+            </div>
+            
+            <div class="reflection-box">
+                <h3>The Value of Health System Mapping</h3>
+                <p>The concept of mapping a health system, and doing so with appreciation, was another key takeaway. Through this exercise, I realized the importance of structure in creating change. Mapping allowed me to step back and assess the various components of the health system in South Africa.</p>
+                <p>It helped me identify areas that require closer examination and also gave me a clearer sense of what actions I can take within my own sphere of influence. It's about seeing the bigger picture and understanding where to focus efforts for maximum impact.</p>
+            </div>
+            
+            <div class="reflection-box">
+                <h3>Health Equity as a Central Goal</h3>
+                <p>Lastly, the discussions on health equity really resonated with me. It's become clear that addressing health inequities should be the central goal of any health system. For example, the idea of who gets access to healthcare and who is excluded is a foundational issue.</p>
+                <p>Until we address this fundamental barrier, all other attempts at reform will be limited. The challenge of bridging the gap between who is "allowed" healthcare and who is not is daunting, but it is essential for creating a system that serves everyone, not just those with privilege.</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2>Conclusion</h2>
+            <p>This experience has shown me that health is not just about medical interventions; it's about addressing the systems that create and perpetuate inequities. Understanding the complex interplay between policy, practice, and people has given me a new lens through which to view healthcare challenges.</p>
+            <p>While the road ahead to creating equitable, efficient health systems is long, I feel more equipped now to understand and participate in the conversations and actions needed to create meaningful change. My perspective has shifted from seeing health systems as abstract concepts to recognizing them as living networks that directly impact human lives and well-being.</p>
+        </div>
+        
+        <a href="../index.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Return to Portfolio
+        </a>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Ethan Terblanche | Health Systems Science Portfolio</p>
+    </footer>
+</body>
+</html>

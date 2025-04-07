@@ -1,0 +1,456 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context Analysis - Ethan Terblanche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e88e5;
+            --dark-blue: #0d47a1;
+            --light-blue: #64b5f6;
+            --black: #212121;
+            --dark-gray: #424242;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--light-gray);
+            padding: 0;
+            margin: 0;
+        }
+        
+        header {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--primary-blue);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+            background-color: var(--white);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .back-link:hover {
+            color: var(--dark-blue);
+        }
+        
+        .content-header {
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 1.5rem;
+        }
+        
+        .content-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        
+        .content-header .course-info {
+            color: var(--dark-gray);
+        }
+        
+        .course-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-info i {
+            color: var(--primary-blue);
+        }
+        
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .content-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 1rem;
+        }
+        
+        .content-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+            margin-top: 1.5rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .content-section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .content-section li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .competency-badge {
+            display: inline-block;
+            background-color: rgba(30, 136, 229, 0.1);
+            color: var(--primary-blue);
+            padding: 0.25rem 0.6rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .activity-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .context-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .context-table th {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: left;
+            padding: 0.8rem 1rem;
+        }
+        
+        .context-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid var(--light-gray);
+            vertical-align: top;
+        }
+        
+        .context-table tr:nth-child(even) {
+            background-color: rgba(30, 136, 229, 0.05);
+        }
+        
+        .context-table tr:hover {
+            background-color: rgba(30, 136, 229, 0.1);
+        }
+        
+        .section-heading {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 0.8rem 1rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            border-radius: 4px;
+        }
+        
+        .agent-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .agent-table th {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: left;
+            padding: 0.8rem 1rem;
+        }
+        
+        .agent-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid var(--light-gray);
+            vertical-align: top;
+        }
+        
+        .agent-row td:first-child {
+            background-color: rgba(30, 136, 229, 0.1);
+            font-weight: 600;
+            color: var(--dark-blue);
+        }
+        
+        .agent-table tr:hover {
+            background-color: rgba(30, 136, 229, 0.05);
+        }
+        
+        .note-box {
+            background-color: var(--light-gray);
+            padding: 1rem;
+            border-left: 4px solid var(--primary-blue);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            color: var(--dark-gray);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .btn-back:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .btn-back i {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Ethan<span>T</span></div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="activities.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Activities
+        </a>
+        
+        <div class="content-header">
+            <h1>Context Analysis</h1>
+            <div class="course-info">
+                <i class="fas fa-book"></i> 
+                <span>FAMH4000A - Contemporary Health</span>
+            </div>
+            <div class="course-info">
+                <i class="fas fa-calendar"></i> 
+                <span>Contemporary Health Module</span>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="activity-info">
+                <span class="competency-badge">Systems Thinking</span>
+                <span class="competency-badge">Contextual Awareness</span>
+                <span class="competency-badge">Policy Analysis</span>
+            </div>
+            
+            <div class="note-box">
+                Note: Context analysis examines how different factors at micro and macro levels interact to influence health systems and policy implementation. Not all contextual issues might be relevant in every case.
+            </div>
+            
+            <p>This activity explores the complex contextual factors that influence health systems and policy implementation. By analyzing the interplay between organizational cultures, interpersonal dynamics, socio-political pressures, and economic conditions, we can better understand the challenges in implementing effective health policies.</p>
+            
+            <h2>Micro Context Analysis</h2>
+            
+            <table class="context-table">
+                <tr>
+                    <th>Contextual Feature</th>
+                    <th>Specific Issues</th>
+                    <th>Impact and Implications</th>
+                </tr>
+                <tr>
+                    <td>Organizational Climate & Culture</td>
+                    <td>Doctors in the military and the public sector earn different salaries and benefits, and military privileges have historically been preferred.</td>
+                    <td>Caused public sector physicians (Ministry of Health staff) to become dissatisfied, which sparked industrial action. Brought attention to differences in compensation practices, which called for a change in policy.</td>
+                </tr>
+                <tr>
+                    <td>Other Policies</td>
+                    <td>Due to the absence of labor rules governing vital workers, ADHA was introduced.</td>
+                    <td>Due to the initial lack of legal frameworks, it was challenging to settle conflicts, which resulted in frequent strikes. A cycle of new expectations and demands was started.</td>
+                </tr>
+                <tr>
+                    <td>Organizational Capacity</td>
+                    <td>Administrative inefficiencies in the Ministry of Health's payment processing; the healthcare system's incapacity to manage significant payment revisions.</td>
+                    <td>Government resources were strained and service delivery was disrupted as a result of ongoing discontent and additional strikes.</td>
+                </tr>
+                <tr>
+                    <td>Interpersonal Factors</td>
+                    <td>Strong support for higher pay among medical professionals (nurses, doctors, and other health workers).</td>
+                    <td>Health workers' unity increased their collective negotiating power, which resulted in more inclusive policy reforms but also raised concerns about rising salary bills.</td>
+                </tr>
+            </table>
+            
+            <h2>Macro Context Analysis</h2>
+            
+            <table class="context-table">
+                <tr>
+                    <th>Contextual Feature</th>
+                    <th>Specific Issues</th>
+                    <th>Impact and Implications</th>
+                </tr>
+                <tr>
+                    <td>Social & Political Pressures</td>
+                    <td>Support for striking physicians from the public and media, as well as pressure on the government to address the situation.</td>
+                    <td>The government was forced to act swiftly to resolve wage inequities, and ADHA was selected as a stopgap option to continue providing services.</td>
+                </tr>
+                <tr>
+                    <td>Historical & Socio-cultural Context</td>
+                    <td>Long-standing complaints about the healthcare industry's low pay and unfavorable working conditions.</td>
+                    <td>Made people believe that the only way to get pay rises was through industrial action. This established a standard for upcoming conflicts.</td>
+                </tr>
+                <tr>
+                    <td>Economic Conditions & Policy</td>
+                    <td>Government spending on wages is high, and payment delays are caused by budgetary constraints.</td>
+                    <td>Financial strain on the Ministry of Health and Finance, which prompted changes to policy, including the inclusion of ADHA in pay.</td>
+                </tr>
+                <tr>
+                    <td>International Context</td>
+                    <td>Low pay is driving health professionals to migrate, and donors are worried about how long wage improvements will last.</td>
+                    <td>The healthcare workforce was damaged by brain drain, necessitating policy changes to increase retention.</td>
+                </tr>
+                <tr>
+                    <td>Environmental Factors</td>
+                    <td>Excessive workloads brought on by a lack of employees; unequal pay distribution.</td>
+                    <td>Increased stress for the surviving medical staff, which fueled more strikes and unhappiness.</td>
+                </tr>
+            </table>
+            
+            <div class="section-heading">
+                Agent Behavioral Drivers and Power Analysis
+            </div>
+            
+            <p>Understanding the actors involved in health policy implementation is crucial for predicting outcomes and developing effective strategies. The following analysis examines key stakeholders' mindsets, likely responses to change, and power dynamics.</p>
+            
+            <table class="agent-table">
+                <tr>
+                    <th>Agent</th>
+                    <th>Mindsets, Values and Interests</th>
+                    <th>Likely Response to Change</th>
+                    <th>Forms of Power</th>
+                    <th>Power Limitations</th>
+                </tr>
+                <tr class="agent-row">
+                    <td>Ministry of Health</td>
+                    <td>Maintaining healthcare service stability while controlling budgetary restrictions.</td>
+                    <td>Due to financial limitations, they were first cooperative but eventually became resistant.</td>
+                    <td>Control over healthcare workforce policies and the ability to make policies.</td>
+                    <td>Funding is provided by the Ministry of Finance; unions exert pressure.</td>
+                </tr>
+                <tr class="agent-row">
+                    <td>Ministry of Finance</td>
+                    <td>Controlling the public budget and averting financial emergencies.</td>
+                    <td>Unwilling to accept pay increases yet obedient when coerced.</td>
+                    <td>Control over spending; ultimate consent for decisions pertaining to wages.</td>
+                    <td>Limited by available national finances and competing sectoral demands.</td>
+                </tr>
+                <tr class="agent-row">
+                    <td>Ghana Medical Association (GMA)</td>
+                    <td>Promoting improved pay and working conditions for medical professionals.</td>
+                    <td>Extremely dedicated to change; used strikes as a direct form of protest.</td>
+                    <td>Powerful collective bargaining power and the capacity to interfere with medical services.</td>
+                    <td>Reliant on governmental policy decisions; strikes were criticized by the public.</td>
+                </tr>
+                <tr class="agent-row">
+                    <td>Nurses and Allied Health Workers</td>
+                    <td>Requesting improved working conditions and pay parity with physicians.</td>
+                    <td>After being kicked out of ADHA, they became resistant after initially being indifferent.</td>
+                    <td>The capacity to organize strikes and win over the public.</td>
+                    <td>Divided unions; less negotiating leverage than physicians.</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="content-section">
+            <h2>Analysis and Reflection</h2>
+            
+            <p>The context analysis reveals how multifaceted health system challenges can be. In this case, what began as a salary disparity issue between military and civilian doctors evolved into a complex policy problem involving multiple stakeholders with competing interests.</p>
+            
+            <p>Several key insights emerge from this analysis:</p>
+            
+            <ul>
+                <li><strong>Policy Interdependence:</strong> The introduction of ADHA in response to one problem created new issues, demonstrating how policies can have unintended consequences.</li>
+                <li><strong>Power Dynamics:</strong> Different stakeholders wielded varying forms of power, with medical professionals using collective action while ministries controlled formal policy processes.</li>
+                <li><strong>Historical Legacies:</strong> Past experiences with industrial action established patterns that influenced stakeholder behavior, creating cycles of strikes and policy adjustments.</li>
+                <li><strong>Resource Constraints:</strong> Financial limitations heavily influenced decision-making, showing how economic context shapes health policy implementation.</li>
+            </ul>
+            
+            <p>This analysis demonstrates the importance of considering both micro and macro contextual factors when addressing health system challenges. Effective policy implementation requires understanding the complex interplay between organizational cultures, interpersonal dynamics, economic conditions, and historical precedents.</p>
+        </div>
+        
+        <div class="btn-links">
+            <a href="activities.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Activities
+            </a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Ethan Terblanche | Health Systems Science Portfolio</p>
+    </footer>
+</body>
+</html>

@@ -519,8 +519,8 @@
 
         .courses-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
             margin-bottom: 2rem;
         }
 
@@ -528,9 +528,10 @@
             background-color: var(--light-gray);
             border-radius: 8px;
             overflow: hidden;
-            padding: 1.5rem;
+            padding: 1.8rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border-left: 4px solid var(--primary-blue);
+            min-height: 280px;
         }
 
         .course-card:hover {
@@ -826,6 +827,229 @@
             transform: translateY(-2px);
             color: var(--dark-blue);
         }
+
+        .activities-dropdown {
+            position: relative;
+        }
+
+        .activities-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .activities-link {
+            display: block;
+            padding: 0.8rem 1.2rem;
+            color: var(--black);
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .activities-link:hover {
+            background-color: var(--light-gray);
+        }
+
+        .activities-toggle {
+            cursor: pointer;
+        }
+
+        .activities-toggle:hover + .activities-menu,
+        .activities-menu:hover {
+            display: block;
+        }
+
+        /* Activities Dropdown Styles */
+        .activities-dropdown {
+            position: relative;
+        }
+        
+        .activities-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .activities-toggle .fa-chevron-down {
+            margin-left: auto;
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .activities-menu {
+            display: none;
+            background-color: var(--white);
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            padding: 0.5rem 0;
+            margin-top: 0.3rem;
+            transform-origin: top center;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+        
+        .activities-dropdown.active .activities-menu {
+            display: block;
+            animation: fadeIn 0.2s ease-out;
+        }
+        
+        .activities-dropdown.active .activities-toggle .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+        
+        .activities-link {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1.2rem;
+            color: var(--dark-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease;
+        }
+        
+        .activities-link i {
+            margin-right: 0.5rem;
+            color: var(--primary-blue);
+            font-size: 0.7rem;
+        }
+        
+        .activities-link:hover {
+            background-color: rgba(30, 136, 229, 0.05);
+            color: var(--primary-blue);
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Updated Activities Dropdown Styles */
+        .activities-dropdown {
+            position: relative;
+            z-index: 1001; /* Higher z-index to ensure proper stacking */
+        }
+        
+        .activities-menu {
+            display: none;
+            background-color: var(--white);
+            border-radius: 5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            z-index: 1002; /* Even higher z-index */
+            padding: 0.5rem 0;
+            margin-top: 0.3rem;
+            max-height: 250px;
+            overflow-y: auto;
+            transform-origin: top center;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Fix for overflow behavior */
+        .course-card {
+            overflow: visible !important; /* Override the hidden overflow */
+            position: relative;
+        }
+        
+        /* Ensure dropdown is fully visible */
+        .activities-link {
+            background-color: var(--white); /* Ensure solid background */
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .activities-link:last-child {
+            border-bottom: none;
+        }
+
+        /* Activities Dropdown with enhanced stacking context */
+        .activities-dropdown {
+            position: relative;
+            z-index: 1005; /* Very high z-index to ensure proper stacking */
+        }
+        
+        .activities-menu {
+            display: none;
+            background-color: var(--white);
+            border-radius: 5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            z-index: 1010; /* Even higher z-index */
+            padding: 0.5rem 0;
+            margin-top: 0.3rem;
+            max-height: 250px;
+            overflow-y: auto;
+            transform-origin: top center;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Fix for dropdown stacking context */
+        .course-card {
+            overflow: visible !important; /* Override the hidden overflow */
+            position: relative;
+            z-index: 1; /* Default z-index */
+        }
+        
+        /* Ensure card with active dropdown gets higher stacking context */
+        .course-card:has(.activities-dropdown.active) {
+            z-index: 1004 !important; /* Ensures this card stays above others */
+        }
+        
+        /* Apply higher z-index to the active dropdown's parent */
+        .activities-dropdown.active {
+            z-index: 1005;
+        }
+        
+        /* Ensure the dropdown menu has proper elevation */
+        .activities-dropdown.active .activities-menu {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1010;
+        }
+        
+        /* Style for menu items */
+        .activities-link {
+            background-color: var(--white);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 1010;
+        }
+        
+        .activities-link:last-child {
+            border-bottom: none;
+        }
+        
+        /* Fix for education container that might be causing stacking issues */
+        .education-container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Fix for courses grid to ensure proper stacking */
+        .courses-grid {
+            position: relative;
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
@@ -938,18 +1162,40 @@
                             <h5>FAMH4000A</h5>
                             <p>Contemporary Health</p>
                             <div class="course-links">
-                                <a href="assets/situating_contemporary_health.pdf" download class="course-link">
-                                    <i class="fas fa-file-pdf"></i> Situating Contemporary Health
+                                <a href="course-materials/situating-contemporary-health.html" class="course-link">
+                                    <i class="fas fa-file-alt"></i> Situating Contemporary Health
                                 </a>
-                                <a href="assets/evidence_of_engagement.pdf" download class="course-link">
-                                    <i class="fas fa-file-pdf"></i> Evidence of Engagement
+                                <a href="course-materials/evidence-of-engagement.html" class="course-link">
+                                    <i class="fas fa-file-alt"></i> Evidence of Engagement
                                 </a>
-                                <a href="assets/critical_reflection.pdf" download class="course-link">
-                                    <i class="fas fa-file-pdf"></i> Critical Reflection
+                                <a href="course-materials/critical-reflection.html" class="course-link">
+                                    <i class="fas fa-file-alt"></i> Critical Reflection
                                 </a>
-                                <a href="assets/contemporary_health_activities.pdf" download class="course-link">
-                                    <i class="fas fa-file-pdf"></i> Activities
-                                </a>
+                                <div class="activities-dropdown">
+                                <a href="course-materials/activities.html" class="course-link">
+                                    <i class="fas fa-tasks"></i> View All Activities
+                                    </a>
+                                    <div class="activities-menu">
+                                        <a href="course-materials/choosing_a_local_health_focus.html" class="activities-link">
+                                            <i class="fas fa-angle-right"></i> Choosing a Local Health Focus
+                                        </a>
+                                        <a href="course-materials/context_analysis.html" class="activities-link">
+                                            <i class="fas fa-angle-right"></i> Context Analysis
+                                        </a>
+                                        <a href="course-materials/exploring_policy.html" class="activities-link">
+                                            <i class="fas fa-angle-right"></i> Exploring Policy
+                                        </a>
+                                        <a href="course-materials/mapping_with_appreciation.html" class="activities-link">
+                                            <i class="fas fa-angle-right"></i> Mapping with Appreciation
+                                        </a>
+                                        <a href="course-materials/my-understanding-of-health-systems-science.html" class="activities-link">
+                                            <i class="fas fa-angle-right"></i> Understanding HSS
+                                        </a>
+                                        <a href="course-materials/racism-and-the-right-to-health.html" class="activities-link">
+                                            <i class="fas fa-angle-right"></i> Racism & the Right to Health
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
@@ -1169,6 +1415,61 @@
     window.addEventListener('click', function(e) {
         if (e.target === successPopup) {
             hidePopup();
+        }
+    });
+
+
+
+    // Activities dropdown functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const activitiesToggle = document.querySelector('.activities-toggle');
+        const activitiesDropdown = document.querySelector('.activities-dropdown');
+        
+        if (activitiesToggle) {
+            activitiesToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                activitiesDropdown.classList.toggle('active');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!activitiesDropdown.contains(e.target)) {
+                    activitiesDropdown.classList.remove('active');
+                }
+            });
+        }
+    });
+</script>
+
+<script>
+    // Activities dropdown functionality with z-index management
+    document.addEventListener('DOMContentLoaded', function() {
+        const activitiesToggle = document.querySelector('.activities-toggle');
+        const activitiesDropdown = document.querySelector('.activities-dropdown');
+        const courseCard = activitiesDropdown ? activitiesDropdown.closest('.course-card') : null;
+        
+        if (activitiesToggle && courseCard) {
+            activitiesToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Toggle active class
+                activitiesDropdown.classList.toggle('active');
+                
+                // Set high z-index when active
+                if (activitiesDropdown.classList.contains('active')) {
+                    courseCard.style.zIndex = '1004';
+                } else {
+                    courseCard.style.zIndex = '1';
+                }
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!activitiesDropdown.contains(e.target)) {
+                    activitiesDropdown.classList.remove('active');
+                    courseCard.style.zIndex = '1';
+                }
+            });
         }
     });
 </script>

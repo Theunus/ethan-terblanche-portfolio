@@ -1,0 +1,538 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapping with Appreciation - Ethan Terblanche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e88e5;
+            --dark-blue: #0d47a1;
+            --light-blue: #64b5f6;
+            --black: #212121;
+            --dark-gray: #424242;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--light-gray);
+            padding: 0;
+            margin: 0;
+        }
+        
+        header {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--primary-blue);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+            background-color: var(--white);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .back-link:hover {
+            color: var(--dark-blue);
+        }
+        
+        .content-header {
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 1.5rem;
+        }
+        
+        .content-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        
+        .content-header .course-info {
+            color: var(--dark-gray);
+        }
+        
+        .course-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-info i {
+            color: var(--primary-blue);
+        }
+        
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .content-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 1rem;
+        }
+        
+        .content-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+            margin-top: 1.5rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .content-section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .content-section li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .competency-badge {
+            display: inline-block;
+            background-color: rgba(30, 136, 229, 0.1);
+            color: var(--primary-blue);
+            padding: 0.25rem 0.6rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .activity-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .phase-heading {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            margin: 2rem 0 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .case-study-box {
+            background-color: rgba(30, 136, 229, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .case-study-box h3 {
+            margin-top: 0;
+            color: var(--dark-blue);
+            border-bottom: 1px solid var(--light-blue);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .case-study-box p {
+            margin-bottom: 1rem;
+        }
+        
+        .case-study-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .response-box {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--dark-blue);
+        }
+        
+        .response-box h4 {
+            margin-top: 0;
+            color: var(--dark-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .response-box p {
+            margin-bottom: 1rem;
+        }
+        
+        .response-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .references {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+        
+        .references h3 {
+            margin-top: 0;
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .references ul {
+            list-style-type: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+        
+        .references li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5em;
+            text-indent: -1.5em;
+        }
+        
+        .framework-image {
+            display: block;
+            max-width: 100%;
+            margin: 1.5rem auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .question {
+            font-weight: 600;
+            color: var(--dark-blue);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .btn-back:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .btn-back i {
+            margin-right: 0.5rem;
+        }
+        
+        .cycle-diagram {
+            background-color: rgba(30, 136, 229, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .cycle-diagram h3 {
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .cycle-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .cycle-step {
+            background-color: var(--white);
+            padding: 1rem;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .cycle-step::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -15px;
+            width: 15px;
+            height: 2px;
+            background-color: var(--primary-blue);
+        }
+        
+        .cycle-step:last-child::after {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .cycle-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cycle-step {
+                margin-bottom: 1rem;
+            }
+            
+            .cycle-step::after {
+                top: 100%;
+                right: 50%;
+                width: 2px;
+                height: 15px;
+                transform: translateX(50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Ethan<span>T</span></div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="activities.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Activities
+        </a>
+        
+        <div class="content-header">
+            <h1>Mapping with Appreciation</h1>
+            <div class="course-info">
+                <i class="fas fa-book"></i> 
+                <span>FAMH4000A - Contemporary Health</span>
+            </div>
+            <div class="course-info">
+                <i class="fas fa-calendar"></i> 
+                <span>Week 3 – Session 3, Activity 3.3.1</span>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="activity-info">
+                <span class="competency-badge">Collaboration</span>
+                <span class="competency-badge">Systems Thinking</span>
+                <span class="competency-badge">Communication</span>
+            </div>
+            
+            <p>This activity explores Appreciative Inquiry as an approach to addressing health system challenges. Rather than focusing solely on problems, Appreciative Inquiry emphasizes identifying strengths, successes, and possibilities to build upon. This approach is particularly valuable in complex health systems where multiple stakeholders and factors are involved.</p>
+            
+            <div class="cycle-diagram">
+                <h3>The 5D Framework of Appreciative Inquiry</h3>
+                <p>Appreciative Inquiry follows a structured approach often represented as a cycle with five key phases:</p>
+                <div class="cycle-steps">
+                    <div class="cycle-step">Define</div>
+                    <div class="cycle-step">Discover</div>
+                    <div class="cycle-step">Dream</div>
+                    <div class="cycle-step">Design</div>
+                    <div class="cycle-step">Deliver</div>
+                </div>
+            </div>
+            
+            <p>For the purposes of this activity, we will follow the 5D cycle and look at the Appreciative Inquiry approach in 3 phases:</p>
+            
+            <ul>
+                <li><strong>Phase 1: Defining & Discovery</strong> - Situating the problem from a positive perspective and asking questions that reinforce best practices.</li>
+                <li><strong>Phase 2: Dream & Design</strong> - Reshaping the future through constructive dialogue, balancing ideal outcomes with feasible solutions.</li>
+                <li><strong>Phase 3: Destiny & Deliver</strong> - Implementing recommendations and planning for monitoring and evaluation.</li>
+            </ul>
+            
+            <div class="phase-heading">
+                Phase 1: Defining & Discovery
+            </div>
+            
+            <div class="case-study-box">
+                <h3>Addressing Medicines Stockouts</h3>
+                <p>Researchers for a campaign working to prevent medicines stock-outs, called Stop Stockouts, want to find out what strategies healthcare workers use when managing shortages of medicines. In line with the aim of the project, they want to see if the Stop Stockouts project has had a positive impact on service delivery.</p>
+                
+                <p>Rather than point to the flaws in the system, which are well documented (Hodes, 2017; Hwang, 2019; Zuma 2022), they want to explore creative and innovative ways that health care workers address medicine shortages, especially in rural areas. According to Hodes et al., (2017: 738), "Stock-outs arise from an inability to manage medical supplies, report shortages, and act swiftly and effectively to prevent their recurrence". Additionally, stockouts are impacted by other health sector challenges, including healthcare worker shortages, inadequate training, weak oversight and management, and inadequate monitoring and evaluation of clinic data.</p>
+                
+                <p>You are part of a team that want to run a series of interview with nursing staff in selected rural primary healthcare clinics. Instead of looking for problems and generating solutions, you and the team want to take an Appreciative Inquiry approach to finding out what works, why it works, and what could be done even better. Before you leave, you want to consider the 5Ds framework and plan an appropriate methodology.</p>
+            </div>
+            
+            <div class="question">1. What research design could you use to elicit nurses' perceptions of the issue at hand, and what they feel is working?</div>
+            
+            <div class="response-box">
+                <p>Qualitative Research Design, (Appreciative Inquiry approach.) Medication shortages, and how they managed medication shortages in their respected clinics, by making use of a qualitative research design we are able to get the shared lived experiences of the nurses.</p>
+            </div>
+            
+            <div class="question">2. What questions could you ask to better characterise the issue at hand, and elicit 'positivity' and 'poetry', in line with the principles of AI?</div>
+            
+            <div class="response-box">
+                <p>We focused on the shared and lived experiences of the nurses and questions like these helped us understand the issue at hand better:</p>
+                <ul>
+                    <li>Can you please share a time when you successfully managed a medication shortage in your clinic?</li>
+                    <li>How did you manage it successfully? What were your methods?</li>
+                    <li>What do you think would have happened without the support staff of nurses in a medication shortage?</li>
+                    <li>If the circumstances were different, how would you have better managed this issue?</li>
+                    <li>How do the stockouts affect patient outcomes, as well as impact your mental well-being as a nurse with now an increased workload?</li>
+                </ul>
+            </div>
+            
+            <div class="phase-heading">
+                Phase 2: Dream and Design
+            </div>
+            
+            <div class="case-study-box">
+                <h3>Addressing Medicines Stockouts (Continued)</h3>
+                <p>After speaking to nurses in a number of rural clinics, you realise that there are a number of self-generated strategies that health workers apply to address the immediacy of medicines stockouts. These include informal networks between different facilities, where nurses talk to each other about what medicines they have in stock and what might be in short supply in one area.</p>
+                
+                <p>Nurses explain that they mobilise personal resources to move stock from one clinic to another, where the need is greatest. This 'borrowing' strategy is not regulated and runs the risk that stock can be stolen or abused. It also takes time away from clinic staff in their own facility.</p>
+                
+                <p>Through this network, however, nurses feel they can support each other and work towards the best outcomes from their patients, given limited resources. Nurses recognise that in an idea world, they would have more time to dedicate to patients if they did not have to constantly make plans to get medicines, drive long distances, and waste time doing someone else's job. At the same time, the recognise that other health workers on the supply side are equally constrained by funding and procurement issues that prevent them from supporting local health facilities.</p>
+            </div>
+            
+            <div class="question">1. From this picture, how could you explain to a management team how the nurses feel things should be, ideally?</div>
+            
+            <div class="response-box">
+                <ul>
+                    <li><strong>The current reality:</strong> A strained medication shortage situation but with the potential for a resilient system if resources and implementations were different.</li>
+                    <li><strong>The Dream:</strong> Explain what nurses need, want and can do with the proper tools.</li>
+                    <li><strong>The design:</strong> What should be done for nurses to provide proper healthcare.</li>
+                    <li><strong>Why this matters to management:</strong> What are the positive implications that management will receive if this is implemented (what do they get out of it).</li>
+                </ul>
+            </div>
+            
+            <div class="phase-heading">
+                Phase 3: Destiny and Deliver
+            </div>
+            
+            <div class="case-study-box">
+                <h3>Addressing Medicines Stockouts (Final Phase)</h3>
+                <p>Hodes et al (2017: 739) point out that the "government has recognised the urgency of stock-outs and committed to improving monitoring and accountability in the health sector". They note that many plans and circulars show attempts to improve procurement and oversight of medical supplies and improve reporting.</p>
+                
+                <p>Some suggestions include a digital stock-monitoring but investments in technology and infrastructure at facility level are needed. Proposed initiatives must be accompanied by attendant investments in human resources, especially data capturers within facilities. This would free up nurses from completing paperwork and improve monitoring and evaluation.</p>
+                
+                <p>The informal networks that nurses have established have improved communication and exchange of other health systems challenges, and for the time being have allowed front-line healthcare workers a level of agency in responding quickly and effectively to stockouts. This sense of belonging, caring, support and control has been very valuable for nurses who often feel isolated and unheard.</p>
+            </div>
+            
+            <div class="question">1. Following some reflection, what kinds of realistic recommendations could you make to district management planners to improve medicines stockouts?</div>
+            
+            <div class="question">2. How should these suggestions be implemented, monitored, and evaluated?</div>
+            
+            <div class="response-box">
+                <h4>Recommendations and Implementation</h4>
+                <p>Digital stock managers and a division of duties.</p>
+                <p>By making use of AI implementation systems with logbooks, monitoring systems, and evaluation strategies.</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2>Reflection on Appreciative Inquiry</h2>
+            
+            <p>This activity demonstrates the value of taking an appreciative approach when addressing health system challenges. Rather than focusing solely on what's going wrong, Appreciative Inquiry allows us to identify existing strengths and successful strategies that can be built upon.</p>
+            
+            <p>In the case of medicine stockouts, this approach revealed that nurses have already developed informal networks and collaborative strategies to manage shortages. These self-generated solutions contain important insights that could inform more formal systems. By recognizing and valuing these existing practices, we can design interventions that complement rather than replace successful grassroots approaches.</p>
+            
+            <p>The AI process also highlights the importance of engaging frontline workers in solution development. Nurses possess invaluable practical knowledge about what works in their specific contexts. Their insights about informal borrowing networks, communication channels, and resource mobilization strategies provide a foundation for more sustainable formal solutions.</p>
+            
+            <p>Finally, this activity reinforces that effective health systems interventions must balance ideal solutions with practical realities. While digital stock monitoring and dedicated data capturers might be optimal, implementation must consider existing resources, infrastructure limitations, and the day-to-day realities of rural healthcare facilities.</p>
+        </div>
+        
+        <div class="references">
+            <h3>References</h3>
+            <ul>
+                <li>Hodes, R., Price, I., Bungane, N., Toska, E. and Cluver, L., 2017. How front-line healthcare workers respond to stock-outs of essential medicines in the Eastern Cape Province of South Africa. South African Medical Journal, 107(9), pp.738-740.</li>
+                <li>Hwang, B., Shroufi, A., Gils, T., Steele, S.J., Grimsrud, A., Boulle, A., Yawa, A., Stevenson, S., Jankelowitz, L., Versteeg-Mojanaga, M. and Govender, I., 2019. Stock-outs of antiretroviral and tuberculosis medicines in South Africa: A national cross-sectional survey. PLoS One, 14(3), p.e0212405.</li>
+                <li>Luhalima, T.R., Mulaudzi, F.M. and Phethlu, R.D., 2020. Use of an Appreciative Inquiry Approach to Enhance Quality Improvement in Management of Patient Care.</li>
+                <li>Sharp, C., Dewar, B., Barrie, K. 2016. 'Forming new futures through appreciative inquiry', Insight 33, Iriss.</li>
+                <li>Zuma, S.M., 2022. Assessment of medicine stock-outs challenges in public health services. Africa's Public Service Delivery and Performance Review, 10(1), p.578.</li>
+            </ul>
+        </div>
+        
+        <div class="btn-links">
+            <a href="activities.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Activities
+            </a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Ethan Terblanche | Health Systems Science Portfolio</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,480 @@
+right-to-health.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Racism & the Right to Health - Ethan Terblanche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e88e5;
+            --dark-blue: #0d47a1;
+            --light-blue: #64b5f6;
+            --black: #212121;
+            --dark-gray: #424242;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--light-gray);
+            padding: 0;
+            margin: 0;
+        }
+        
+        header {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--primary-blue);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+            background-color: var(--white);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .back-link:hover {
+            color: var(--dark-blue);
+        }
+        
+        .content-header {
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 1.5rem;
+        }
+        
+        .content-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        
+        .content-header .course-info {
+            color: var(--dark-gray);
+        }
+        
+        .course-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-info i {
+            color: var(--primary-blue);
+        }
+        
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .content-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 1rem;
+        }
+        
+        .content-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+            margin-top: 1.5rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .content-section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .content-section li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .competency-badge {
+            display: inline-block;
+            background-color: rgba(30, 136, 229, 0.1);
+            color: var(--primary-blue);
+            padding: 0.25rem 0.6rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .activity-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .step-heading {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            margin: 2rem 0 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .question-box {
+            background-color: rgba(30, 136, 229, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .question-box h3 {
+            margin-top: 0;
+            color: var(--dark-blue);
+            border-bottom: 1px solid var(--light-blue);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .response-box {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--dark-blue);
+        }
+        
+        .action-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .action-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .action-icon {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .action-content {
+            flex-grow: 1;
+        }
+        
+        .action-content h4 {
+            color: var(--dark-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .quote-block {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            line-height: 1.5;
+            color: var(--dark-blue);
+            padding: 2rem;
+            background-color: rgba(30, 136, 229, 0.05);
+            border-left: 4px solid var(--primary-blue);
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .quote-block::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            color: rgba(30, 136, 229, 0.2);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .btn-back:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .btn-back i {
+            margin-right: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .content-header h1 {
+                font-size: 2rem;
+            }
+            
+            .quote-block {
+                font-size: 1.2rem;
+                padding: 1.5rem;
+            }
+            
+            .action-item {
+                flex-direction: column;
+            }
+            
+            .action-icon {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Ethan<span>T</span></div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="activities.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Activities
+        </a>
+        
+        <div class="content-header">
+            <h1>Racism & the Right to Health</h1>
+            <div class="course-info">
+                <i class="fas fa-book"></i> 
+                <span>FAMH4000A - Contemporary Health</span>
+            </div>
+            <div class="course-info">
+                <i class="fas fa-calendar"></i> 
+                <span>Week 2 – Session 2, Activity 2.2.1</span>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="activity-info">
+                <span class="competency-badge">Health Advocacy</span>
+                <span class="competency-badge">Systems Thinking</span>
+                <span class="competency-badge">Social Justice</span>
+                <span class="competency-badge">Health Equity</span>
+            </div>
+            
+            <p>This activity explores the critical relationship between racism and health rights, examining how systemic discrimination affects healthcare access and outcomes. Based on the UN report on Racism in Health and Medicine, I analyze the scope of the problem and propose potential solutions.</p>
+            
+            <div class="quote-block">
+                Health is a fundamental human right that should be accessible to all, regardless of race, ethnicity, or social position. Yet systemic racism continues to undermine this right for millions worldwide.
+            </div>
+            
+            <div class="step-heading">
+                Step 1: Characterising the Problem
+            </div>
+            
+            <div class="question-box">
+                <h3>Guiding Questions</h3>
+                <ul>
+                    <li>How important is this issue in relation to other health systems challenges, globally?</li>
+                    <li>Who is most affected by this issue and who is disinvested to seek change?</li>
+                    <li>Who should be held accountable for the issues raised?</li>
+                    <li>How does this issue relate to local health challenges?</li>
+                </ul>
+            </div>
+            
+            <div class="response-box">
+                <p>I would characterize the problem by thinking about how racism in the healthcare system is implanted within all healthcare systems and structures. Systematic racism in healthcare leads to discrimination of patients in need of medical assistance.</p>
+                
+                <p>Racism in healthcare not only impacts the healthcare industry but the root of systematic racism intersects with other social determinates, such as economic, political and social discrimination.</p>
+                
+                <p>The effects of racism in health and medicine impacts a wide range of minorities, limiting their access to proper and adequate healthcare. To really address this issue there would need to be a decolonisation of the medical, political and economic industry. There would need to be systematic change starting from medical education otherwise health discrimination, systematic racism and other disparities will continue in the global healthcare systems.</p>
+            </div>
+            
+            <div class="step-heading">
+                Step 2: Addressing a Global Health Issue
+            </div>
+            
+            <div class="question-box">
+                <h3>Guiding Questions</h3>
+                <ul>
+                    <li>What key action points should be taken on a global level to address the issues raised in the report?</li>
+                    <li>Who should be responsible for addressing these issues?</li>
+                    <li>How would we know that change is being made on a local to global scale?</li>
+                </ul>
+            </div>
+            
+            <div class="response-box">
+                <p>I think that there are various ways to help put an end to the global racism in health. We would firstly need to take accountability and recognise that there is still racism and discrimination in our healthcare systems.</p>
+                
+                <p>We would also need to decolonize the medical education, starting with the new generation of medical and support staff, so that they do not continue with racist views going forward. For example, something like an anti-racist training at the beginning of the year.</p>
+                
+                <p>There would also need to be responsibility for change. The government, and institutions would need to make control and be responsible to advocate for change within.</p>
+                
+                <p>International systems/structures such as the WHO should monitor and set global benchmarks to ensure that there is equitable healthcare, and that systematic racism will not continue.</p>
+                
+                <p>In South Africa we do not have control over what happens globally and how they act on their policies but we would need to start making changes locally and then globally. If we focus on the problem areas of racism in our area first, then it would generate a spark that could possibly change the global sector.</p>
+                
+                <p>Systematic racism can only be stopped if we have an ongoing action, if we keep each other accountable. And if we measure progress locally first and then continue on a global scale.</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2>Key Action Points for Addressing Racism in Healthcare</h2>
+            
+            <div class="action-item">
+                <div class="action-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="action-content">
+                    <h4>Decolonize Medical Education</h4>
+                    <p>Transform medical curricula to include diverse perspectives, histories, and knowledge systems. Incorporate anti-racist training for all healthcare professionals, both during education and as ongoing professional development.</p>
+                </div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <div class="action-content">
+                    <h4>Strengthen Accountability Mechanisms</h4>
+                    <p>Establish transparent reporting systems for instances of discrimination in healthcare settings. Create independent oversight bodies that can investigate complaints and enforce consequences for discriminatory practices.</p>
+                </div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="action-content">
+                    <h4>Implement Measurable Standards</h4>
+                    <p>Develop clear metrics for equitable healthcare delivery that can be monitored and evaluated over time. Use disaggregated data to identify and address racial disparities in health outcomes, access, and quality of care.</p>
+                </div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="action-content">
+                    <h4>Diversify Healthcare Leadership</h4>
+                    <p>Promote representation of minorities in healthcare leadership positions, policy development, and decision-making processes. Support mentorship programs that create pathways for underrepresented groups to advance in healthcare professions.</p>
+                </div>
+            </div>
+            
+            <div class="action-item">
+                <div class="action-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <div class="action-content">
+                    <h4>Establish Community Partnerships</h4>
+                    <p>Create meaningful collaborations between healthcare institutions and the communities they serve, particularly those most affected by racism. Ensure community voices are central in developing solutions to address health inequities.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2>Reflection</h2>
+            
+            <p>This activity has deepened my understanding of how racism functions as a structural determinant of health, creating and perpetuating inequities in healthcare access and outcomes globally. The UN report highlights that racism in healthcare is not merely about individual prejudices but about deeply embedded systems and structures that systematically disadvantage certain groups.</p>
+            
+            <p>What's particularly striking is how racism in healthcare intersects with and is reinforced by other forms of discrimination and social determinants of health. This creates complex, multi-layered barriers that require equally complex, multi-faceted solutions.</p>
+            
+            <p>As a future healthcare professional, I recognize my responsibility to not only provide equitable care to all patients but also to actively work toward dismantling racist structures within healthcare systems. This requires ongoing reflection, education, advocacy, and action at both personal and systemic levels.</p>
+            
+            <p>Moving forward, I am committed to continuing to learn about how racism affects health outcomes, advocating for equity-focused policies and practices, and supporting initiatives that promote diversity and inclusion in healthcare education and leadership.</p>
+        </div>
+        
+        <div class="btn-links">
+            <a href="activities.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Activities
+            </a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Ethan Terblanche | Health Systems Science Portfolio</p>
+    </footer>
+</body>
+</html>

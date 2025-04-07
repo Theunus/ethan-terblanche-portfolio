@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evidence of Engagement - Ethan Terblanche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Keep all the same CSS styles */
+        :root {
+            --primary-blue: #1e88e5;
+            --dark-blue: #0d47a1;
+            --light-blue: #64b5f6;
+            --black: #212121;
+            --dark-gray: #424242;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--light-gray);
+            padding: 0;
+            margin: 0;
+        }
+        
+        header {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--primary-blue);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+            background-color: var(--white);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .back-link:hover {
+            color: var(--dark-blue);
+        }
+        
+        .content-header {
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 1.5rem;
+        }
+        
+        .content-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        
+        .content-header .course-info {
+            color: var(--dark-gray);
+        }
+        
+        .course-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-info i {
+            color: var(--primary-blue);
+        }
+        
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .content-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 1rem;
+        }
+        
+        .content-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+            margin-top: 1.5rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .content-section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .content-section li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .activity-box {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .activity-box h3 {
+            margin-top: 0;
+            color: var(--dark-blue);
+            border-bottom: 1px solid var(--light-blue);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .activity-box p {
+            margin-bottom: 1rem;
+        }
+        
+        .activity-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .quote-block {
+            border-left: 4px solid var(--primary-blue);
+            padding: 1rem 1.5rem;
+            background-color: rgba(30, 136, 229, 0.05);
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .btn-back:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .btn-back i {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Ethan<span>T</span></div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="../index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
+        </a>
+        
+        <div class="content-header">
+            <h1>Evidence of Engagement</h1>
+            <div class="course-info">
+                <i class="fas fa-book"></i> 
+                <span>FAMH4000A - Contemporary Health</span>
+            </div>
+            <div class="course-info">
+                <i class="fas fa-calendar"></i> 
+                <span>2025 Academic Year</span>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2>Overview</h2>
+            <p>This document provides evidence of active engagement and participation in the Contemporary Health module. Throughout the course, I completed various activities that helped develop a deeper understanding of Health Systems Science (HSS) and its application to contemporary health challenges.</p>
+            
+            <div class="quote-block">
+                "Health Systems Science, to me, is the study of how care moves through people, policies, structures, and spaces. It is about more than hospitals or clinics; it's about understanding the invisible threads that hold a system together: relationships, power dynamics, resources, culture, and context."
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2>Activities and Reflections</h2>
+            
+            <div class="activity-box">
+                <h3>Activity 1.1.1: Your Personal Definition of HSS</h3>
+                <p>In this activity, I defined the 'what', 'why' and 'how' of health systems science as a field of study. This exercise encouraged me to challenge existing conceptions of HSS and to posit new ideas based on my experiences and research.</p>
+            </div>
+            
+            <div class="activity-box">
+                <h3>Activity 1.2.1: My Understanding of Health Systems Science</h3>
+                <p><strong>What HSS is:</strong> It's a field that explores the design, function, and impact of health systems, looking at both their strengths and their blind spots.</p>
+                <p><strong>Why it matters:</strong> Because health is not equally accessible to all and understanding the system is the first step toward making it more just, inclusive, and effective.</p>
+                <p><strong>How we study it:</strong> By bringing in diverse perspectives, engaging with complexity, questioning assumptions, and always staying grounded in the lived realities of the people these systems are meant to serve.</p>
+                <p>At its heart, HSS is about care — and about how we can collectively build systems that truly care, for everyone.</p>
+            </div>
+            
+            <div class="activity-box">
+                <h3>Activity 2.2.1: Racism & the Right to Health</h3>
+                <p>Reading Dr. Mofokeng's address to the UN was a powerful reminder that health is not just about biology or access to services—it's about justice. Racism, whether systemic or subtle, continues to shape who lives, who suffers, and who gets to heal. The right to health is supposed to be universal, but the lived experiences of many show otherwise.</p>
+                <p>This activity pushed me to think critically about how racism is embedded in health systems in policies, language, practices, and even research. It reminded me that fighting for health equity means confronting uncomfortable truths and committing to change that is both structural and deeply human.</p>
+                <p>Including this in my portfolio is not just evidence of engagement—it's a marker of a personal and professional commitment: to see, to listen, and to act.</p>
+            </div>
+            
+            <div class="activity-box">
+                <h3>Activity 3.1.1: Choosing a Local Health Focus</h3>
+                <p>This activity gave me the chance to slow down and look closely at one health challenge in South Africa—not as an isolated issue, but as something deeply woven into broader social, economic, and historical contexts. Through exploring the literature, I began to see how one concern, such as mental health, TB, or substance use, doesn't stand alone—it intersects with poverty, access to care, stigma, and inequality.</p>
+                <p>The process of choosing a focus helped me sharpen my lens for the upcoming situational analysis. It reminded me that behind every statistic is a human story, and that drawing attention to local health challenges is an act of care, advocacy, and responsibility.</p>
+                <p>This artefact represents not just research, but my growing understanding of the interconnectedness of health and the importance of listening to what our local realities are telling us.</p>
+            </div>
+            
+            <div class="activity-box">
+                <h3>Activity 3.3.1: Mapping with Appreciation</h3>
+                <p>This activity gave me a chance to approach a critical health challenge—medicine stock-outs—with a mindset of appreciation rather than solely focusing on deficiencies. By applying Appreciative Inquiry to the Stop Stockouts case study, I was able to shift my perspective: rather than just highlighting the crisis of medicine shortages, I looked for strengths within the system, community responses, and opportunities for improvement.</p>
+                <p>The Stop Stockouts Heat Map revealed the stark reality of how unequal access to medicines is in different parts of South Africa, but it also underscored the importance of collective action and innovation in the face of adversity. This exercise deepened my understanding of how crises are not just problems to fix but also moments to reflect on what's working and where we can build.</p>
+                <p>This activity isn't just about identifying what's missing but appreciating what exists and how we can strengthen those positive elements for long-term, sustainable change.</p>
+            </div>
+            
+            <div class="activity-box">
+                <h3>Activity 5.1.1: Exploring Policy</h3>
+                <p>This activity required me to delve into the policy landscape surrounding the health issue I've selected, and it was an eye-opening experience. By searching various databases and websites, I was able to gain a clearer understanding of the policies currently in place, the gaps in policy, and the ways in which these policies are either supporting or hindering efforts to address the local health concern.</p>
+                <p>Exploring this policy context helped me see the bigger picture: health isn't just shaped by medical care or personal choices, but also by the policies that guide resources, care delivery, and even societal norms. It's a reminder that systemic change often starts with revisiting, refining, or even dismantling the policies that govern health.</p>
+                <p>This task also enhanced my situational analysis, as it grounded the health challenge in real-world policy frameworks, showing me both the constraints and opportunities that policies can create.</p>
+            </div>
+            
+            <div class="activity-box">
+                <h3>Activity 6.2.2: Mapping Power</h3>
+                <p>This activity challenged me to think critically about the dynamics of power at both micro and macro levels within the case study I've been exploring. Mapping out the power relations between different agents involved—whether they be individuals, organizations, or systems—helped me understand how power operates in subtle yet significant ways. It revealed the networks of influence that shape decisions, access to resources, and, ultimately, health outcomes.</p>
+                <p>By doing this exercise on my own first, I was able to focus on the nuances of these power dynamics before discussing them with my group. It was a valuable exercise in reflection, as it allowed me to see the broader context of how power is distributed and contested. This understanding will not only help in our group discussions but also in refining our presentation, ensuring we address power structures and their impact on the health challenge we're focusing on.</p>
+                <p>This activity has deepened my appreciation for the complexity of power in health systems and reinforced the importance of understanding it if we are to push for meaningful change.</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2>Conclusion</h2>
+            <p>These activities collectively demonstrate my engagement with the key concepts and challenges in contemporary health and Health Systems Science. Through critical reflection, application of frameworks, and exploration of real-world health challenges, I've developed a deeper understanding of how health systems function and how they can be improved.</p>
+            <p>This evidence of engagement reflects not just academic learning, but a growing commitment to addressing health inequities and contributing to more just, effective, and human-centered health systems.</p>
+        </div>
+        
+        <a href="../index.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Return to Portfolio
+        </a>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Ethan Terblanche | Health Systems Science Portfolio</p>
+    </footer>
+</body>
+</html>

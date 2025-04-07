@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exploring Policy - Ethan Terblanche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e88e5;
+            --dark-blue: #0d47a1;
+            --light-blue: #64b5f6;
+            --black: #212121;
+            --dark-gray: #424242;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--light-gray);
+            padding: 0;
+            margin: 0;
+        }
+        
+        header {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--primary-blue);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+            background-color: var(--white);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .back-link:hover {
+            color: var(--dark-blue);
+        }
+        
+        .content-header {
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 1.5rem;
+        }
+        
+        .content-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        
+        .content-header .course-info {
+            color: var(--dark-gray);
+        }
+        
+        .course-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-info i {
+            color: var(--primary-blue);
+        }
+        
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .content-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 1rem;
+        }
+        
+        .content-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+            margin-top: 1.5rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .content-section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .content-section li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .competency-badge {
+            display: inline-block;
+            background-color: rgba(30, 136, 229, 0.1);
+            color: var(--primary-blue);
+            padding: 0.25rem 0.6rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .activity-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .part-heading {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            margin: 2rem 0 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .policy-box {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .policy-box h3 {
+            margin-top: 0;
+            color: var(--dark-blue);
+            border-bottom: 1px solid var(--light-blue);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .policy-box p {
+            margin-bottom: 1rem;
+        }
+        
+        .policy-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .references {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+        
+        .references h3 {
+            margin-top: 0;
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .references ul {
+            list-style-type: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+        
+        .references li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5em;
+            text-indent: -1.5em;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .btn-back:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .btn-back i {
+            margin-right: 0.5rem;
+        }
+        
+        .gap-section {
+            background-color: rgba(30, 136, 229, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--dark-blue);
+        }
+        
+        .gap-section h3 {
+            color: var(--dark-blue);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Ethan<span>T</span></div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="activities.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Activities
+        </a>
+        
+        <div class="content-header">
+            <h1>Exploring Policy</h1>
+            <div class="course-info">
+                <i class="fas fa-book"></i> 
+                <span>FAMH4000A - Contemporary Health</span>
+            </div>
+            <div class="course-info">
+                <i class="fas fa-calendar"></i> 
+                <span>Week 5 – Session 1, Activity 5.1.1</span>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="activity-info">
+                <span class="competency-badge">Scholarship</span>
+                <span class="competency-badge">Systems Thinking</span>
+                <span class="competency-badge">Policy Analysis</span>
+            </div>
+            
+            <p>This activity is an opportunity to contribute to my e-Portfolio as well as my Course Paper. It helped me develop competencies in scholarship and systems thinking by exploring the policy landscape around my chosen health challenge.</p>
+            
+            <div class="part-heading">
+                Part 1: Identifying Policy
+            </div>
+            
+            <p>For this part, I researched policies at international, regional, and local levels that address my chosen health challenge of non-communicable diseases (NCDs) in South Africa.</p>
+            
+            <div class="policy-box">
+                <p>Approximately 75% of total worldwide deaths occur from non-communicable diseases (NCDs), which include cancer, diabetes, cardiovascular disease, and chronic respiratory disease. NCDs cause 86% of premature deaths among low- and middle-income nations (The Guardian, 2024). NCDs form a serious health issue in South Africa, calling for comprehensive global, regional, and national policy.</p>
+            </div>
+            
+            <h3>Global Policies</h3>
+            <div class="policy-box">
+                <h3>WHO Global Action Plan 2013–2020</h3>
+                <p>This strategy seeks to reduce premature NCD death by 25% by 2025 with nine universal goals and a set of policy options to member states (World Health Organization, 2013).</p>
+            </div>
+            
+            <h3>Policies at the Regional Level</h3>
+            <div class="policy-box">
+                <h3>African Union Initiatives</h3>
+                <p>As a measure against the increasing challenge of noncommunicable diseases (NCDs), the African Union is striving to implement policies that are compliant with the WHO's Global Action Plan.</p>
+            </div>
+            
+            <h3>South African Local Policies</h3>
+            <div class="policy-box">
+                <h3>National Non-Communicable Disease Prevention and Control Strategy Plan 2022–2027</h3>
+                <p>With a focus on prevention, treatment, and care interventions, South Africa has developed this plan to address the rising NCD burden (National Department of Health, 2022).</p>
+            </div>
+            
+            <h3>Additional Resources</h3>
+            <ul>
+                <li>The World Health Organization's Noncommunicable Diseases department has extensive information on global trends in NCDs, action plans, and solutions.</li>
+                <li>The South African National Department of Health contains information on regional health policy, law, and noncommunicable disease prevention programs.</li>
+            </ul>
+            <p>Coordinated efforts at all levels are needed to address NCDs and execute effective policies and interventions.</p>
+            
+            <div class="part-heading">
+                Part 2: Speaking to Policy
+            </div>
+            
+            <p>Having looked for different forms of evidence that speak to the policy domain related to my local health issue, I've analyzed the policy landscape around non-communicable diseases in South Africa.</p>
+            
+            <div class="policy-box">
+                <p>South Africa has a somewhat well-developed non-communicable disease (NCD) policy environment, with many national, regional, and international policies addressing the issue. Nevertheless, implementing the large corpus of policy-directed literature remains challenging, particularly in resource-constrained settings.</p>
+            </div>
+            
+            <h3>Availability of Policy-Directed Literature</h3>
+            <p>There is a wealth of international policy documentation on noncommunicable diseases (NCDs), particularly from organizations such as the World Health Organization (WHO). The WHO Global Action Plan for the Prevention and Control of NCDs (2013–2020) and its Implementation Roadmap (2023–2030) provide comprehensive frameworks for addressing NCDs (WHO, 2013; WHO, 2023).</p>
+            
+            <p>Similarly, after recognizing the increasing burden of NCDs, the African Union aligned its approach with WHO standards.</p>
+            
+            <p>The National Strategic Plan for the Prevention and Control of NCDs 2022–2027, which outlines specific objectives for prevention, treatment, and healthcare system integration, has been put into effect nationally in South Africa (National Department of Health, 2022). Proactive measures are demonstrated by other local initiatives, such as laws imposing a sugar tax and restrictions on the sodium content of processed foods.</p>
+            
+            <div class="gap-section">
+                <h3>Policy and Implementation Gaps</h3>
+                <p>Despite the existence of policy literature on NCDs, there are significant gaps:</p>
+                <ul>
+                    <li>Many programs, especially in low-income communities, place an emphasis on prevention but lack explicit, legally binding implementation measures.</li>
+                    <li>Broad policy frameworks frequently fail to adequately address the unique characteristics of the South African context, such as the relationship between NCDs and infectious diseases like HIV, food insecurity, and poverty.</li>
+                    <li>There is no data on the effectiveness of interventions like the sugar tax in South Africa or school-based HPV vaccination campaigns in promoting long-term health gains.</li>
+                </ul>
+            </div>
+            
+            <h3>The Whole Policy Environment</h3>
+            <p>Though there are still implementation issues and context-specific deficiencies, South Africa has a solid policy basis for treating NCDs. More specific and enforced methods are required, particularly for disadvantaged populations, even while global and regional policies provide organized guidelines.</p>
+            
+            <p>To determine how present policies affect NCD trends and how interventions might be customized to the particular health environment of South Africa, more study is required.</p>
+            
+            <div class="references">
+                <h3>References</h3>
+                <ul>
+                    <li>Health Department, National. (2022). The National Strategy Plan for Non-Communicable Disease Prevention and Control, 2022–2027. Taken from ICCP-PORTAL.ORG</li>
+                    <li>The Guardian, 2024. A global health crisis: as The Guardian says, living longer does not necessarily mean being healthier. Taken from the Guardian website.</li>
+                    <li>World Health Organization. (2013). Global Action Plan for Noncommunicable Disease Prevention and Control, 2013–2020. Taken from WHO.INT.</li>
+                    <li>National Department of Health. (2022). National Strategic Plan for the Prevention and Control of Non-Communicable Diseases 2022–2027.</li>
+                    <li>World Health Organization. (2023). Implementation Roadmap 2023–2030 for the Global Action Plan on NCDs.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2>Reflection</h2>
+            
+            <p>This exploration of the policy landscape surrounding non-communicable diseases has given me valuable insights into how policy operates at different levels—from global frameworks to local implementation.</p>
+            
+            <p>What strikes me most is the abundance of policy documents and frameworks compared to the challenges of implementation. The gap between well-crafted policies and their practical application in resource-constrained settings highlights a critical area for improvement in health systems.</p>
+            
+            <p>The analysis also reveals the importance of context-specific approaches. While global policies provide important guidance, they must be adapted to address unique local factors. In South Africa's case, this means acknowledging the interplay between NCDs and issues like HIV, poverty, and food insecurity.</p>
+            
+            <p>This activity has strengthened my systems thinking by demonstrating how policies at different levels interact and how they both shape and are shaped by various contextual factors. It has also emphasized the importance of evaluating policy effectiveness rather than just policy existence—a critical consideration for my future work in health systems.</p>
+        </div>
+        
+        <div class="btn-links">
+            <a href="activities.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Activities
+            </a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Ethan Terblanche | Health Systems Science Portfolio</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situating Contemporary Health - Ethan Terblanche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e88e5;
+            --dark-blue: #0d47a1;
+            --light-blue: #64b5f6;
+            --black: #212121;
+            --dark-gray: #424242;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--light-gray);
+            padding: 0;
+            margin: 0;
+        }
+        
+        header {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--primary-blue);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+            background-color: var(--white);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .back-link:hover {
+            color: var(--dark-blue);
+        }
+        
+        .content-header {
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 1.5rem;
+        }
+        
+        .content-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        
+        .content-header .course-info {
+            color: var(--dark-gray);
+        }
+        
+        .course-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-info i {
+            color: var(--primary-blue);
+        }
+        
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .content-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 1rem;
+        }
+        
+        .content-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+            margin-top: 1.5rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .content-section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .content-section li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .weekly-content {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .weekly-content h3 {
+            margin-top: 0;
+            color: var(--dark-blue);
+            border-bottom: 1px solid var(--light-blue);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .weekly-content p {
+            margin-bottom: 0;
+        }
+        
+        .quote-block {
+            border-left: 4px solid var(--primary-blue);
+            padding: 1rem 1.5rem;
+            background-color: rgba(30, 136, 229, 0.05);
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+        
+        .conclusion {
+            background-color: rgba(30, 136, 229, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+        
+        .conclusion h2 {
+            border-left: none;
+            padding-left: 0;
+            color: var(--dark-blue);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .btn-back:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .btn-back i {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Ethan<span>T</span></div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="../index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
+        </a>
+        
+        <div class="content-header">
+            <h1>Situating Contemporary Health</h1>
+            <div class="course-info">
+                <i class="fas fa-book"></i> 
+                <span>FAMH4000A - Contemporary Health</span>
+            </div>
+            <div class="course-info">
+                <i class="fas fa-calendar"></i> 
+                <span>2025 Academic Year</span>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2>What Does It Mean to Situate Health?</h2>
+            <p>To situate health means to understand it not just as a medical or biological issue, but as something shaped by history, politics, culture, identity, and environment. It invites us to ask: <strong>Who has access to health? Whose knowledge counts? What histories are carried in bodies and systems of care?</strong></p>
+            
+            <div class="quote-block">
+                By situating health, we uncover the deep links between individual well-being and the world we live in — and begin to imagine more just and inclusive ways of healing.
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2>Key Concepts and Themes</h2>
+            <p>Our course journey explored health through multiple lenses, each week building on our understanding of how health is situated in complex systems:</p>
+            
+            <div class="weekly-content">
+                <h3>Week 1: Health Systems in Context</h3>
+                <p>We began by unpacking what health systems are — exploring how they function, who they serve, and how our own positionalities shape our understanding of them. Through mapping exercises and introductory seminars, we questioned what a health system is and how context shapes its possibilities.</p>
+            </div>
+            
+            <div class="weekly-content">
+                <h3>Week 2: Global Health Priorities</h3>
+                <p>This week shifted our gaze outward. We examined global health agendas and interrogated whose priorities are foregrounded. A powerful theme emerged around racism and the right to health — challenging us to consider justice, equity, and voice on a global scale.</p>
+            </div>
+            
+            <div class="weekly-content">
+                <h3>Week 3: Local Health Priorities</h3>
+                <p>Zooming back in, we explored the specific health challenges faced by local communities. We practiced appreciative mapping, which taught us to recognize not just deficits, but also strengths, knowledge systems, and resilience at the local level.</p>
+            </div>
+            
+            <div class="weekly-content">
+                <h3>Week 4: Managing Complexity in Health Systems</h3>
+                <p>Here we grappled with the reality that health systems are not linear. They are complex, adaptive, and deeply influenced by uncertainty and change. Complexity theory helped us reframe challenges as opportunities for innovation and transformation.</p>
+            </div>
+            
+            <div class="weekly-content">
+                <h3>Week 5: Health Policy</h3>
+                <p>We engaged with the mechanisms of change through policy — understanding how evidence, agency, and politics interact in the policy-making process. The power dynamics beneath health policy decisions became clear through our discussions of influence and voice.</p>
+            </div>
+            
+            <div class="weekly-content">
+                <h3>Week 6: Leadership & Change</h3>
+                <p>We explored leadership not as a title, but as a practice — one rooted in the political economy of health. Mapping power and influence helped us see how change agents navigate systems, build coalitions, and shift paradigms.</p>
+            </div>
+            
+            <div class="weekly-content">
+                <h3>Week 7: Whole Systems Change</h3>
+                <p>The course culminated in a deep dive into systemic transformation. We discussed Universal Health Coverage (UHC), the National Health Insurance (NHI) framework, and what it means to truly shift a system — not just tweak its parts, but reimagine its foundations.</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2>Health as a Mirror: Power, Place, and Identity</h2>
+            <p>Health doesn't exist in a vacuum — it reflects the world around us. It mirrors systems of power, the histories of places, and the identities we carry. Who gets sick, who receives care, and how that care is delivered are all shaped by social structures like race, class, gender, and geography.</p>
+            
+            <p>By examining health through this lens, we begin to see how inequality is built into the system — and how reimagining care means confronting those power dynamics and centering justice.</p>
+        </div>
+        
+        <div class="content-section conclusion">
+            <h2>Reimagining Health and Healing</h2>
+            <p>This journey has shown that health is more than treatment — it's about relationships, systems, and the stories we tell about care. Reimagining health means moving beyond one-size-fits-all solutions and embracing complexity, community, and context.</p>
+            
+            <p>It asks us to listen deeply, challenge injustice, and dream of systems rooted in equity, dignity, and collective healing.</p>
+        </div>
+        
+        <a href="../index.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Return to Portfolio
+        </a>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Ethan Terblanche | Health Systems Science Portfolio</p>
+    </footer>
+</body>
+</html>

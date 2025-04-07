@@ -1,0 +1,350 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding HSS - Ethan Terblanche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e88e5;
+            --dark-blue: #0d47a1;
+            --light-blue: #64b5f6;
+            --black: #212121;
+            --dark-gray: #424242;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--light-gray);
+            padding: 0;
+            margin: 0;
+        }
+        
+        header {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--primary-blue);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+            background-color: var(--white);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .back-link:hover {
+            color: var(--dark-blue);
+        }
+        
+        .content-header {
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 1.5rem;
+        }
+        
+        .content-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        
+        .course-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-info i {
+            color: var(--primary-blue);
+        }
+        
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .content-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 1rem;
+        }
+        
+        .content-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+            margin-top: 1.5rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .competency-badge {
+            display: inline-block;
+            background-color: rgba(30, 136, 229, 0.1);
+            color: var(--primary-blue);
+            padding: 0.25rem 0.6rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .activity-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .definition-box {
+            background-color: rgba(30, 136, 229, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .definition-box h3 {
+            margin-top: 0;
+            color: var(--dark-blue);
+            border-bottom: 1px solid var(--light-blue);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .quote-block {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            line-height: 1.5;
+            color: var(--dark-blue);
+            padding: 2rem;
+            background-color: rgba(30, 136, 229, 0.05);
+            border-left: 4px solid var(--primary-blue);
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .quote-block::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            color: rgba(30, 136, 229, 0.2);
+        }
+        
+        .framework-image {
+            display: block;
+            max-width: 100%;
+            margin: 1.5rem auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .btn-back:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .btn-back i {
+            margin-right: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .content-header h1 {
+                font-size: 2rem;
+            }
+            
+            .quote-block {
+                font-size: 1.2rem;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Ethan<span>T</span></div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="activities.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Activities
+        </a>
+        
+        <div class="content-header">
+            <h1>Understanding Health Systems Science</h1>
+            <div class="course-info">
+                <i class="fas fa-book"></i> 
+                <span>FAMH4000A - Contemporary Health</span>
+            </div>
+            <div class="course-info">
+                <i class="fas fa-calendar"></i> 
+                <span>Week 1 – Session 2, Activity 1.2.1</span>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <div class="activity-info">
+                <span class="competency-badge">Scholarship</span>
+                <span class="competency-badge">Systems Thinking</span>
+                <span class="competency-badge">Conceptual Understanding</span>
+            </div>
+            
+            <p>In this activity, I explore my personal understanding of Health Systems Science (HSS) as a field of study and practice. Through analyzing a case study using both the Social Determinants of Health framework and the Health Equity and Ethical Decision-making framework, I developed a deeper understanding of how HSS connects theory to real-world healthcare challenges.</p>
+            
+            <div class="quote-block">
+                Health Systems Science is the study of how care moves through people, policies, structures, and spaces. It is about more than hospitals or clinics; it's about understanding the invisible threads that hold a system together: relationships, power dynamics, resources, culture, and context.
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2>What is Health Systems Science?</h2>
+            
+            <div class="definition-box">
+                <h3>My Definition</h3>
+                <p>Health Systems Science is a field that explores the design, function, and impact of health systems, looking at both their strengths and their blind spots. It examines how healthcare is delivered, received, and experienced by different stakeholders, and how various factors—political, social, economic, and environmental—shape these interactions.</p>
+                
+                <p>HSS is about viewing healthcare not as isolated clinical encounters but as a complex, interconnected web that includes policies, infrastructure, workforce dynamics, information systems, and community contexts. It's a lens through which we can recognize the systemic nature of healthcare challenges and identify leverage points for meaningful change.</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2>Why Health Systems Science Matters</h2>
+            
+            <p>Health Systems Science matters because health is not equally accessible to all, and understanding the system is the first step toward making it more just, inclusive, and effective. Through my analysis of the "Intern Dilemma" case study, it became clear that even the most well-intentioned clinical care can fail when it doesn't account for systemic barriers like:</p>
+            
+            <ul>
+                <li>Economic constraints (unaffordable medications)</li>
+                <li>Geographic limitations (lack of nearby providers accepting the patient's insurance)</li>
+                <li>Environmental factors (unsafe neighborhoods, food deserts)</li>
+                <li>Infrastructure gaps (absence of sidewalks for exercise)</li>
+            </ul>
+            
+            <p>By applying the Social Determinants of Health framework, I was able to identify how these interconnected factors created a situation where the patient's care plan, while medically sound, was practically impossible to implement. The Health Equity and Ethical Decision-making framework further highlighted how healthcare systems often fail to align discharge plans with patients' real-world capabilities.</p>
+            
+            <p>This matters because without addressing these systemic issues, healthcare interventions will continue to fall short, resulting in poor outcomes, readmissions, and further strain on both patients and the healthcare system.</p>
+        </div>
+        
+        <div class="content-section">
+            <h2>How We Study Health Systems</h2>
+            
+            <p>Studying health systems requires multiple approaches and frameworks. Through this activity, I found that integrating different frameworks provides a more comprehensive understanding than using any single approach:</p>
+            
+            <ul>
+                <li><strong>Multiple perspectives:</strong> By bringing in diverse viewpoints, we can see beyond our own professional or personal biases</li>
+                <li><strong>Embracing complexity:</strong> Health systems are not linear—they are complex adaptive systems that require nuanced analysis</li>
+                <li><strong>Questioning assumptions:</strong> We must be willing to challenge traditional approaches to healthcare delivery</li>
+                <li><strong>Grounding in lived experience:</strong> Effective study of health systems must always connect back to how people actually experience care</li>
+            </ul>
+            
+            <p>I noted some limitations in my chosen frameworks. The Social Determinants of Health framework excels at identifying problems but offers less guidance on practical solutions within existing constraints. Similarly, the Ethical Decision-making framework focuses on individual interventions without addressing broader advocacy for systemic change.</p>
+            
+            <p>To address these limitations, an enhanced approach would integrate systems thinking with a strengths-based perspective that identifies existing assets and resources within communities that could be leveraged for solutions.</p>
+        </div>
+        
+        <div class="content-section">
+            <h2>Reflection</h2>
+            
+            <p>This activity has deepened my understanding of Health Systems Science as a field that bridges theory and practice. At its core, HSS is about care—about understanding how we can collectively build systems that truly care for everyone, especially those most vulnerable to systemic barriers.</p>
+            
+            <p>Moving forward, I see the value in developing a more integrated approach to health systems that combines rigorous analysis with practical implementation strategies. This means not just identifying what's wrong with systems, but also recognizing existing strengths and building upon them to create meaningful change.</p>
+            
+            <p>In my future work, I will strive to maintain this systems perspective while always keeping the focus on the lived experiences of those the system is meant to serve. Health Systems Science provides the tools to see the bigger picture without losing sight of the individual human stories at the heart of healthcare.</p>
+        </div>
+        
+        <div class="btn-links">
+            <a href="activities.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Activities
+            </a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Ethan Terblanche | Health Systems Science Portfolio</p>
+    </footer>
+</body>
+</html>
