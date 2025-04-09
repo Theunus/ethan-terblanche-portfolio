@@ -219,8 +219,7 @@
             display: inline-block;
             background-color: var(--primary-blue);
             color: var(--white);
-            padding:
-            0.8rem 1.5rem;
+            padding: 0.8rem 1.5rem;
             text-decoration: none;
             border-radius: 5px;
             font-weight: 500;
@@ -237,9 +236,117 @@
             margin-right: 0.5rem;
         }
         
+        /* New styles for webinars section */
+        .tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--light-gray);
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            color: var(--dark-gray);
+        }
+        
+        .tab.active {
+            color: var(--primary-blue);
+            border-bottom: 3px solid var(--primary-blue);
+        }
+        
+        .tab:hover:not(.active) {
+            color: var(--dark-blue);
+            background-color: rgba(30, 136, 229, 0.05);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .webinar-card {
+            background-color: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .webinar-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .webinar-date {
+            display: inline-block;
+            background-color: rgba(30, 136, 229, 0.1);
+            color: var(--primary-blue);
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .webinar-title {
+            font-size: 1.3rem;
+            color: var(--dark-blue);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .webinar-desc {
+            color: var(--dark-gray);
+            margin-bottom: 1.2rem;
+        }
+        
+        .webinar-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        
+        .webinar-link i {
+            margin-left: 0.5rem;
+        }
+        
+        .webinar-link:hover {
+            color: var(--dark-blue);
+        }
+        
         @media (max-width: 768px) {
             .activities-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                flex-direction: column;
+                border-bottom: none;
+            }
+            
+            .tab {
+                border-left: 3px solid transparent;
+                border-bottom: none;
+                padding: 0.8rem 1rem;
+            }
+            
+            .tab.active {
+                border-left: 3px solid var(--primary-blue);
+                border-bottom: none;
+                background-color: rgba(30, 136, 229, 0.05);
             }
         }
     </style>
@@ -359,6 +466,36 @@
             </div>
         </div>
         
+        <!-- New Webinars Section -->
+        <div class="content-section">
+            <h2>Webinars & Events</h2>
+            <p>Stay updated with the latest webinars and events related to health systems science and contemporary health issues. These resources provide additional learning opportunities and insights from experts in the field.</p>
+            
+            <div class="tabs">
+                <div class="tab active" onclick="openTab(event, 'upcoming')">Upcoming</div>
+                <div class="tab" onclick="openTab(event, 'past')">Past Events</div>
+                <div class="tab" onclick="openTab(event, 'recommended')">Recommended</div>
+            </div>
+            
+            <div id="upcoming" class="tab-content active">
+                <div class="webinar-card">
+                    <span class="webinar-date"><i class="far fa-calendar-alt"></i> April 2025</span>
+                    <h3 class="webinar-title">Bhekisisa Health Journalism Webinar</h3>
+                    <p class="webinar-desc">Join leading health journalists and experts as they discuss important topics in health reporting and policy analysis. This webinar will provide valuable insights into how media shapes public understanding of health issues.</p>
+                    <p class="webinar-desc">If you are interested in attending, you can register using the following link:</p>
+                    <a href="https://linktr.ee/bhekisisa.health" target="_blank" class="webinar-link">Register Now <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+            
+            <div id="past" class="tab-content">
+                <p>No past events to display at this time.</p>
+            </div>
+            
+            <div id="recommended" class="tab-content">
+                <p>Check back soon for recommended webinars and events.</p>
+            </div>
+        </div>
+        
         <a href="../index.html" class="btn-back">
             <i class="fas fa-arrow-left"></i> Return to Portfolio
         </a>
@@ -367,5 +504,28 @@
     <footer>
         <p>&copy; 2025 Ethan Terblanche | Health Systems Science Portfolio</p>
     </footer>
+    
+    <script>
+        function openTab(evt, tabName) {
+            // Declare variables
+            var i, tabcontent, tablinks;
+            
+            // Get all elements with class="tab-content" and hide them
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            
+            // Get all elements with class="tab" and remove the class "active"
+            tablinks = document.getElementsByClassName("tab");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
 </body>
 </html>
