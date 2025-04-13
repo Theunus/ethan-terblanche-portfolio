@@ -292,6 +292,34 @@ right-to-health.html -->
             margin-right: 0.5rem;
         }
         
+        .pdf-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .pdf-open-btn {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 0.6rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            background-color: var(--light-gray);
+            color: var(--dark-blue);
+            border: 1px solid var(--light-blue);
+        }
+
+        .pdf-open-btn:hover {
+            background-color: rgba(30, 136, 229, 0.1);
+        }
+
+        .pdf-open-btn i {
+            margin-right: 0.5rem;
+        }
+
         @media (max-width: 768px) {
             .content-header h1 {
                 font-size: 2rem;
@@ -464,6 +492,27 @@ right-to-health.html -->
             <p>As a future healthcare professional, I recognize my responsibility to not only provide equitable care to all patients but also to actively work toward dismantling racist structures within healthcare systems. This requires ongoing reflection, education, advocacy, and action at both personal and systemic levels.</p>
             
             <p>Moving forward, I am committed to continuing to learn about how racism affects health outcomes, advocating for equity-focused policies and practices, and supporting initiatives that promote diversity and inclusion in healthcare education and leadership.</p>
+        </div>
+        
+        <div class="content-section">
+            <h2>Supporting Documentation</h2>
+            <p>Below is documentation that provides evidence of my work on understanding racism as a determinant of health and its impact on healthcare rights.</p>
+            
+            <div class="pdf-container">
+                <h3>Activity Documentation</h3>
+                <div class="pdf-viewer">
+                    <object data="../assets/contemporary_health_activities/rasicm_and_right_to_live.docx.pdf" type="application/pdf" width="100%" height="600px">
+                        <p>It appears your browser doesn't support embedded PDFs. You can 
+                            <a href="../assets/contemporary_health_activities/rasicm_and_right_to_live.docx.pdf" target="_blank">click here to view the PDF file</a> instead.
+                        </p>
+                    </object>
+                </div>
+                <div class="pdf-actions">
+                    <a href="../assets/contemporary_health_activities/rasicm_and_right_to_live.docx.pdf" target="_blank" class="pdf-open-btn">
+                        <i class="fas fa-external-link-alt"></i> Open in New Tab
+                    </a>
+                </div>
+            </div>
         </div>
         
         <div class="btn-links">

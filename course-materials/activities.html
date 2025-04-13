@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -236,41 +235,7 @@
             margin-right: 0.5rem;
         }
         
-        /* New styles for webinars section */
-        .tabs {
-            display: flex;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--light-gray);
-            flex-wrap: wrap;
-        }
-        
-        .tab {
-            padding: 0.8rem 1.5rem;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
-            color: var(--dark-gray);
-        }
-        
-        .tab.active {
-            color: var(--primary-blue);
-            border-bottom: 3px solid var(--primary-blue);
-        }
-        
-        .tab:hover:not(.active) {
-            color: var(--dark-blue);
-            background-color: rgba(30, 136, 229, 0.05);
-        }
-        
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
+        /* Webinars section styles */
         .webinar-card {
             background-color: var(--white);
             border: 1px solid var(--light-gray);
@@ -327,26 +292,113 @@
             color: var(--dark-blue);
         }
         
+        /* Gallery section styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two images per row */
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            aspect-ratio: 4/3; /* Maintain consistent aspect ratio */
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr; /* Still two columns but smaller on mobile */
+                gap: 0.8rem;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr); /* Four images per row on larger screens */
+            }
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            padding: 2rem;
+            overflow: auto;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            margin: auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            animation: zoom 0.3s ease;
+        }
+        
+        @keyframes zoom {
+            from {transform: scale(0.1)} 
+            to {transform: scale(1)}
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            color: var(--primary-blue);
+        }
+        
         @media (max-width: 768px) {
             .activities-grid {
                 grid-template-columns: 1fr;
             }
             
-            .tabs {
-                flex-direction: column;
-                border-bottom: none;
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             }
             
-            .tab {
-                border-left: 3px solid transparent;
-                border-bottom: none;
-                padding: 0.8rem 1rem;
+            .gallery-img {
+                height: 140px;
             }
             
-            .tab.active {
-                border-left: 3px solid var(--primary-blue);
-                border-bottom: none;
-                background-color: rgba(30, 136, 229, 0.05);
+            .modal-content {
+                max-width: 95%;
+            }
+            
+            .close-btn {
+                top: 1rem;
+                right: 1.5rem;
             }
         }
     </style>
@@ -466,33 +518,41 @@
             </div>
         </div>
         
-        <!-- New Webinars Section -->
+        <!-- Webinars Section -->
         <div class="content-section">
-            <h2>Webinars & Events</h2>
-            <p>Stay updated with the latest webinars and events related to health systems science and contemporary health issues. These resources provide additional learning opportunities and insights from experts in the field.</p>
+            <h2>Attended Webinars</h2>
+            <p>Below are webinars I've attended to deepen my knowledge of health systems and contemporary health issues. These sessions have provided valuable insights from experts in the field.</p>
             
-            <div class="tabs">
-                <div class="tab active" onclick="openTab(event, 'upcoming')">Upcoming</div>
-                <div class="tab" onclick="openTab(event, 'past')">Past Events</div>
-                <div class="tab" onclick="openTab(event, 'recommended')">Recommended</div>
+            <div class="webinar-card">
+                <span class="webinar-date"><i class="far fa-calendar-alt"></i> April 2025</span>
+                <h3 class="webinar-title">Bhekisisa Health Journalism Webinar</h3>
+                <p class="webinar-desc">I attended this informative session led by leading health journalists discussing important topics in health reporting and policy analysis. The webinar provided valuable insights into how media shapes public understanding of health issues and the importance of evidence-based reporting.</p>
+                <p class="webinar-desc">If you are interested in attending future sessions, you can register using the following link:</p>
+                <a href="https://linktr.ee/bhekisisa.health" target="_blank" class="webinar-link">Visit Bhekisisa Centre <i class="fas fa-external-link-alt"></i></a>
             </div>
+        </div>
+        
+        <!-- Gallery Section -->
+        <div class="content-section">
+            <h2>Event Gallery</h2>
+            <p>Explore photos from health-related events, conferences, and field experiences I've participated in.</p>
             
-            <div id="upcoming" class="tab-content active">
-                <div class="webinar-card">
-                    <span class="webinar-date"><i class="far fa-calendar-alt"></i> April 2025</span>
-                    <h3 class="webinar-title">Bhekisisa Health Journalism Webinar</h3>
-                    <p class="webinar-desc">Join leading health journalists and experts as they discuss important topics in health reporting and policy analysis. This webinar will provide valuable insights into how media shapes public understanding of health issues.</p>
-                    <p class="webinar-desc">If you are interested in attending, you can register using the following link:</p>
-                    <a href="https://linktr.ee/bhekisisa.health" target="_blank" class="webinar-link">Register Now <i class="fas fa-external-link-alt"></i></a>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="../assets/webinar_photos/photo2.jpeg" alt="Health Conference" class="gallery-img">
                 </div>
-            </div>
-            
-            <div id="past" class="tab-content">
-                <p>No past events to display at this time.</p>
-            </div>
-            
-            <div id="recommended" class="tab-content">
-                <p>Check back soon for recommended webinars and events.</p>
+                
+                <div class="gallery-item">
+                    <img src="../assets/webinar_photos/photo1.jpeg" alt="Healthcare Settings" class="gallery-img">
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="../assets/webinar_photos/photo3.jpeg" alt="Medical Research" class="gallery-img">
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="../assets/webinar_photos/photo4.jpeg" alt="Public Health" class="gallery-img">
+                </div>
             </div>
         </div>
         
@@ -504,28 +564,5 @@
     <footer>
         <p>&copy; 2025 Ethan Terblanche | Health Systems Science Portfolio</p>
     </footer>
-    
-    <script>
-        function openTab(evt, tabName) {
-            // Declare variables
-            var i, tabcontent, tablinks;
-            
-            // Get all elements with class="tab-content" and hide them
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].classList.remove("active");
-            }
-            
-            // Get all elements with class="tab" and remove the class "active"
-            tablinks = document.getElementsByClassName("tab");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active");
-            }
-            
-            // Show the current tab, and add an "active" class to the button that opened the tab
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
-        }
-    </script>
 </body>
 </html>

@@ -212,6 +212,80 @@
         .btn-back i {
             margin-right: 0.5rem;
         }
+        
+        /* PDF viewer styles */
+        .pdf-container {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .pdf-container h3 {
+            margin-top: 0;
+            color: var(--dark-blue);
+            border-bottom: 1px solid var(--light-blue);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pdf-viewer {
+            border: 1px solid var(--light-blue);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .pdf-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .pdf-download-btn, .pdf-open-btn {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 0.6rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .pdf-download-btn {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .pdf-download-btn:hover {
+            background-color: var(--dark-blue);
+        }
+
+        .pdf-open-btn {
+            background-color: var(--light-gray);
+            color: var(--dark-blue);
+            border: 1px solid var(--light-blue);
+        }
+
+        .pdf-open-btn:hover {
+            background-color: rgba(30, 136, 229, 0.1);
+        }
+
+        .pdf-download-btn i, .pdf-open-btn i {
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .pdf-actions {
+                flex-direction: column;
+            }
+            
+            .pdf-viewer {
+                height: 400px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -296,6 +370,27 @@
                 <p>This activity challenged me to think critically about the dynamics of power at both micro and macro levels within the case study I've been exploring. Mapping out the power relations between different agents involved—whether they be individuals, organizations, or systems—helped me understand how power operates in subtle yet significant ways. It revealed the networks of influence that shape decisions, access to resources, and, ultimately, health outcomes.</p>
                 <p>By doing this exercise on my own first, I was able to focus on the nuances of these power dynamics before discussing them with my group. It was a valuable exercise in reflection, as it allowed me to see the broader context of how power is distributed and contested. This understanding will not only help in our group discussions but also in refining our presentation, ensuring we address power structures and their impact on the health challenge we're focusing on.</p>
                 <p>This activity has deepened my appreciation for the complexity of power in health systems and reinforced the importance of understanding it if we are to push for meaningful change.</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2>Supporting Documentation</h2>
+            <p>Below is the official documentation that serves as proof of my engagement with the Contemporary Health module activities.</p>
+            
+            <div class="pdf-container">
+                <h3>Evidence of Engagement Documentation</h3>
+                <div class="pdf-viewer">
+                    <object data="../assets/evidence_of_engagement.pdf" type="application/pdf" width="100%" height="600px">
+                        <p>It appears your browser doesn't support embedded PDFs. You can 
+                            <a href="../assets/evidence_of_engagement.pdf" target="_blank">click here to view the PDF file</a> instead.
+                        </p>
+                    </object>
+                </div>
+                <div class="pdf-actions">
+                    <a href="../assets/evidence_of_engagement.pdf" target="_blank" class="pdf-open-btn">
+                        <i class="fas fa-external-link-alt"></i> Open in New Tab
+                    </a>
+                </div>
             </div>
         </div>
         
