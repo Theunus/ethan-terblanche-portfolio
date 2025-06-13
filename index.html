@@ -713,7 +713,6 @@
             margin-bottom: 1rem;
         }
 
-        /* Pop-up Styles */
         .popup {
             display: none;
             position: fixed;
@@ -804,7 +803,6 @@
     gap: 0.7rem;
     margin-top: 1rem;
 }
-
         .course-link {
             display: flex;
             align-items: center;
@@ -816,22 +814,18 @@
             transition: all 0.2s ease;
             font-size: 0.9rem;
         }
-
         .course-link i {
             margin-right: 8px;
             font-size: 1rem;
         }
-
         .course-link:hover {
             background-color: rgba(30, 136, 229, 0.15);
             transform: translateY(-2px);
             color: var(--dark-blue);
         }
-
         .activities-dropdown {
             position: relative;
         }
-
         .activities-menu {
             display: none;
             position: absolute;
@@ -843,7 +837,6 @@
             overflow: hidden;
             z-index: 1000;
         }
-
         .activities-link {
             display: block;
             padding: 0.8rem 1.2rem;
@@ -852,37 +845,29 @@
             transition: background-color 0.3s ease;
             font-size: 0.9rem;
         }
-
         .activities-link:hover {
             background-color: var(--light-gray);
         }
-
         .activities-toggle {
             cursor: pointer;
         }
-
         .activities-toggle:hover + .activities-menu,
         .activities-menu:hover {
             display: block;
         }
-
-        /* Activities Dropdown Styles */
         .activities-dropdown {
             position: relative;
         }
-        
         .activities-toggle {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
         .activities-toggle .fa-chevron-down {
             margin-left: auto;
             font-size: 0.8rem;
             transition: transform 0.3s ease;
         }
-        
         .activities-menu {
             display: none;
             background-color: var(--white);
@@ -898,16 +883,13 @@
             transform-origin: top center;
             transition: transform 0.2s ease, opacity 0.2s ease;
         }
-        
         .activities-dropdown.active .activities-menu {
             display: block;
             animation: fadeIn 0.2s ease-out;
         }
-        
         .activities-dropdown.active .activities-toggle .fa-chevron-down {
             transform: rotate(180deg);
         }
-        
         .activities-link {
             display: flex;
             align-items: center;
@@ -917,18 +899,15 @@
             font-size: 0.9rem;
             transition: background-color 0.2s ease;
         }
-        
         .activities-link i {
             margin-right: 0.5rem;
             color: var(--primary-blue);
             font-size: 0.7rem;
         }
-        
         .activities-link:hover {
             background-color: rgba(30, 136, 229, 0.05);
             color: var(--primary-blue);
         }
-        
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -939,13 +918,10 @@
                 transform: translateY(0);
             }
         }
-
-        /* Updated Activities Dropdown Styles */
         .activities-dropdown {
             position: relative;
-            z-index: 1001; /* Higher z-index to ensure proper stacking */
+            z-index: 1001; 
         }
-        
         .activities-menu {
             display: none;
             background-color: var(--white);
@@ -955,7 +931,7 @@
             top: 100%;
             left: 0;
             width: 100%;
-            z-index: 1002; /* Even higher z-index */
+            z-index: 1002; 
             padding: 0.5rem 0;
             margin-top: 0.3rem;
             max-height: 250px;
@@ -963,29 +939,21 @@
             transform-origin: top center;
             border: 1px solid rgba(0, 0, 0, 0.08);
         }
-        
-        /* Fix for overflow behavior */
         .course-card {
-            overflow: visible !important; /* Override the hidden overflow */
+            overflow: visible !important; 
             position: relative;
         }
-        
-        /* Ensure dropdown is fully visible */
         .activities-link {
-            background-color: var(--white); /* Ensure solid background */
+            background-color: var(--white); 
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
-        
         .activities-link:last-child {
             border-bottom: none;
         }
-
-        /* Activities Dropdown with enhanced stacking context */
         .activities-dropdown {
             position: relative;
-            z-index: 1005; /* Very high z-index to ensure proper stacking */
+            z-index: 1005; 
         }
-        
         .activities-menu {
             display: none;
             background-color: var(--white);
@@ -995,7 +963,7 @@
             top: 100%;
             left: 0;
             width: 100%;
-            z-index: 1010; /* Even higher z-index */
+            z-index: 1010; 
             padding: 0.5rem 0;
             margin-top: 0.3rem;
             max-height: 250px;
@@ -1003,31 +971,21 @@
             transform-origin: top center;
             border: 1px solid rgba(0, 0, 0, 0.08);
         }
-        
-        /* Fix for dropdown stacking context */
         .course-card {
-            overflow: visible !important; /* Override the hidden overflow */
+            overflow: visible !important;
             position: relative;
-            z-index: 1; /* Default z-index */
+            z-index: 1; 
         }
-        
-        /* Ensure card with active dropdown gets higher stacking context */
         .course-card:has(.activities-dropdown.active) {
-            z-index: 1004 !important; /* Ensures this card stays above others */
+            z-index: 1004 !important; 
         }
-        
-        /* Apply higher z-index to the active dropdown's parent */
         .activities-dropdown.active {
             z-index: 1005;
         }
-        
-        /* Ensure the dropdown menu has proper elevation */
         .activities-dropdown.active .activities-menu {
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
             z-index: 1010;
         }
-        
-        /* Style for menu items */
         .activities-link {
             background-color: var(--white);
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -1038,14 +996,10 @@
         .activities-link:last-child {
             border-bottom: none;
         }
-        
-        /* Fix for education container that might be causing stacking issues */
         .education-container {
             position: relative;
             z-index: 1;
         }
-        
-        /* Fix for courses grid to ensure proper stacking */
         .courses-grid {
             position: relative;
             z-index: 1;
@@ -1134,8 +1088,6 @@
                     <p class="experience-company">North-West University (NWU)</p>
                     <p class="experience-desc">Spearheading high-level strategic projects, ensuring seamless execution, cross-disciplinary collaboration, and innovative problem-solving to enhance institutional effectiveness. My expertise lies in project management, stakeholder engagement, and the development of sustainable, outcome-driven initiatives that align with NWU's vision for excellence.</p>
                 </div>
-                
-                <!-- Add additional experience cards as needed -->
             </div>
             
             <div class="cv-download">
@@ -1198,7 +1150,24 @@
                                 </div>
                             </div>
                         </div>
-                        
+                        <!--health project card updates here-->
+                        <div class="course-card">
+                            <h5>FAMH4010A</h5>
+                            <p>Managing Health Projects</p>
+                            <div class="course-links">
+                                <div class="activities-dropdown">
+                                    <a href="course-materials/managing-health-projects.html" class="course-link">
+                                        <i class="fas fa-file-alt"></i> Managing Health Projects
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="course-skills">
+                                <span class="course-skill">Project Planning</span>
+                                <span class="course-skill">Resource Management</span>
+                                <span class="course-skill">Monitoring & Evaluation</span>
+                            </div>
+                        </div>
+                        <!-- end of health managment proj -->
                         <div class="course-card">
                             <h5>FAMH4001A</h5>
                             <p>Developing Health Systems Competencies</p>
@@ -1265,12 +1234,6 @@
                                 <span class="course-skill">Project Management</span>
                                 <span class="course-skill">Team Coordination</span>
                             </div>
-                            <span class="pending-badge">Pending Activation</span>
-                        </div>
-                        
-                        <div class="course-card upcoming">
-                            <h5>FAMH4010A</h5>
-                            <p>Managing Health Projects</p>
                             <span class="pending-badge">Pending Activation</span>
                         </div>
                         
