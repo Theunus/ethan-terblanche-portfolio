@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artifacts and Evidence - Ethan Terblanche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e88e5;
+            --dark-blue: #0d47a1;
+            --light-blue: #64b5f6;
+            --black: #212121;
+            --dark-gray: #424242;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --accent-green: #4caf50;
+            --accent-amber: #ffb300;
+            --accent-purple: #7b1fa2;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--light-gray);
+            padding: 0;
+            margin: 0;
+        }
+        
+        header {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--primary-blue);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+            background-color: var(--white);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .back-link:hover {
+            color: var(--dark-blue);
+        }
+        
+        .content-header {
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 1.5rem;
+        }
+        
+        .content-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        
+        .content-header .course-info {
+            color: var(--dark-gray);
+        }
+        
+        .course-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-info i {
+            color: var(--primary-blue);
+        }
+        
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .artifact-container {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .artifact-header {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid var(--light-gray);
+            padding-bottom: 0.8rem;
+        }
+        
+        .artifact-number {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.3rem 0.7rem;
+            border-radius: 50px;
+            margin-right: 1rem;
+            display: inline-block;
+        }
+        
+        .artifact-title {
+            font-size: 1.5rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+            flex: 1;
+        }
+        
+        .artifact-content {
+            background-color: rgba(30, 136, 229, 0.05);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .artifact-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark-blue);
+        }
+        
+        .artifact-content p {
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        
+        .artifact-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .artifact-image-container {
+            margin: 1.5rem 0;
+            text-align: center;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .artifact-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+        }
+        
+        .artifact-image-caption {
+            background-color: var(--light-gray);
+            padding: 0.8rem;
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            font-style: italic;
+            text-align: center;
+        }
+        
+        .artifact-flex-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .artifact-flex-container {
+                flex-direction: row;
+            }
+            
+            .artifact-flex-content {
+                flex: 3;
+            }
+            
+            .artifact-flex-image {
+                flex: 2;
+                align-self: center;
+            }
+        }
+        
+        .reflection-box {
+            background-color: rgba(76, 175, 80, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent-green);
+            margin-top: 1rem;
+        }
+        
+        .reflection-box h4 {
+            color: var(--accent-green);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .reflection-box h4 i {
+            margin-right: 0.5rem;
+        }
+        
+        .reflection-box p {
+            margin-bottom: 0.8rem;
+            font-style: italic;
+            color: var(--dark-gray);
+        }
+        
+        .reflection-box p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .guide-box {
+            background-color: rgba(33, 150, 243, 0.08);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .guide-box h3 {
+            color: var(--dark-blue);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .guide-box ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .guide-box li {
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .guide-box h4 {
+            color: var(--dark-blue);
+            margin: 1rem 0 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .guide-box p {
+            margin-bottom: 1rem;
+        }
+        
+        .case-study-box {
+            background-color: rgba(123, 31, 162, 0.08);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent-purple);
+            margin: 1.5rem 0;
+        }
+        
+        .case-study-box h3 {
+            color: var(--accent-purple);
+            margin-bottom: 0.8rem;
+        }
+        
+        .case-study-box h4 {
+            color: var(--accent-purple);
+            margin: 1rem 0 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .kanban-box {
+            background-color: rgba(255, 179, 0, 0.08);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent-amber);
+            margin: 1.5rem 0;
+        }
+        
+        .kanban-box h3 {
+            color: var(--accent-amber);
+            margin-bottom: 0.8rem;
+        }
+        
+        .development-box {
+            background-color: rgba(30, 136, 229, 0.08);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary-blue);
+            margin: 1.5rem 0;
+        }
+        
+        .development-box h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .development-box p {
+            margin-bottom: 1rem;
+        }
+        
+        .development-box ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .development-box li {
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .btn-back {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .btn-back:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .btn-back i {
+            margin-right: 0.5rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        .evidence-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item .artifact-image-container {
+            margin: 0;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item .artifact-image {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .gallery-item .artifact-image-caption {
+            padding: 12px 15px;
+            font-size: 1rem;
+        }
+
+        .gallery-item {
+            border-bottom: 1px solid var(--light-gray);
+            padding-bottom: 2rem;
+        }
+
+        .gallery-item:last-child {
+            border-bottom: none;
+        }
+        
+        @media (max-width: 992px) {
+            .evidence-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .evidence-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item .artifact-image-container {
+                aspect-ratio: 3/2;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content-header h1 {
+                font-size: 2rem;
+            }
+            
+            .artifact-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Ethan<span>T</span></div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="../index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Education
+        </a>
+        
+        <div class="content-header">
+            <h1>Artifacts and Evidence</h1>
+            <div class="course-info">
+                <i class="fas fa-book"></i> 
+                <span>FAMH4010A - Managing Health Projects</span>
+            </div>
+            <div class="course-info">
+                <i class="fas fa-calendar"></i> 
+                <span>June 2025</span>
+            </div>
+        </div>
+        
+        <!-- Activity 1.2.2 -->
+        <div class="artifact-container">
+            <div class="artifact-header">
+                <span class="artifact-number">1.2.2</span>
+                <h2 class="artifact-title">MindTools – How Good Are Your Project Management Skills?</h2>
+            </div>
+            
+            <div class="artifact-content">
+                <div class="artifact-flex-container">
+                    <div class="artifact-flex-content">
+                        <p>I chose the MindTools self-assessment because I was curious to get a broad, practical sense of where I currently stand with project management. The questions felt accessible and covered a wide range of relevant areas like planning, communication, team coordination, and risk management which made it easier for me to reflect honestly.</p>
+                    </div>
+                    
+                    <div class="artifact-flex-image">
+                        <div class="artifact-image-container">
+                            <img src="../assets/artifacts/photo_2025-06-15 16.07.41.jpeg" alt="MindTools Project Management Assessment" class="artifact-image">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reflection-box">
+                    <h4><i class="fas fa-lightbulb"></i> Reflection</h4>
+                    <p>What stood out to me during the assessment was how much I tend to rely on intuition and past experience, rather than formal structures or tools. While I scored reasonably well in areas like communication and team engagement—probably because these are skills I use daily—I realised I still have room to grow when it comes to setting up detailed timelines, managing risk proactively, and closing out projects in a structured way.</p>
+                    
+                    <p>This reflection reminded me that although I feel confident leading from a people-first perspective, there's a lot of value in developing a more methodical approach too. I'm starting to see project management not just as a behind-the-scenes tool, but as a way to support people better by providing clarity, reducing confusion, and making space for better outcomes.</p>
+                    
+                    <p>Going forward, I'd like to focus more on strengthening my planning and risk assessment skills. Even small improvements there could make a meaningful difference in how I approach future projects, especially in the healthcare context where structure really matters.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Activity 4.1.2 -->
+        <div class="artifact-container">
+            <div class="artifact-header">
+                <span class="artifact-number">4.1.2</span>
+                <h2 class="artifact-title">Identifying Stakeholders</h2>
+            </div>
+            
+            <div class="artifact-content">
+                <p>I selected this artefact because it reminded me just how important it is to take the time to understand who's involved in or affected by a project—often more people than I initially realise.</p>
+                
+                <div class="artifact-image-container">
+                    <img src="../assets/artifacts/photo_2025-06-15 16.07.37.jpeg" alt="Stakeholder Mapping Exercise" class="artifact-image">
+                </div>
+                
+                <div class="reflection-box">
+                    <h4><i class="fas fa-lightbulb"></i> Reflection</h4>
+                    <p>Through this activity, I learned that stakeholder identification isn't just a checklist. It's a process of listening, mapping relationships, and thinking more broadly about influence and impact. It helped me realise that engaging the right people early can prevent misunderstandings later, and that even quiet voices matter. I'd like to improve on staying engaged with stakeholders throughout the project, not just at the start.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Activity 8.2.2 -->
+        <div class="artifact-container">
+            <div class="artifact-header">
+                <span class="artifact-number">8.2.2</span>
+                <h2 class="artifact-title">Project Communication Guide</h2>
+            </div>
+            
+            <div class="artifact-content">
+                <p>I chose this artefact because clear communication often makes or breaks a project. I've seen firsthand how confusion can spread when updates aren't shared consistently or when the right people are left out of key conversations.</p>
+                
+                <div class="guide-box">
+                    <h3>Project Communication Guide</h3>
+                    
+                    <h4>What to communicate:</h4>
+                    <ul>
+                        <li>Project goals and updates</li>
+                        <li>Roles and responsibilities</li>
+                        <li>Key decisions and changes</li>
+                        <li>Risks, issues, and action plans</li>
+                        <li>Progress against milestones and deadlines</li>
+                    </ul>
+                    
+                    <h4>When to communicate:</h4>
+                    <ul>
+                        <li>At the start (kick-off meeting)</li>
+                        <li>Weekly updates for the core team</li>
+                        <li>After any major changes or decisions</li>
+                        <li>During key milestones or deliverables</li>
+                        <li>At project closure and evaluation</li>
+                    </ul>
+                    
+                    <div class="artifact-image-container">
+                        <img src="../assets/artifacts/photo_2025-06-15 16.07.38.jpeg" alt="Project Communication Channels" class="artifact-image">
+                    </div>
+                    
+                    <h4>How to communicate:</h4>
+                    <ul>
+                        <li>Keep it simple, relevant, and timely</li>
+                        <li>Use clear language and avoid unnecessary jargon</li>
+                        <li>Tailor the message to the audience—what's important to one stakeholder may not matter to another</li>
+                    </ul>
+                    
+                    <h4>Which tools to use and when:</h4>
+                    <ul>
+                        <li>Email: For formal updates, documentation, and follow-ups</li>
+                        <li>WhatsApp/Teams Chat: For quick check-ins or urgent updates</li>
+                        <li>Meetings (in-person or virtual): For deeper discussions, brainstorming, or resolving misunderstandings</li>
+                        <li>Shared folders or platforms (like Google Drive or SharePoint): For storing documents, plans, and reports that everyone can access</li>
+                    </ul>
+                    
+                    <h4>Example:</h4>
+                    <p>In a recent wellness project, we held a short weekly check-in via Teams every Monday morning. We used a shared Google Sheet to track progress, and emails were reserved for summary updates after milestones. WhatsApp was helpful for same-day reminders or resolving small hiccups quickly. This combination worked well to keep everyone in the loop without overwhelming them.</p>
+                </div>
+                
+                <div class="reflection-box">
+                    <h4><i class="fas fa-lightbulb"></i> Reflection</h4>
+                    <p>This activity reminded me that communication isn't just about sharing information—it's about creating connection, clarity, and trust. I've learned that being proactive with updates, even small ones, can help a team feel supported and more focused. Going forward, I want to work on improving how I tailor messages to different stakeholders, especially in more complex or sensitive projects.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Activity 9.1.2 -->
+        <div class="artifact-container">
+            <div class="artifact-header">
+                <span class="artifact-number">9.1.2</span>
+                <h2 class="artifact-title">Case Study: Agile Methodology</h2>
+            </div>
+            
+            <div class="artifact-content">
+                <div class="case-study-box">
+                    <h3>Revamping a Patient Records Management System</h3>
+                    <p>This project aimed to improve how patient data is stored and accessed, ensuring better care and compliance with healthcare regulations. The main challenges were the complexity of the system, shifting regulations, and coordinating across multiple teams.</p>
+                    
+                    <div class="artifact-image-container">
+                        <img src="../assets/artifacts/photo_2025-06-15 16.07.39.jpeg" alt="Agile Scrum Board" class="artifact-image">
+                    </div>
+                    
+                    <h4>Why Agile (Scrum)?</h4>
+                    <p>Given the uncertainty and frequent changes, Agile felt like the most practical approach. It allowed us to stay flexible, adapt quickly, and focus on delivering value in small, manageable phases. Scrum, in particular, gave the team structure without becoming rigid.</p>
+                    
+                    <h4>Agile in Action:</h4>
+                    <p>We broke the project into clear sprints focused on specific features (like patient search tools or security upgrades). Daily stand-ups helped keep everyone aligned and surfaced issues early. Adaptive planning meant we adjusted sprint goals as regulations or needs shifted.</p>
+                    
+                    <p>Cross-functional collaboration was key. Having IT, admin, and clinical voices in the room led to smarter, more user-friendly solutions. Regular sprint reviews and retrospectives gave us space to learn, adjust, and stay grounded in the project's goals.</p>
+                    
+                    <h4>Outcomes and Impact:</h4>
+                    <p>Using Agile helped us respond faster to regulatory updates and user feedback. Collaboration made the solution more holistic. Reviews helped manage expectations and reduced confusion. Over time, retrospectives helped us work more efficiently and improved team trust.</p>
+                    
+                    <h4>Conclusion and Lessons Learned:</h4>
+                    <p>Agile taught me that in complex environments, flexibility and communication matter more than rigid planning. Small wins, consistent feedback, and shared ownership made this project succeed. Going forward, I'd encourage other project managers to keep the team close, stay open to change, and use Agile not just as a method—but as a mindset.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Activity 9.2.2 -->
+        <div class="artifact-container">
+            <div class="artifact-header">
+                <span class="artifact-number">9.2.2</span>
+                <h2 class="artifact-title">Utilising Kanban Boards in a Health Project</h2>
+            </div>
+            
+            <div class="artifact-content">
+                <div class="kanban-box">
+                    <h3>Patient Records System Upgrade</h3>
+                    <p>For this activity, I created a digital Kanban board using Trello to map out the stages of our case study project. The workflow included: Requirement Gathering, Design & Development, Testing, Approval, and Deployment.</p>
+                    
+                    <div class="artifact-image-container">
+                        <img src="../assets/artifacts/photo_2025-06-15 16.07.40.jpeg" alt="Trello Kanban Board" class="artifact-image">
+                    </div>
+                </div>
+                
+                <div class="reflection-box">
+                    <h4><i class="fas fa-lightbulb"></i> Reflection</h4>
+                    <p>Using the Kanban board really helped me visualise the entire workflow at a glance. It made it easier to see what was in progress, what needed attention, and what had been completed. During daily stand-ups, it gave us a shared space to check in, update progress, and spot blockers early.</p>
+                    
+                    <p>One thing I noticed was how tasks tended to pile up in the testing stage. This showed us where we needed more support or better planning. Setting WIP limits was useful—it encouraged us not to take on too much at once and helped balance the team's workload more evenly.</p>
+                    
+                    <p>Overall, I found the board created a sense of flow and kept us all aligned without needing long email threads or meetings. I can definitely see how this kind of tool could be used in other healthcare projects to stay organised and work more efficiently, especially when things get complex or fast-paced.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Activity 9.3.2 -->
+        <div class="artifact-container">
+            <div class="artifact-header">
+                <span class="artifact-number">9.3.2</span>
+                <h2 class="artifact-title">Reflection on Areas for Improvement</h2>
+            </div>
+            
+            <div class="artifact-content">
+                <div class="artifact-flex-container">
+                    <div class="artifact-flex-content">
+                        <div class="reflection-box">
+                            <h4><i class="fas fa-lightbulb"></i> Reflection</h4>
+                            <p>Looking back on both the course and my project work, I think one area that could have been approached differently was the initial planning phase. We jumped into task execution quite quickly, and in doing so, I think we missed an opportunity to fully map out risks and stakeholder roles from the beginning.</p>
+                            
+                            <p>If we had taken a bit more time to slow down and involve all key voices upfront, I believe the project would've had fewer delays mid-way through. It might have also improved alignment across the team and reduced some of the rework we had to do later on.</p>
+                            
+                            <p>This reflection reminded me that in project work, a strong start often shapes the whole journey. Moving forward, I'll place more emphasis on early-stage planning, especially in complex health projects where clarity and buy-in are so crucial.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="artifact-flex-image">
+                        <div class="artifact-image-container">
+                            <img src="../assets/artifacts/photo_2025-06-15 16.07.36.jpeg" alt="Project Reflection Session" class="artifact-image">
+                            <div class="artifact-image-caption">Notes from our project reflection session</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Continuous Personal Development Assignment -->
+        <div class="artifact-container">
+            <div class="artifact-header">
+                <span class="artifact-number">CPD</span>
+                <h2 class="artifact-title">Continuous Personal Development Assignment</h2>
+            </div>
+            
+            <div class="artifact-content">
+                <div class="development-box">
+                    <h3>Leadership Competency Development</h3>
+                    <p>For this assignment, I took time to honestly evaluate my leadership competencies, focusing on areas where I feel confident and those where I see room to grow. This self-evaluation helped me understand not just my strengths, but also the specific skills I need to develop to become a more effective leader in healthcare projects.</p>
+                    
+                    <p>From my reflection, I identified two key competencies to focus on: effective communication and adaptive problem-solving. I chose these because clear communication has repeatedly shown itself as vital in managing complex teams, while adaptive problem-solving is crucial given how often unexpected challenges arise in healthcare environments.</p>
+                    
+                    <h4>Selected Resources:</h4>
+                    <ol>
+                        <li><strong>"Crucial Conversations" by Patterson et al.:</strong> This book stood out because it's widely recognized for offering practical strategies to handle difficult conversations. It felt valid and reliable due to its evidence-based approach and positive reviews from leaders across industries. Reading it helped me recognize the importance of listening actively and responding thoughtfully, which I'm already starting to apply in my daily interactions.</li>
+                        <li><strong>An online course on Agile Leadership:</strong> This course provides practical tools for leading teams in uncertain and changing environments. I picked it because it's designed specifically for project leaders working in dynamic sectors like healthcare. The interactive elements and case studies made the lessons feel real and applicable. Since engaging with the course, I've become more comfortable adapting plans quickly and encouraging my team to embrace change rather than resist it.</li>
+                    </ol>
+                    
+                    <p>Reflecting on these artefacts, I realize that developing these competencies isn't just about acquiring knowledge but about shifting my mindset. I'm more mindful now of how I communicate under pressure and how I respond when things don't go as planned. Going forward, my approach will be more intentional—I'll practice active listening daily and stay open to adjusting strategies as new information comes in.</p>
+                    
+                    <p>This personal development plan feels like a meaningful step toward becoming the kind of leader who can navigate the complexities of healthcare projects with confidence and empathy.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Evidence of Completed Activities and Submissions -->
+        <div class="artifact-container">
+            <div class="artifact-header">
+                <span class="artifact-number"><i class="fas fa-check-circle"></i></span>
+                <h2 class="artifact-title">Evidence of Completed Activities and Submissions</h2>
+            </div>
+            
+            <div class="artifact-content">
+                <p>Below are screenshots and evidence of various activities and assignments completed throughout the course:</p>
+                
+                <div class="evidence-gallery">
+                    <div class="gallery-item">
+                        <div class="artifact-image-container">
+                            <img src="../assets/artifacts/photo_2025-06-15 16.23.23.jpeg"  class="artifact-image">
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="artifact-image-container">
+                            <img src="../assets/artifacts/photo_2025-06-15 16.23.24.jpeg"  class="artifact-image">
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="artifact-image-container">
+                            <img src="../assets/artifacts/photo_2025-06-15 16.23.25.jpeg"  class="artifact-image">
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="artifact-image-container">
+                            <img src="../assets/artifacts/photo_2025-06-15 16.23.26.jpeg"  class="artifact-image">
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="artifact-image-container">
+                            <img src="../assets/artifacts/photo_2025-06-15 16.23.27.jpeg"  class="artifact-image">
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="artifact-image-container">
+                            <img src="../assets/artifacts/photo_2025-06-15 16.23.28 (1).jpeg"  class="artifact-image">
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="artifact-image-container">
+                            <img src="../assets/artifacts/photo_2025-06-15 16.23.28.jpeg" class="artifact-image">
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="artifact-image-container">
+                            <img src="../assets/artifacts/photo_2025-06-15 16.23.29.jpeg" class="artifact-image">
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="artifact-image-container">
+                            <img src="../assets/artifacts/photo_2025-06-15 16.23.30.jpeg" class="artifact-image">
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="artifact-image-container">
+                            <img src="../assets/artifacts/photo_2025-06-15 16.23.31 (1).jpeg"  class="artifact-image">
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <div class="artifact-image-container">
+                            <img src="../assets/artifacts/photo_2025-06-15 16.23.31.jpeg"  class="artifact-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../index.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Back to Education
+        </a>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Ethan Terblanche | Health Systems Science Portfolio</p>
+    </footer>
+</body>
+</html>

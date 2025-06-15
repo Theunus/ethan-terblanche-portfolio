@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Managing Health Projects: Reflections - Ethan Terblanche</title>
+    <title>Course Reflections - Ethan Terblanche</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Include your CSS styles here (same as your other pages) -->
     <style>
-        /* Your standard styles here (copied from other pages) */
         :root {
             --primary-blue: #1e88e5;
             --dark-blue: #0d47a1;
@@ -19,6 +17,9 @@
             --dark-gray: #424242;
             --light-gray: #f5f5f5;
             --white: #ffffff;
+            --accent-teal: #009688;
+            --accent-orange: #ff9800;
+            --accent-purple: #673ab7;
         }
         
         * {
@@ -33,8 +34,9 @@
             color: var(--black);
             background-color: var(--light-gray);
             padding: 0;
+            margin: 0;
         }
-
+        
         header {
             background-color: var(--black);
             color: var(--white);
@@ -72,36 +74,6 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
         }
         
-        .content-header {
-            margin-bottom: 2.5rem;
-            border-bottom: 2px solid var(--light-gray);
-            padding-bottom: 1.5rem;
-        }
-        
-        .content-header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--black);
-        }
-        
-        .content-section {
-            margin-bottom: 2.5rem;
-        }
-        
-        .content-section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--black);
-            border-left: 4px solid var(--primary-blue);
-            padding-left: 1rem;
-        }
-        
-        .content-section p {
-            margin-bottom: 1.5rem;
-            color: var(--dark-gray);
-        }
-        
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -116,10 +88,155 @@
             margin-right: 0.5rem;
         }
         
-        .btn-links {
-            margin-top: 2rem;
+        .back-link:hover {
+            color: var(--dark-blue);
+        }
+        
+        .content-header {
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 1.5rem;
+        }
+        
+        .content-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        
+        .content-header .course-info {
+            color: var(--dark-gray);
+        }
+        
+        .course-info {
             display: flex;
+            align-items: center;
             gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-info i {
+            color: var(--primary-blue);
+        }
+        
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .content-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 1rem;
+        }
+        
+        .content-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+            margin-top: 1.5rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+            line-height: 1.7;
+        }
+        
+        .reflection-card {
+            background-color: rgba(30, 136, 229, 0.05);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reflection-card.early {
+            border-left: 4px solid var(--accent-teal);
+        }
+        
+        .reflection-card.mid {
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .reflection-card.late {
+            border-left: 4px solid var(--accent-purple);
+        }
+        
+        .reflection-card.leadership {
+            border-left: 4px solid var(--accent-orange);
+        }
+        
+        .reflection-card h3 {
+            margin-top: 0;
+            color: var(--dark-blue);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .reflection-card.early h3 {
+            color: var(--accent-teal);
+        }
+        
+        .reflection-card.mid h3 {
+            color: var(--primary-blue);
+        }
+        
+        .reflection-card.late h3 {
+            color: var(--accent-purple);
+        }
+        
+        .reflection-card.leadership h3 {
+            color: var(--accent-orange);
+        }
+        
+        .reflection-card p {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .reflection-card::after {
+            content: '\f10d';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 3rem;
+            color: rgba(0, 0, 0, 0.03);
+            z-index: 1;
+        }
+        
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .module-card {
+            background-color: rgba(30, 136, 229, 0.05);
+            border-radius: 8px;
+            padding: 1.2rem;
+            border-top: 3px solid var(--primary-blue);
+            height: 100%;
+        }
+        
+        .module-card h4 {
+            color: var(--dark-blue);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        .module-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            color: var(--dark-gray);
         }
         
         .btn-back {
@@ -131,67 +248,33 @@
             border-radius: 5px;
             font-weight: 500;
             transition: background-color 0.3s ease;
+            margin-top: 2rem;
+            text-align: center;
         }
         
         .btn-back:hover {
             background-color: var(--dark-blue);
         }
-
-        /* PDF viewer styles */
-        .pdf-container {
-            background-color: var(--light-gray);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            border-left: 4px solid var(--primary-blue);
-        }
-
-        .pdf-container h3 {
-            margin-top: 0;
-            color: var(--dark-blue);
-            border-bottom: 1px solid var(--light-blue);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .pdf-viewer {
-            border: 1px solid var(--light-blue);
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 1rem;
-        }
-
-        .pdf-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .pdf-open-btn {
-            display: inline-flex;
-            align-items: center;
-            text-decoration: none;
-            padding: 0.6rem 1rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            background-color: var(--light-gray);
-            color: var(--dark-blue);
-            border: 1px solid var(--light-blue);
-        }
-
-        .pdf-open-btn:hover {
-            background-color: rgba(30, 136, 229, 0.1);
-        }
-
-        .pdf-open-btn i {
+        
+        .btn-back i {
             margin-right: 0.5rem;
         }
-
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
         @media (max-width: 768px) {
-            .pdf-viewer {
-                height: 400px;
+            .module-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-header h1 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -204,89 +287,118 @@
     </header>
     
     <div class="container">
-        <a href="managing-health-projects.html" class="back-link">
-            <i class="fas fa-arrow-left"></i> Back to Managing Health Projects
+        <a href="../index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Education
         </a>
         
         <div class="content-header">
-            <h1>Course Reflections & Development</h1>
+            <h1>Course Reflections</h1>
             <div class="course-info">
                 <i class="fas fa-book"></i> 
                 <span>FAMH4010A - Managing Health Projects</span>
             </div>
+            <div class="course-info">
+                <i class="fas fa-calendar"></i> 
+                <span>June 2025</span>
+            </div>
         </div>
         
         <div class="content-section">
-            <h2>Journey Through Project Management</h2>
+            <h2>Journey Through Responsible Leadership and Health Systems Science</h2>
             
-            <p>This portfolio documents my growth and learning throughout the Managing Health Projects course. From early understandings to comprehensive reflection, I've developed skills and insights that have transformed my approach to healthcare leadership.</p>
+            <div class="reflection-card early">
+                <h3>Early Understanding</h3>
+                <p>At the start of the course, I came in with a fairly straightforward idea of what leadership meant—mainly about decision-making, guiding others, and having a clear sense of direction. But I hadn't yet thought deeply about what <em>responsible</em> leadership actually involves, especially in the context of health systems. I assumed it had something to do with ethics and accountability, but those ideas felt quite abstract to me.</p>
+                
+                <p>As we began to explore the framework of Health Systems Science, I started to see how leadership isn't just about doing things right, but about doing the right things for the right reasons, and with a clear awareness of the systems and people involved. It became clearer that responsible leadership requires listening more than speaking, and noticing the often invisible threads that connect individual actions to broader community outcomes.</p>
+                
+                <p>Looking back, I think I was still very focused on the "individual" aspects of leadership. I hadn't fully appreciated the relational side—the way trust, vulnerability, and humility play a part in leading responsibly. This reflection helped me notice those early assumptions and gently let go of the idea that leadership is only about being in front. Sometimes, it's about being alongside.</p>
+            </div>
             
-            <h3>Key Learning Areas</h3>
-            <ul>
-                <li><strong>Responsible Leadership:</strong> Evolved from seeing leadership as merely decision-making to understanding it as relational, involving trust, vulnerability, and humility.</li>
-                <li><strong>Systems Thinking:</strong> Developed appreciation for how health systems interconnect beyond clinical settings to include social determinants, policy, and community relationships.</li>
-                <li><strong>Project Methodologies:</strong> Learned to select and adapt approaches based on specific project needs rather than applying one-size-fits-all solutions.</li>
-                <li><strong>Stakeholder Engagement:</strong> Discovered the importance of early and continuous stakeholder involvement throughout the project lifecycle.</li>
-            </ul>
+            <div class="reflection-card mid">
+                <h3>Mid-Course Development</h3>
+                <p>By this point in the course, something shifted. I began to feel less like I was studying a subject and more like I was living inside it—seeing the relevance of HSS and responsible leadership not only in theory, but in real, everyday contexts.</p>
+                
+                <p>One of the things that stood out for me was how complex and interwoven health systems really are. I used to think of health care mostly in terms of the clinic or the patient-provider interaction. But now, I'm seeing the bigger picture—how social determinants, policy, community relationships, and even historical contexts all play a part. It's both overwhelming and strangely grounding.</p>
+                
+                <p>My learning started to feel more personal too. I caught myself reflecting on my own reactions to group work, my hesitations when engaging with unfamiliar topics, and my discomfort when I didn't feel "expert enough" to lead. Slowly, I've been learning to sit with that discomfort. To treat it as part of the process, not a flaw.</p>
+                
+                <p>It's also been encouraging to see growth in small but meaningful ways—more confidence in discussions, a better ability to connect theory with lived experience, and a stronger sense of what kind of leader I might want to become. Not perfect. But thoughtful. And hopefully, kind.</p>
+            </div>
+            
+            <div class="reflection-card late">
+                <h3>End-of-Course Reflection</h3>
+                <p>Coming to the end of the course feels surprisingly emotional. I've learned a lot, yes, but I've also changed in ways I didn't fully expect. What once felt like distant ideals—responsibility, systems thinking, leadership grounded in justice—now feel closer to home. More like values I want to live by, not just things I've read about.</p>
+                
+                <p>I think the biggest shift has been in how I relate to complexity. I used to feel the need to solve or fix things quickly. Now, I'm more comfortable with holding questions, sitting in grey areas, and working toward slow, layered change. That's not always easy, especially in health care where people are often looking for quick solutions. But I've come to see value in pausing, in listening, in being accountable not only to outcomes, but to relationships.</p>
+                
+                <p>I also feel more connected to a community of peers who are thinking deeply about similar things. That sense of shared purpose has helped me feel less alone in the learning. It's reminded me that leadership doesn't have to be solitary. In fact, maybe it shouldn't be.</p>
+                
+                <p>This course hasn't just taught me concepts. It's asked me to reflect, to stretch, to be honest with myself. And I'm grateful for that.</p>
+            </div>
+            
+            <div class="reflection-card leadership">
+                <h3>Leadership Competency Development</h3>
+                <p>When I first began thinking about my leadership competencies, I focused on areas where I felt unsure or lacking—communication under pressure, confidence in group settings, managing conflict. My development plan started out feeling like a checklist. Things I needed to fix.</p>
+                
+                <p>But as the course went on, I began to understand personal development less as fixing and more as unfolding. I noticed qualities I hadn't really valued before—like the ability to listen carefully, to observe quietly, to hold space for uncertainty. These became central to how I understood leadership.</p>
+                
+                <p>Through feedback, self-reflection, and course activities, I also began to recognize moments where I had stepped up in ways that aligned with my values. Not loudly, but intentionally. I still have areas to grow, of course. But I no longer see those as weaknesses. Just parts of the path.</p>
+                
+                <p>If anything, my development plan has become more flexible. Less about ticking off skills and more about staying open—curious, honest, willing to grow in unexpected directions. And I think that's what responsible leadership, at its core, really asks of us.</p>
+            </div>
         </div>
         
         <div class="content-section">
-            <h2>Module Reflections Summary</h2>
+            <h2>Module-Specific Reflections</h2>
             
-            <p>Through seven comprehensive modules, I gained practical insights into every aspect of project management:</p>
+            <p>Throughout the course, each module brought unique insights and opportunities for growth. Here are my reflections on key learnings from each component of the curriculum:</p>
             
-            <ul>
-                <li>Gained confidence in mixing methodologies to suit different project needs</li>
-                <li>Learned the importance of thorough initiation and stakeholder analysis</li>
-                <li>Recognized procurement as central to project success rather than just a technical detail</li>
-                <li>Understood documentation as a vital communication tool, not merely administrative work</li>
-                <li>Appreciated project closure as an opportunity for learning and celebration</li>
-            </ul>
-            
-            <p>These modules have helped me develop a more structured approach while maintaining flexibility and responsiveness to changing healthcare environments.</p>
-        </div>
-        
-        <div class="content-section">
-            <h2>Personal Development</h2>
-            
-            <p>My journey involved significant personal growth in key leadership competencies:</p>
-            
-            <ul>
-                <li><strong>Communication:</strong> Developed strategies for clear messaging and active listening</li>
-                <li><strong>Adaptive Problem-Solving:</strong> Built capacity to navigate uncertainty and complexity</li>
-                <li><strong>Emotional Intelligence:</strong> Improved awareness of how I respond to stress and conflict</li>
-                <li><strong>Systems Thinking:</strong> Enhanced ability to identify root causes and interconnections</li>
-            </ul>
-            
-            <p>Through resources like "Crucial Conversations" and training in Agile leadership, I've shifted from focusing on "fixing" perceived weaknesses to cultivating an adaptive, growth-oriented mindset.</p>
-        </div>
-        
-        <div class="content-section">
-            <h2>Supporting Documentation</h2>
-            <p>Below is the complete documentation of my course reflections, module insights, and evidence of activities completed throughout the Managing Health Projects course.</p>
-            
-            <div class="pdf-container">
-                <h3>Course Reflection Documentation</h3>
-                <div class="pdf-viewer">
-                    <object data="../assets/managing_health_projects/course_reflections.pdf" type="application/pdf" width="100%" height="600px">
-                        <p>It appears your browser doesn't support embedded PDFs. You can 
-                            <a href="../assets/managing_health_projects/course_reflections.pdf" target="_blank">click here to view the PDF file</a> instead.
-                        </p>
-                    </object>
+            <div class="module-grid">
+                <div class="module-card">
+                    <h4>Module 1: Project Management Foundations</h4>
+                    <p>At the start, project management felt a bit abstract to me. But as the sessions went on, I began to see how theories and methodologies actually fit together in real life. I'm now more confident about mixing approaches to suit different projects, rather than sticking to one way. Moving forward, I want to be flexible and intentional in applying these tools, especially in complex healthcare projects.</p>
                 </div>
-                <div class="pdf-actions">
-                    <a href="../assets/managing_health_projects/course_reflections.pdf" target="_blank" class="pdf-open-btn">
-                        <i class="fas fa-external-link-alt"></i> Open in New Tab
-                    </a>
+                
+                <div class="module-card">
+                    <h4>Module 2: Project Management Methodologies</h4>
+                    <p>When choosing a method for each scenario, I found myself really thinking about the specific challenges and what the project needed most—whether that was flexibility, clear structure, or speed. It made me realize there's no one-size-fits-all solution. This approach taught me to pause and reflect on context before deciding on the best way forward.</p>
+                </div>
+                
+                <div class="module-card">
+                    <h4>Module 3: Project Initiation</h4>
+                    <p>Learning about project initiation helped me appreciate how important a strong start is. Now, I see initiation as more than paperwork; it's setting a clear vision and aligning the team early on. I plan to be more thorough in this phase to avoid confusion and keep projects on track from the beginning.</p>
+                </div>
+                
+                <div class="module-card">
+                    <h4>Module 4: Stakeholder Engagement</h4>
+                    <p>I noticed I need to build stronger skills in stakeholder engagement and risk identification during initiation. These areas seem crucial to setting realistic expectations and preventing surprises. Developing these competencies will help me lead projects with more confidence and fewer bumps along the way.</p>
+                </div>
+                
+                <div class="module-card">
+                    <h4>Module 5: Procurement Management</h4>
+                    <p>Procurement often seemed like a technical detail before, but now I understand it's central to project success—getting the right resources at the right time can make or break progress. I'll pay closer attention to this process and aim for clearer communication with suppliers and partners.</p>
+                </div>
+                
+                <div class="module-card">
+                    <h4>Module 6: Project Documentation</h4>
+                    <p>Project documentation used to feel like a chore, but now I see it as a vital communication tool and record of decisions. Keeping good documentation can save time and confusion later. I want to develop habits that make documentation efficient and meaningful for everyone involved.</p>
+                </div>
+                
+                <div class="module-card">
+                    <h4>Module 7: Project Closure</h4>
+                    <p>Before, I hadn't thought much about project closure beyond ticking boxes. Now, I see it as an opportunity to reflect, celebrate achievements, and learn lessons. Proper closure helps wrap up loose ends and prepares the team better for the next project. I'll make sure to build this step into every project plan going forward.</p>
                 </div>
             </div>
         </div>
         
-        <div class="btn-links">
-            <a href="managing-health-projects.html" class="btn-back">
-                <i class="fas fa-arrow-left"></i> Back to Managing Health Projects
-            </a>
-        </div>
+        <a href="../index.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Back to Education
+        </a>
     </div>
+    
+    <footer>
+        <p>&copy; 2025 Ethan Terblanche | Health Systems Science Portfolio</p>
+    </footer>
 </body>
 </html>
