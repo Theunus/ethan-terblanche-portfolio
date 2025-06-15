@@ -1150,24 +1150,30 @@
                                 </div>
                             </div>
                         </div>
-                        <!--health project card updates here-->
                         <div class="course-card">
                             <h5>FAMH4010A</h5>
                             <p>Managing Health Projects</p>
                             <div class="course-links">
                                 <div class="activities-dropdown">
-                                    <a href="course-materials/managing-health-projects.html" class="course-link">
+                                    <a href="course-materials/managing-health-projects.html" class="course-link" style="margin-bottom: 10px;">
                                         <i class="fas fa-file-alt"></i> Managing Health Projects
+                                    </a>
+                                    
+                                    <a href="course-materials/managing-health-projects-reflection.html" class="course-link" style="margin-bottom: 10px;">
+                                        <i class="fas fa-file-alt"></i> Course Reflections
+                                    </a>
+                                    
+                                    <a href="course-materials/managing-health-projects-theories.html" class="course-link" style="margin-bottom: 10px;">
+                                        <i class="fas fa-file-alt"></i> Project Management Theories
+                                    </a>
+                                    
+                                    <a href="course-materials/managing-health-projects-activities.html" class="course-link">
+                                        <i class="fas fa-tasks"></i> View All Activities
                                     </a>
                                 </div>
                             </div>
-                            <div class="course-skills">
-                                <span class="course-skill">Project Planning</span>
-                                <span class="course-skill">Resource Management</span>
-                                <span class="course-skill">Monitoring & Evaluation</span>
-                            </div>
                         </div>
-                        <!-- end of health managment proj -->
+
                         <div class="course-card">
                             <h5>FAMH4001A</h5>
                             <p>Developing Health Systems Competencies</p>
@@ -1301,9 +1307,7 @@
                         <input type="text" name="subject" placeholder="Subject">
                         <textarea name="message" placeholder="Your Message" required></textarea>
                         <input type="hidden" name="_captcha" value="false">
-                        <!-- This will prevent redirect to FormSubmit's success page -->
                         <input type="hidden" name="_next" value="https://theunus.github.io/ethan-terblanche-portfolio/">
-                        <!-- Add honeypot to prevent spam -->
                         <input type="text" name="_honey" style="display:none">
                         <button type="submit" class="btn">Send Message</button>
                     </form>
@@ -1323,7 +1327,6 @@
         </div>
     </footer>
     
-    <!-- Success Message Pop-up -->
     <div id="success-popup" class="popup">
         <div class="popup-content">
             <span class="close-popup">&times;</span>
@@ -1333,55 +1336,38 @@
         </div>
     </div>
     
-<!-- Font Awesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<!-- Form Handling Script -->
 <script>
-    // Get the form and popup elements
     const contactForm = document.querySelector('.contact-form form');
     const successPopup = document.getElementById('success-popup');
     const closePopup = document.querySelector('.close-popup');
     
-    // Function to show the popup
     function showPopup() {
         successPopup.style.display = 'flex';
     }
     
-    // Function to hide the popup
     function hidePopup() {
         successPopup.style.display = 'none';
     }
-    
-    // Event listener for form submission
+
     contactForm.addEventListener('submit', function(e) {
-        // The form will still submit normally to FormSubmit.co
-        // This just adds client-side feedback
-        
-        // Store the form data to clear later
+
         const formData = new FormData(contactForm);
-        
-        // Set a timeout to show the popup after form submission
-        // This simulates waiting for the form to be sent
         setTimeout(function() {
             showPopup();
-            contactForm.reset(); // Clear the form
+            contactForm.reset(); 
         }, 1000);
     });
     
-    // Close popup when clicking the X
     closePopup.addEventListener('click', hidePopup);
     
-    // Close popup when clicking outside the popup content
     window.addEventListener('click', function(e) {
         if (e.target === successPopup) {
             hidePopup();
         }
     });
 
-
-
-    // Activities dropdown functionality
     document.addEventListener('DOMContentLoaded', function() {
         const activitiesToggle = document.querySelector('.activities-toggle');
         const activitiesDropdown = document.querySelector('.activities-dropdown');
@@ -1392,7 +1378,6 @@
                 activitiesDropdown.classList.toggle('active');
             });
             
-            // Close dropdown when clicking outside
             document.addEventListener('click', function(e) {
                 if (!activitiesDropdown.contains(e.target)) {
                     activitiesDropdown.classList.remove('active');
@@ -1400,10 +1385,8 @@
             });
         }
     });
-</script>
 
-<script>
-    // Activities dropdown functionality with z-index management
+
     document.addEventListener('DOMContentLoaded', function() {
         const activitiesToggle = document.querySelector('.activities-toggle');
         const activitiesDropdown = document.querySelector('.activities-dropdown');
@@ -1413,10 +1396,8 @@
             activitiesToggle.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                // Toggle active class
                 activitiesDropdown.classList.toggle('active');
-                
-                // Set high z-index when active
+            
                 if (activitiesDropdown.classList.contains('active')) {
                     courseCard.style.zIndex = '1004';
                 } else {
@@ -1424,7 +1405,6 @@
                 }
             });
             
-            // Close dropdown when clicking outside
             document.addEventListener('click', function(e) {
                 if (!activitiesDropdown.contains(e.target)) {
                     activitiesDropdown.classList.remove('active');

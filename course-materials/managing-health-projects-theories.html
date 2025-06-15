@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exploring Project Management Theories - Ethan Terblanche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e88e5;
+            --dark-blue: #0d47a1;
+            --light-blue: #64b5f6;
+            --black: #212121;
+            --dark-gray: #424242;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--light-gray);
+            padding: 0;
+            margin: 0;
+        }
+        
+        header {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--primary-blue);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+            background-color: var(--white);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .back-link:hover {
+            color: var(--dark-blue);
+        }
+        
+        .content-header {
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 1.5rem;
+        }
+        
+        .content-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        
+        .content-header .course-info {
+            color: var(--dark-gray);
+        }
+        
+        .course-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-info i {
+            color: var(--primary-blue);
+        }
+        
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .content-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 1rem;
+        }
+        
+        .content-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+            margin-top: 1.5rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .content-section ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .content-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .student-info {
+            background-color: rgba(30, 136, 229, 0.05);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .student-info p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .student-info strong {
+            color: var(--dark-blue);
+        }
+        
+        .methodology-comparison {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .methodology-comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .methodology-card {
+            background-color: rgba(30, 136, 229, 0.05);
+            border-radius: 8px;
+            padding: 1.2rem;
+        }
+        
+        .methodology-card.agile {
+            border-left: 3px solid #4caf50;
+        }
+        
+        .methodology-card.waterfall {
+            border-left: 3px solid #ff9800;
+        }
+        
+        .methodology-card.lean {
+            border-left: 3px solid #9c27b0;
+        }
+        
+        .methodology-card h4 {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        .methodology-card.agile h4 {
+            color: #2e7d32;
+        }
+        
+        .methodology-card.waterfall h4 {
+            color: #e65100;
+        }
+        
+        .methodology-card.lean h4 {
+            color: #6a1b9a;
+        }
+        
+        .methodology-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .methodology-card ul {
+            margin-left: 1.2rem;
+            margin-bottom: 0;
+        }
+        
+        .methodology-card li {
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .agile-benefits {
+            background-color: rgba(76, 175, 80, 0.1);
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .agile-benefits h4 {
+            color: #2e7d32;
+            margin-bottom: 0.8rem;
+        }
+        
+        .agile-benefits ul {
+            margin-bottom: 0;
+        }
+        
+        .case-study {
+            background-color: rgba(30, 136, 229, 0.08);
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .case-study h4 {
+            color: var(--dark-blue);
+            margin-bottom: 0.8rem;
+        }
+        
+        .case-study p {
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .pdf-container {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .pdf-container h3 {
+            margin-top: 0;
+            color: var(--dark-blue);
+            border-bottom: 1px solid var(--light-blue);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pdf-viewer {
+            border: 1px solid var(--light-blue);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .pdf-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .pdf-open-btn {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 0.6rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            background-color: var(--light-gray);
+            color: var(--dark-blue);
+            border: 1px solid var(--light-blue);
+        }
+
+        .pdf-open-btn:hover {
+            background-color: rgba(30, 136, 229, 0.1);
+        }
+
+        .pdf-open-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .btn-back:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .btn-back i {
+            margin-right: 0.5rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .pdf-viewer {
+                height: 400px;
+            }
+            
+            .content-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Ethan<span>T</span></div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="managing-health-projects-activities.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Activities
+        </a>
+        
+        <div class="content-header">
+            <h1>Exploring Project Management Theories</h1>
+            <div class="course-info">
+                <i class="fas fa-book"></i> 
+                <span>FAMH4010A - Managing Health Projects</span>
+            </div>
+            <div class="course-info">
+                <i class="fas fa-calendar"></i> 
+                <span>May 18, 2025</span>
+            </div>
+        </div>
+        
+        <div class="student-info">
+            <p><strong>Student:</strong> Ethan Terblanche (3020408)</p>
+            <p><strong>Essay Title:</strong> An Agile Approach in Healthcare Project Management</p>
+        </div>
+        
+        <div class="content-section">
+            <h2>Comparing Project Management Methodologies in Healthcare</h2>
+            
+            <p>Healthcare is a rapidly changing, highly complex sector that requires project management methodologies capable of adapting to evolving requirements, varied stakeholder interests, and tight regulations. This reflection explores different project management approaches with a focus on Agile methodology's applicability in healthcare settings.</p>
+            
+            <div class="methodology-comparison">
+                <div class="methodology-card waterfall">
+                    <h4>Waterfall</h4>
+                    <p>A linear, sequential approach where each step (requirements, design, implementation, testing, maintenance) must be completed before the next begins.</p>
+                    <p><strong>Best for:</strong> Projects with well-defined requirements unlikely to change, such as medical equipment installation or facility construction.</p>
+                </div>
+                
+                <div class="methodology-card lean">
+                    <h4>Lean</h4>
+                    <p>Focuses on eliminating waste and optimizing workflows through increased efficiency. Often combined with Six Sigma for data-driven quality improvements.</p>
+                    <p><strong>Best for:</strong> Process improvement projects like reducing patient wait times or streamlining discharge processes.</p>
+                </div>
+                
+                <div class="methodology-card agile">
+                    <h4>Agile</h4>
+                    <p>Emphasizes flexibility, incremental progress, and ongoing stakeholder interaction through short "sprints" that deliver working components.</p>
+                    <p><strong>Best for:</strong> Dynamic projects where requirements may evolve, such as software implementation or service redesign initiatives.</p>
+                </div>
+            </div>
+            
+            <h3>Why I Chose the Agile Methodology</h3>
+            <p>I chose to focus on Agile methodology based on personal experience and observation of healthcare projects where initial requirements often lack clarity or completeness. For example, when hospitals implement new patient scheduling systems, a traditional Waterfall approach can result in final products that don't meet user expectations. Agile provides opportunities for feedback and course correction throughout the project lifecycle, reducing expensive rework.</p>
+            
+            <p>Additionally, Agile's emphasis on collaboration and transparency creates a culture of shared ownership that aligns well with healthcare's diverse stakeholder landscape, including physicians, nurses, IT staff, administrators, and patients.</p>
+        </div>
+        
+        <div class="content-section">
+            <h2>Core Benefits of Agile in Healthcare Settings</h2>
+            
+            <p>The Agile Manifesto's core values—emphasizing individuals and interactions, working software, customer collaboration, and responding to change—provide an excellent framework for healthcare project management. These principles are realized through various methodologies:</p>
+            
+            <div class="agile-benefits">
+                <h4>Key Advantages of Agile in Healthcare</h4>
+                <ul>
+                    <li><strong>Flexibility and Responsiveness:</strong> Allows rapid adaptation to regulatory updates, technology changes, or emerging needs (as demonstrated during COVID-19 telehealth implementation)</li>
+                    <li><strong>Increased Stakeholder Involvement:</strong> Regular engagement ensures projects fulfill genuine requirements and increases clinical buy-in</li>
+                    <li><strong>Risk Reduction:</strong> Delivering small, incremental pieces minimizes the risk of large-scale failures</li>
+                    <li><strong>Better Quality:</strong> Continuous integration and testing help maintain quality standards, critical for patient safety</li>
+                </ul>
+            </div>
+            
+            <h3>Practical Applications in Healthcare</h3>
+            
+            <div class="case-study">
+                <h4>Electronic Health Record (EHR) System Development</h4>
+                <p>A hospital used Agile Scrum to create a custom EHR system. By developing in sprints and incorporating clinician feedback into each iteration, they achieved a well-adopted system that met user requirements and improved documentation accuracy and clinician satisfaction.</p>
+            </div>
+            
+            <div class="case-study">
+                <h4>Telehealth Platform Implementation</h4>
+                <p>During the COVID-19 crisis, a community health network rapidly implemented telehealth services using Agile methodology. They developed a minimum viable product (MVP) and iterated on features based on patient and provider feedback, successfully bridging care gaps during lockdowns.</p>
+            </div>
+            
+            <div class="case-study">
+                <h4>Clinical Decision Support Tools</h4>
+                <p>An interdisciplinary team used Agile to design decision support tools integrated into clinical workflows. Regular sprint reviews with physicians, nurses, and IT staff ensured usability and regulatory compliance, ultimately improving diagnostic accuracy and reducing medication errors.</p>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2>Limitations and Solutions</h2>
+            
+            <h3>Challenges of Agile in Healthcare</h3>
+            <ul>
+                <li><strong>Compliance and Documentation:</strong> Healthcare's stringent regulatory requirements can conflict with Agile's preference for minimal documentation</li>
+                <li><strong>Cultural Resistance:</strong> Traditional healthcare organizational cultures may resist Agile's self-organizing, collaborative approach</li>
+                <li><strong>Resource Constraints:</strong> Agile requires dedicated multi-disciplinary teams with high stakeholder engagement, which may be difficult in under-resourced settings</li>
+            </ul>
+            
+            <h3>Addressing the Challenges</h3>
+            <p>These limitations can be addressed through hybrid approaches that combine Agile with traditional methodologies. For example, using a staged Waterfall approach for regulatory compliance in early phases, followed by Agile sprints for iterative development and testing. Cultural resistance can be managed through leadership support, training, and clear communication about benefits.</p>
+            
+            <p>Digital collaboration technologies (project management software, video conferencing, shared document repositories) can improve communication among distributed healthcare teams, enabling real-time feedback and transparent decision-making while reducing the need for lengthy in-person meetings.</p>
+            
+            <p>By focusing on high-impact projects aligned with strategic priorities, healthcare organizations can maximize limited resources while maintaining the benefits of Agile methodology.</p>
+        </div>
+        
+        <div class="content-section">
+            <h2>Full Essay</h2>
+            <p>Below is the complete essay exploring project management theories with a focus on Agile methodology in healthcare settings.</p>
+            
+            <div class="pdf-container">
+                <h3>Project Management Theories Essay</h3>
+                <div class="pdf-viewer">
+                    <object data="../assets/managing_health_projects/annotated_ECTerblance_2025_FAMH4010A_Exploring_Project_Managemnet.pdf" type="application/pdf" width="100%" height="600px">
+                        <p>It appears your browser doesn't support embedded PDFs. You can 
+                            <a href="../assets/managing_health_projects/annotated_ECTerblance_2025_FAMH4010A_Exploring_Project_Managemnet.pdf" target="_blank">click here to view the PDF file</a> instead.
+                        </p>
+                    </object>
+                </div>
+                <div class="pdf-actions">
+                    <a href="../assets/managing_health_projects/annotated_ECTerblance_2025_FAMH4010A_Exploring_Project_Managemnet.pdf" target="_blank" class="pdf-open-btn">
+                        <i class="fas fa-external-link-alt"></i> Open in New Tab
+                    </a>
+                </div>
+            </div>
+
+            <a href="../index.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Back to Education
+        </a>
+        </div>
+        
+        
+    
+    <footer>
+        <p>&copy; 2025 Ethan Terblanche | Health Systems Science Portfolio</p>
+    </footer>
+</body>
+</html>

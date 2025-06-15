@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Managing Health Projects: Reflections - Ethan Terblanche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Include your CSS styles here (same as your other pages) -->
+    <style>
+        /* Your standard styles here (copied from other pages) */
+        :root {
+            --primary-blue: #1e88e5;
+            --dark-blue: #0d47a1;
+            --light-blue: #64b5f6;
+            --black: #212121;
+            --dark-gray: #424242;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--light-gray);
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--primary-blue);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+            background-color: var(--white);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .content-header {
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 1.5rem;
+        }
+        
+        .content-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .content-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 1rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .btn-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn-back:hover {
+            background-color: var(--dark-blue);
+        }
+
+        /* PDF viewer styles */
+        .pdf-container {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .pdf-container h3 {
+            margin-top: 0;
+            color: var(--dark-blue);
+            border-bottom: 1px solid var(--light-blue);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pdf-viewer {
+            border: 1px solid var(--light-blue);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .pdf-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .pdf-open-btn {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 0.6rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            background-color: var(--light-gray);
+            color: var(--dark-blue);
+            border: 1px solid var(--light-blue);
+        }
+
+        .pdf-open-btn:hover {
+            background-color: rgba(30, 136, 229, 0.1);
+        }
+
+        .pdf-open-btn i {
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .pdf-viewer {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Ethan<span>T</span></div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="managing-health-projects.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Managing Health Projects
+        </a>
+        
+        <div class="content-header">
+            <h1>Course Reflections & Development</h1>
+            <div class="course-info">
+                <i class="fas fa-book"></i> 
+                <span>FAMH4010A - Managing Health Projects</span>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2>Journey Through Project Management</h2>
+            
+            <p>This portfolio documents my growth and learning throughout the Managing Health Projects course. From early understandings to comprehensive reflection, I've developed skills and insights that have transformed my approach to healthcare leadership.</p>
+            
+            <h3>Key Learning Areas</h3>
+            <ul>
+                <li><strong>Responsible Leadership:</strong> Evolved from seeing leadership as merely decision-making to understanding it as relational, involving trust, vulnerability, and humility.</li>
+                <li><strong>Systems Thinking:</strong> Developed appreciation for how health systems interconnect beyond clinical settings to include social determinants, policy, and community relationships.</li>
+                <li><strong>Project Methodologies:</strong> Learned to select and adapt approaches based on specific project needs rather than applying one-size-fits-all solutions.</li>
+                <li><strong>Stakeholder Engagement:</strong> Discovered the importance of early and continuous stakeholder involvement throughout the project lifecycle.</li>
+            </ul>
+        </div>
+        
+        <div class="content-section">
+            <h2>Module Reflections Summary</h2>
+            
+            <p>Through seven comprehensive modules, I gained practical insights into every aspect of project management:</p>
+            
+            <ul>
+                <li>Gained confidence in mixing methodologies to suit different project needs</li>
+                <li>Learned the importance of thorough initiation and stakeholder analysis</li>
+                <li>Recognized procurement as central to project success rather than just a technical detail</li>
+                <li>Understood documentation as a vital communication tool, not merely administrative work</li>
+                <li>Appreciated project closure as an opportunity for learning and celebration</li>
+            </ul>
+            
+            <p>These modules have helped me develop a more structured approach while maintaining flexibility and responsiveness to changing healthcare environments.</p>
+        </div>
+        
+        <div class="content-section">
+            <h2>Personal Development</h2>
+            
+            <p>My journey involved significant personal growth in key leadership competencies:</p>
+            
+            <ul>
+                <li><strong>Communication:</strong> Developed strategies for clear messaging and active listening</li>
+                <li><strong>Adaptive Problem-Solving:</strong> Built capacity to navigate uncertainty and complexity</li>
+                <li><strong>Emotional Intelligence:</strong> Improved awareness of how I respond to stress and conflict</li>
+                <li><strong>Systems Thinking:</strong> Enhanced ability to identify root causes and interconnections</li>
+            </ul>
+            
+            <p>Through resources like "Crucial Conversations" and training in Agile leadership, I've shifted from focusing on "fixing" perceived weaknesses to cultivating an adaptive, growth-oriented mindset.</p>
+        </div>
+        
+        <div class="content-section">
+            <h2>Supporting Documentation</h2>
+            <p>Below is the complete documentation of my course reflections, module insights, and evidence of activities completed throughout the Managing Health Projects course.</p>
+            
+            <div class="pdf-container">
+                <h3>Course Reflection Documentation</h3>
+                <div class="pdf-viewer">
+                    <object data="../assets/managing_health_projects/course_reflections.pdf" type="application/pdf" width="100%" height="600px">
+                        <p>It appears your browser doesn't support embedded PDFs. You can 
+                            <a href="../assets/managing_health_projects/course_reflections.pdf" target="_blank">click here to view the PDF file</a> instead.
+                        </p>
+                    </object>
+                </div>
+                <div class="pdf-actions">
+                    <a href="../assets/managing_health_projects/course_reflections.pdf" target="_blank" class="pdf-open-btn">
+                        <i class="fas fa-external-link-alt"></i> Open in New Tab
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="btn-links">
+            <a href="managing-health-projects.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Managing Health Projects
+            </a>
+        </div>
+    </div>
+</body>
+</html>

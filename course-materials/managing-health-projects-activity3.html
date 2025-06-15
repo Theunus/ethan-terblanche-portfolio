@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stakeholder Matrix & Communication Plan - Ethan Terblanche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e88e5;
+            --dark-blue: #0d47a1;
+            --light-blue: #64b5f6;
+            --black: #212121;
+            --dark-gray: #424242;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--light-gray);
+            padding: 0;
+            margin: 0;
+        }
+        
+        header {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--primary-blue);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+            background-color: var(--white);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .back-link:hover {
+            color: var(--dark-blue);
+        }
+        
+        .content-header {
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 1.5rem;
+        }
+        
+        .content-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        
+        .content-header .course-info {
+            color: var(--dark-gray);
+        }
+        
+        .course-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-info i {
+            color: var(--primary-blue);
+        }
+        
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .content-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 1rem;
+        }
+        
+        .content-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+            margin-top: 1.5rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .content-section ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .content-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-info {
+            background-color: rgba(30, 136, 229, 0.05);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .team-info p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .team-info strong {
+            color: var(--dark-blue);
+        }
+        
+        .stakeholder-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stakeholder-category {
+            background-color: rgba(30, 136, 229, 0.05);
+            border-radius: 8px;
+            padding: 1.2rem;
+            border-left: 3px solid var(--primary-blue);
+        }
+        
+        .stakeholder-category h4 {
+            color: var(--dark-blue);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        .stakeholder-category ul {
+            margin-left: 1.2rem;
+            margin-bottom: 0;
+        }
+        
+        .stakeholder-category li {
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .communication-highlight {
+            background-color: rgba(30, 136, 229, 0.08);
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .communication-highlight h4 {
+            color: var(--dark-blue);
+            margin-bottom: 0.8rem;
+        }
+        
+        .communication-highlight p {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+        
+        .communication-highlight strong {
+            color: var(--dark-blue);
+        }
+        
+        .pdf-container {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .pdf-container h3 {
+            margin-top: 0;
+            color: var(--dark-blue);
+            border-bottom: 1px solid var(--light-blue);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pdf-viewer {
+            border: 1px solid var(--light-blue);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .pdf-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .pdf-open-btn {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 0.6rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            background-color: var(--light-gray);
+            color: var(--dark-blue);
+            border: 1px solid var(--light-blue);
+        }
+
+        .pdf-open-btn:hover {
+            background-color: rgba(30, 136, 229, 0.1);
+        }
+
+        .pdf-open-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .btn-back:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .btn-back i {
+            margin-right: 0.5rem;
+        }
+        
+        .matrix-image {
+            max-width: 100%;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .stakeholder-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pdf-viewer {
+                height: 400px;
+            }
+            
+            .content-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Ethan<span>T</span></div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="managing-health-projects-activities.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Activities
+        </a>
+        
+        <div class="content-header">
+            <h1>Stakeholder Matrix & Communication Plan</h1>
+            <div class="course-info">
+                <i class="fas fa-book"></i> 
+                <span>FAMH4010A - Managing Health Projects</span>
+            </div>
+            <div class="course-info">
+                <i class="fas fa-calendar"></i> 
+                <span>June 8, 2025</span>
+            </div>
+        </div>
+        
+        <div class="team-info">
+            <p><strong>Group Members:</strong></p>
+            <p>Ethan Terblanche (3020408)</p>
+            <p>Kangwa Chileshe (3003934)</p>
+            <p>Buhle Radebe (2769518)</p>
+        </div>
+        
+        <div class="content-section">
+            <h2>Stakeholder Analysis for Global Telemedicine Implementation</h2>
+            
+            <p>Given the decentralized structure of Health First and the global scope of its telemedicine project, effective stakeholder management is essential for success. Our analysis identifies and maps key stakeholders across multiple organizational levels and geographic locations to develop appropriate engagement strategies.</p>
+            
+            <h3>Key Stakeholder Categories</h3>
+            
+            <div class="stakeholder-grid">
+                <div class="stakeholder-category">
+                    <h4>Core Project Stakeholders</h4>
+                    <ul>
+                        <li>Project Manager</li>
+                        <li>Project Coordinators</li>
+                        <li>India-based Tech Development Team</li>
+                        <li>Regional Implementation Teams</li>
+                    </ul>
+                </div>
+                
+                <div class="stakeholder-category">
+                    <h4>Organizational Stakeholders</h4>
+                    <ul>
+                        <li>Executive Leadership (CEO, COO, CIO, Board)</li>
+                        <li>Global PMO</li>
+                        <li>Human Resources</li>
+                        <li>Finance and Communications Teams</li>
+                    </ul>
+                </div>
+                
+                <div class="stakeholder-category">
+                    <h4>Field-Level Stakeholders</h4>
+                    <ul>
+                        <li>Local Health Workers & Clinic Staff</li>
+                        <li>Community Health Coordinators</li>
+                        <li>Patients in Rural Communities</li>
+                        <li>Local Government Health Departments</li>
+                    </ul>
+                </div>
+                
+                <div class="stakeholder-category">
+                    <h4>External Stakeholders</h4>
+                    <ul>
+                        <li>Technology Partners/Vendors</li>
+                        <li>Donors and Funders</li>
+                        <li>International Advisory Boards</li>
+                        <li>Local NGOs and Civil Society Organizations</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Stakeholder Analysis Approach</h3>
+            <p>Our analysis evaluates each stakeholder's interests, influence, and level of impact to prioritize engagement efforts. Using the power-interest grid framework, we mapped stakeholders to determine appropriate engagement strategies:</p>
+            
+            <ul>
+                <li><strong>High Influence / High Impact:</strong> Engage closely with frequent updates and active involvement in decision-making</li>
+                <li><strong>Medium Influence / High Impact:</strong> Empower through inclusive decision-making and localized adaptation</li>
+                <li><strong>Low Influence / High Impact:</strong> Engage via culturally sensitive outreach to build trust</li>
+                <li><strong>High Influence / Medium Impact:</strong> Maintain transparency with regular reporting</li>
+            </ul>
+            
+            <p>This approach ensures that all stakeholders receive appropriate levels of engagement based on their position within the project ecosystem.</p>
+        </div>
+        
+        <div class="content-section">
+            <h2>Communication Plan Framework</h2>
+            
+            <p>Effective communication among stakeholders is essential throughout the project lifecycle to ensure sustainability, community acceptance, and overall success. Our plan addresses communication objectives, channels, frequency, and key messages tailored to each stakeholder group.</p>
+            
+            <h3>Communication Objectives</h3>
+            <ol>
+                <li>To inform stakeholders on implementation progress</li>
+                <li>To consult and seek input on decisions</li>
+                <li>To collaborate and partner for joint decision making</li>
+                <li>To empower stakeholders to take initiative and lead efforts</li>
+            </ol>
+            
+            <div class="communication-highlight">
+                <h4>Communication Strategy Highlights</h4>
+                <p><strong>Executive Leadership:</strong> Monthly virtual meetings and reports focused on strategic alignment, budget performance, and milestone updates</p>
+                <p><strong>Regional Teams:</strong> Weekly meetings addressing deployment progress, local adaptations, and implementation challenges</p>
+                <p><strong>Local Health Workers:</strong> Quarterly trainings and emails providing system guidance and support materials</p>
+                <p><strong>Patients:</strong> Monthly community meetings sharing benefits of telehealth, access instructions, and service availability</p>
+            </div>
+            
+            <h3>Escalation Procedure</h3>
+            <p>A structured six-step escalation process ensures that stakeholder concerns are addressed efficiently:</p>
+            <ol>
+                <li>Issue raised by stakeholder to local coordinator</li>
+                <li>Assessment by Project Coordinator</li>
+                <li>Project Manager intervention if needed</li>
+                <li>Escalation to Executive Leadership for strategic issues</li>
+                <li>Board-level resolution for critical risks</li>
+                <li>Feedback loop to communicate resolution and document learning</li>
+            </ol>
+            
+            <p>This comprehensive approach to stakeholder management and communication provides a framework that keeps the project grounded, inclusive, and adaptable as it evolves across diverse cultural and geographic contexts.</p>
+        </div>
+        
+        <div class="content-section">
+            <h2>Supporting Documentation</h2>
+            <p>Below is the complete Stakeholder Matrix and Communication Plan document that provides detailed analysis, mapping, and implementation strategies for Health First's Global Health Equity Initiative.</p>
+            
+            <div class="pdf-container">
+                <h3>Stakeholder Matrix & Communication Plan Document</h3>
+                <div class="pdf-viewer">
+                    <object data="../assets/managing_health_projects/Group2_2025_FAMH4010A_Part3_StakeholderMatrix&CommunicationPlan.pdf" type="application/pdf" width="100%" height="600px">
+                        <p>It appears your browser doesn't support embedded PDFs. You can 
+                            <a href="../assets/managing_health_projects/Group2_2025_FAMH4010A_Part3_StakeholderMatrix&CommunicationPlan.pdf" target="_blank">click here to view the PDF file</a> instead.
+                        </p>
+                    </object>
+                </div>
+                <div class="pdf-actions">
+                    <a href="../assets/managing_health_projects/Group2_2025_FAMH4010A_Part3_StakeholderMatrix&CommunicationPlan.pdf" target="_blank" class="pdf-open-btn">
+                        <i class="fas fa-external-link-alt"></i> Open in New Tab
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <a href="managing-health-projects-activities.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Back to Activities
+        </a>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Ethan Terblanche | Health Systems Science Portfolio</p>
+    </footer>
+</body>
+</html>

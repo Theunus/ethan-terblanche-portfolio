@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Plan - Ethan Terblanche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e88e5;
+            --dark-blue: #0d47a1;
+            --light-blue: #64b5f6;
+            --black: #212121;
+            --dark-gray: #424242;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--light-gray);
+            padding: 0;
+            margin: 0;
+        }
+        
+        header {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--primary-blue);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem;
+            background-color: var(--white);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+        
+        .back-link:hover {
+            color: var(--dark-blue);
+        }
+        
+        .content-header {
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 1.5rem;
+        }
+        
+        .content-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+        
+        .content-header .course-info {
+            color: var(--dark-gray);
+        }
+        
+        .course-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-info i {
+            color: var(--primary-blue);
+        }
+        
+        .content-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .content-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--black);
+            border-left: 4px solid var(--primary-blue);
+            padding-left: 1rem;
+        }
+        
+        .content-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+            margin-top: 1.5rem;
+        }
+        
+        .content-section p {
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .content-section ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-gray);
+        }
+        
+        .content-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-info {
+            background-color: rgba(30, 136, 229, 0.05);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .team-info p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .team-info strong {
+            color: var(--dark-blue);
+        }
+        
+        .plan-highlights {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .plan-highlights {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .plan-card {
+            background-color: rgba(30, 136, 229, 0.05);
+            border-radius: 8px;
+            padding: 1.2rem;
+            border-left: 3px solid var(--primary-blue);
+        }
+        
+        .plan-card h4 {
+            color: var(--dark-blue);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+        
+        .plan-card ul {
+            margin-left: 1.2rem;
+            margin-bottom: 0;
+        }
+        
+        .plan-card li {
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .wbs-image {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin: 1.5rem 0;
+        }
+        
+        .gantt-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background-color: rgba(30, 136, 229, 0.03);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .gantt-table th {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: left;
+            padding: 0.8rem;
+            font-size: 0.9rem;
+        }
+        
+        .gantt-table td {
+            padding: 0.8rem;
+            border-bottom: 1px solid var(--light-gray);
+            font-size: 0.9rem;
+        }
+        
+        .gantt-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .pdf-container {
+            background-color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .pdf-container h3 {
+            margin-top: 0;
+            color: var(--dark-blue);
+            border-bottom: 1px solid var(--light-blue);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pdf-viewer {
+            border: 1px solid var(--light-blue);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .pdf-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .pdf-open-btn {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 0.6rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            background-color: var(--light-gray);
+            color: var(--dark-blue);
+            border: 1px solid var(--light-blue);
+        }
+
+        .pdf-open-btn:hover {
+            background-color: rgba(30, 136, 229, 0.1);
+        }
+
+        .pdf-open-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .btn-back:hover {
+            background-color: var(--dark-blue);
+        }
+        
+        .btn-back i {
+            margin-right: 0.5rem;
+        }
+        
+        .budget-highlight {
+            background-color: rgba(30, 136, 229, 0.08);
+            border-radius: 8px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary-blue);
+            font-size: 0.95rem;
+        }
+        
+        .budget-highlight h4 {
+            color: var(--dark-blue);
+            margin-bottom: 0.8rem;
+        }
+        
+        .budget-amount {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin: 0.5rem 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .pdf-viewer {
+                height: 400px;
+            }
+            
+            .content-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Ethan<span>T</span></div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="managing-health-projects-activities.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Activities
+        </a>
+        
+        <div class="content-header">
+            <h1>Project Plan</h1>
+            <div class="course-info">
+                <i class="fas fa-book"></i> 
+                <span>FAMH4010A - Managing Health Projects</span>
+            </div>
+            <div class="course-info">
+                <i class="fas fa-calendar"></i> 
+                <span>June 8, 2025</span>
+            </div>
+        </div>
+        
+        <div class="team-info">
+            <p><strong>Group Members:</strong></p>
+            <p>Ethan Terblanche (3020408)</p>
+            <p>Kangwa Chileshe (3003934)</p>
+            <p>Buhle Radebe (2769518)</p>
+        </div>
+        
+        <div class="content-section">
+            <h2>Comprehensive Project Plan for Health First's Global Initiative</h2>
+            
+            <p>The success of complex healthcare projects depends heavily on a clearly defined project scope, organized structure, and well-planned schedule. Our team developed a comprehensive project plan for Health First's Global Health Equity Initiative, which aims to improve healthcare access in underserved rural areas by deploying innovative telemedicine technology across Africa, Southeast Asia, and South America.</p>
+            
+            <h3>Project Scope Statement</h3>
+            <p>The project scope establishes clear boundaries and expectations for the telemedicine deployment initiative:</p>
+            
+            <div class="plan-highlights">
+                <div class="plan-card">
+                    <h4>Objectives</h4>
+                    <ul>
+                        <li>Deploy telemedicine technology in at least 30 rural health centers</li>
+                        <li>Provide comprehensive training to local healthcare teams</li>
+                        <li>Improve patient outcomes through remote specialist consultations</li>
+                        <li>Ensure local ownership and cultural customization of technology</li>
+                    </ul>
+                </div>
+                
+                <div class="plan-card">
+                    <h4>Key Deliverables</h4>
+                    <ul>
+                        <li>Customized telemedicine platform for each region</li>
+                        <li>Training materials and workshops for healthcare providers</li>
+                        <li>Deployment and progress reports with user feedback</li>
+                        <li>Support and maintenance documentation</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Work Breakdown Structure (WBS)</h3>
+            <p>The WBS decomposes the project into manageable components organized in a hierarchical structure:</p>
+            
+            <div class="plan-card">
+                <h4>Major Project Components</h4>
+                <ul>
+                    <li><strong>Project Management:</strong> Including project planning, communication, and stakeholder management</li>
+                    <li><strong>Technology Adaptation:</strong> Needs assessment and customization for local contexts</li>
+                    <li><strong>Deployment:</strong> Site preparation and system installation</li>
+                    <li><strong>Training:</strong> Development of materials and delivery of workshops</li>
+                    <li><strong>Monitoring & Support:</strong> Feedback collection and ongoing technical assistance</li>
+                </ul>
+            </div>
+            
+            <h3>Project Schedule</h3>
+            <p>The project timeline outlines task durations, dependencies, and deadlines:</p>
+            
+            <table class="gantt-table">
+                <tr>
+                    <th>Task</th>
+                    <th>Duration (weeks)</th>
+                    <th>Start Week</th>
+                    <th>End Week</th>
+                </tr>
+                <tr>
+                    <td>Project Planning</td>
+                    <td>3</td>
+                    <td>1</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Needs Assessment</td>
+                    <td>2</td>
+                    <td>4</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>Technology Customization</td>
+                    <td>4</td>
+                    <td>6</td>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <td>Site Preparation</td>
+                    <td>3</td>
+                    <td>8</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Installation</td>
+                    <td>2</td>
+                    <td>11</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>Training Workshops</td>
+                    <td>2</td>
+                    <td>13</td>
+                    <td>14</td>
+                </tr>
+                <tr>
+                    <td>Feedback Collection</td>
+                    <td>2</td>
+                    <td>15</td>
+                    <td>16</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="content-section">
+            <h2>Resource Planning and Management Frameworks</h2>
+            
+            <h3>Resource Allocation</h3>
+            <p>Our plan details the human resources, equipment, and materials needed for successful implementation:</p>
+            
+            <div class="plan-highlights">
+                <div class="plan-card">
+                    <h4>Key Personnel</h4>
+                    <ul>
+                        <li>Project Manager (overall coordination)</li>
+                        <li>Training Team (develop and deliver training)</li>
+                        <li>IT Teams (technical support and implementation)</li>
+                        <li>Regional Coordinators (local adaptation)</li>
+                        <li>Local Healthcare Teams (end-users and advisors)</li>
+                    </ul>
+                </div>
+                
+                <div class="plan-card">
+                    <h4>Technology Infrastructure</h4>
+                    <ul>
+                        <li>Telemedicine Platform Software</li>
+                        <li>Hardware (computers, tablets, peripherals)</li>
+                        <li>Internet Connectivity Solutions (satellite, mobile networks)</li>
+                        <li>Training Materials and Equipment</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="budget-highlight">
+                <h4>Total Estimated Annual Budget</h4>
+                <div class="budget-amount">$1,412,893</div>
+                <p>Covering personnel salaries, technology infrastructure, equipment, and training costs across all deployment regions.</p>
+            </div>
+            
+            <h3>Quality Management Plan</h3>
+            <p>Guided by Total Quality Management principles, our quality framework includes:</p>
+            <ul>
+                <li><strong>Quality Objectives:</strong> User satisfaction (≥80%), milestone achievement (≥95%), and system reliability (≥98% uptime)</li>
+                <li><strong>Quality Assurance:</strong> Standard operating procedures, pilot programs, and stakeholder reviews</li>
+                <li><strong>Quality Control:</strong> Functionality testing, audit reports, and feedback mechanisms</li>
+            </ul>
+            
+            <h3>Change Management Procedures</h3>
+            <p>Using the PRINCE2 change control process, our plan includes:</p>
+            <ul>
+                <li>Systematic identification and documentation of change requests</li>
+                <li>Impact assessment across cost, schedule, and stakeholder dimensions</li>
+                <li>Structured approval process via a Change Control Board (CCB)</li>
+                <li>Monitoring and evaluation of implemented changes</li>
+            </ul>
+            
+            <h3>Project Closure Plan</h3>
+            <p>The closure process ensures proper completion and transition:</p>
+            <ul>
+                <li>Final product acceptance and performance review</li>
+                <li>Knowledge transfer and handover to local teams</li>
+                <li>Documenting lessons learned through stakeholder workshops</li>
+                <li>Benefits realization plan for long-term impact assessment</li>
+                <li>Post-project review (6-12 months after closure)</li>
+            </ul>
+        </div>
+        
+        <div class="content-section">
+            <h2>Supporting Documentation</h2>
+            <p>Below is the complete Project Plan document that provides detailed information about scope, structure, scheduling, and management frameworks for Health First's Global Health Equity Initiative.</p>
+            
+            <div class="pdf-container">
+                <h3>Project Plan Document</h3>
+                <div class="pdf-viewer">
+                    <object data="../assets/managing_health_projects/Group2_2025_FAMH4010A_Part4_ProjectPlan.pdf" type="application/pdf" width="100%" height="600px">
+                        <p>It appears your browser doesn't support embedded PDFs. You can 
+                            <a href="../assets/managing_health_projects/Group2_2025_FAMH4010A_Part4_ProjectPlan.pdf" target="_blank">click here to view the PDF file</a> instead.
+                        </p>
+                    </object>
+                </div>
+                <div class="pdf-actions">
+                    <a href="../assets/managing_health_projects/Group2_2025_FAMH4010A_Part4_ProjectPlan.pdf" target="_blank" class="pdf-open-btn">
+                        <i class="fas fa-external-link-alt"></i> Open in New Tab
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <a href="managing-health-projects-activities.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Back to Activities
+        </a>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Ethan Terblanche | Health Systems Science Portfolio</p>
+    </footer>
+</body>
+</html>
