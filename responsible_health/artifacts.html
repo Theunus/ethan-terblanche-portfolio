@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artifacts and Evidence - Responsible Health — Ethan Terblanche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e88e5;
+            --dark-blue: #0d47a1;
+            --light-blue: #64b5f6;
+            --black: #212121;
+            --dark-gray: #424242;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --accent-green: #4caf50;
+            --accent-amber: #ffb300;
+            --accent-purple: #7b1fa2;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: 'Montserrat', sans-serif; line-height:1.6; color:var(--black); background-color:var(--light-gray); }
+        header { background-color:var(--black); color:var(--white); padding:1.5rem 2rem; position:fixed; width:100%; z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
+        .header-content { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
+        .logo { font-family:'Playfair Display', serif; font-size:1.8rem; font-weight:700; }
+        .logo span { color:var(--primary-blue); }
+        .container { max-width:1000px; margin:0 auto; padding:7rem 2rem 4rem; background-color:var(--white); min-height:100vh; box-shadow:0 0 20px rgba(0,0,0,0.05); }
+        .back-link { display:inline-flex; align-items:center; color:var(--primary-blue); text-decoration:none; margin-bottom:2rem; font-weight:500; }
+        .back-link i { margin-right:0.5rem; }
+        .back-link:hover { color:var(--dark-blue); }
+        .content-header { margin-bottom:2.5rem; border-bottom:2px solid var(--light-gray); padding-bottom:1.5rem; }
+        .content-header h1 { font-family:'Playfair Display', serif; font-size:2rem; margin-bottom:0.5rem; color:var(--black); }
+        .course-info { color:var(--dark-gray); display:flex; gap:1rem; align-items:center; }
+        .content-section { margin-bottom:2rem; }
+        .artifact-container { margin-bottom:2.5rem; position:relative; }
+        .artifact-header { display:flex; align-items:baseline; margin-bottom:1rem; border-bottom:1px solid var(--light-gray); padding-bottom:0.6rem; }
+        .artifact-number { background-color:var(--primary-blue); color:var(--white); font-size:0.9rem; font-weight:600; padding:0.3rem 0.7rem; border-radius:50px; margin-right:1rem; display:inline-block; }
+        .artifact-title { font-size:1.4rem; color:var(--dark-blue); font-weight:600; flex:1; }
+        .artifact-content { background-color: rgba(30,136,229,0.05); border-radius:8px; padding:1.2rem; margin-top:0.8rem; border-left:4px solid var(--primary-blue); }
+        .artifact-content p { line-height:1.7; margin-bottom:0.8rem; color:var(--dark-gray); }
+        .artifact-content ul { margin-left:1.2rem; margin-bottom:0.8rem; color:var(--dark-gray); }
+        .artifact-image-container { margin:1rem 0; text-align:center; border-radius:8px; overflow:hidden; box-shadow:0 3px 10px rgba(0,0,0,0.1); }
+        .artifact-image { max-width:100%; height:auto; display:block; border-radius:4px; }
+
+        /* Images for artefact 1 */
+        .artefact-images { display:flex; gap:1rem; align-items:flex-start; margin-bottom:1rem; }
+        .artefact-images .skinny { width:120px; height:auto; object-fit:cover; border-radius:6px; }
+        .artefact-images .normal { flex:1; max-width:620px; height:auto; object-fit:contain; border-radius:6px; }
+    /* Larger display for secondary image */
+    .big-image-container { margin-top:1rem; text-align:center; width:100%; clear:both; }
+    .big-image { width:100%; max-width:1000px; max-height:360px; height:auto; object-fit:contain; border-radius:6px; display:block; margin:0.6rem auto; }
+    .artefact-images { width:100%; }
+
+        @media (max-width:768px) {
+            .artefact-images { flex-direction:column; }
+            .artefact-images .skinny { width:100%; }
+            .artefact-images .normal { width:100%; }
+        }
+        .reflection-box { background-color: rgba(76,175,80,0.08); border-radius:8px; padding:1rem; border-left:4px solid var(--accent-green); margin-top:1rem; }
+        .reflection-box h4 { color:var(--accent-green); margin-bottom:0.6rem; font-size:1.05rem; }
+        .btn-back { display:inline-block; background-color:var(--primary-blue); color:var(--white); padding:0.8rem 1.5rem; text-decoration:none; border-radius:5px; font-weight:500; margin-top:2rem; }
+        .btn-back:hover { background-color:var(--dark-blue); }
+        .evidence-gallery { display:flex; flex-direction:column; gap:2rem; margin-top:2rem; }
+        .gallery-item { width:100%; transition:transform 0.3s ease; border-bottom:1px solid var(--light-gray); padding-bottom:2rem; }
+        .gallery-item .artifact-image-container { margin:0; width:100%; overflow:hidden; position:relative; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+        .gallery-item .artifact-image { width:100%; height:auto; max-height:500px; object-fit:contain; display:block; }
+        .gallery-item .artifact-image-caption { padding:12px 15px; font-size:1rem; color:var(--dark-gray); text-align:center; }
+        @media (max-width:768px) { .content-header h1 { font-size:1.8rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Ethan<span>T</span></div>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="../index.html#education" class="back-link"><i class="fas fa-arrow-left"></i> Back to Education</a>
+
+        <div class="content-header">
+            <h1>Artifacts and Evidence</h1>
+            <div class="course-info">
+                <i class="fas fa-book" style="color:var(--primary-blue)"></i>
+                <span>FAMH4014A - Responsible Health</span>
+            </div>
+            <div class="course-info">
+                <i class="fas fa-calendar"></i>
+                <span>June 2025</span>
+            </div>
+        </div>
+
+        <!-- Artefact 1 -->
+        <div class="artifact-container">
+            <div class="artifact-header">
+                <span class="artifact-number">1</span>
+                <h2 class="artifact-title">Leadership Style Test (MindTools)</h2>
+            </div>
+
+            <div class="artifact-content">
+                
+                <div class="big-image-container">
+                    <img src="../assets/Screenshot 2025-09-02 at 19.17.31.png" alt="Leadership test screenshot large" class="big-image">
+                </div>
+                <div class="big-image-container">
+                    <img src="../assets/Screenshot 2025-09-02 at 19.17.39.png" alt="Leadership test screenshot 2" class="big-image">
+                </div>
+
+                <p>The first artefact I selected is the completion of an online leadership style test, provided by MindTools. This tool invited me to respond to a series of questions about how I typically act in leadership situations, with the aim of identifying my most dominant leadership tendencies. I answered the questions as honestly as possible, without attempting to second-guess the outcome, as I wanted to obtain an accurate picture of my own natural preferences.</p>
+
+                <p>This activity relates directly to the module’s focus on self-awareness in leadership. By engaging with the test, I was able to step back and examine patterns in my own decision-making and interpersonal approach. It provided not only a description of my current style but also highlighted the strengths that I might draw on, as well as areas where I could develop further. I chose to include this artefact because it represents the start of my journey towards critically examining the type of leader I am becoming.</p>
+
+                <p>In terms of responsible leadership in health systems, the test helped me recognise that leadership is never only about individual style. It is about how one’s approach affects teams, patients, and wider communities. For example, if my natural tendencies lean towards a directive style, I need to be mindful of when this might limit collaboration or responsiveness. Equally, if I am more democratic, I must balance inclusivity with the need for timely and sometimes difficult decisions in complex healthcare environments. Understanding these nuances is essential for responsible leadership, as it ensures that the way I lead aligns with values of accountability, fairness, and responsiveness in health systems.</p>
+
+                <div class="reflection-box">
+                    <h4><i class="fas fa-lightbulb"></i> Reflection</h4>
+                    <p>This artefact marks the starting point for ongoing self-awareness work. It highlighted where I naturally sit on the leadership spectrum and signposted areas—such as decision pacing and stakeholder engagement—where I will focus my development.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Artefact 2 -->
+        <div class="artifact-container">
+            <div class="artifact-header">
+                <span class="artifact-number">2</span>
+                <h2 class="artifact-title">Managing within the Context of Responsible Leadership</h2>
+            </div>
+
+            <div class="artifact-content">
+                <div class="artifact-image-container">
+                    <img src="../assets/Screenshot 2025-09-02 at 19.43.20.png" alt="Managing session" class="artifact-image">
+                    
+                </div>
+                <p>Reflecting on what I learnt in the session, and drawing on the activity from yesterday, I have been thinking about what it truly means to manage responsibly. Management, in its simplest form, is about coordinating resources, making decisions, and guiding people towards goals. Yet, when viewed through the lens of responsible leadership, it becomes more than operational efficiency. It becomes an ethical commitment to people, processes, and outcomes.</p>
+
+                <p>For me, responsible management starts with accountability. A manager cannot simply drive results without recognising the wider consequences of their decisions. In the health system context, every decision has ripple effects on patients, staff, and the community. I believe a responsible manager must therefore remain conscious of both short-term outcomes and long-term impacts. This requires not only technical competence but also empathy and a willingness to question whether the “easiest” or “fastest” option is truly the most responsible one.</p>
+
+                <p>Another element is inclusivity. Responsible leadership demands listening carefully to diverse voices and creating space for dialogue, even when it slows the process. I recognise that as a manager I would sometimes feel pressure to move quickly, but I have learnt that taking time to involve others in decision-making strengthens trust and produces more balanced outcomes. Inclusivity is not just a nice-to-have, it is a safeguard against blind spots and bias.</p>
+
+                <p>Transparency also stands out as a pillar of responsible management. Being open about the rationale behind decisions, acknowledging uncertainties, and admitting mistakes can be difficult, but it reinforces integrity. I would want to manage with openness, ensuring that those I work with understand not only what decisions are made, but also why they are made.</p>
+
+                <p>Finally, I think responsible management involves adaptability. Health systems are complex and unpredictable, and a rigid style of management is unlikely to serve well. A responsible leader manages with flexibility, adjusting approaches when circumstances change, while still holding fast to values of fairness, respect, and accountability.</p>
+
+                <div class="reflection-box">
+                    <h4><i class="fas fa-lightbulb"></i> Reflection</h4>
+                    <p>Altogether, I see responsible management as a framework that blends competence with conscience. From my perspective, it means balancing efficiency with ethics, listening with leading, and ensuring that decisions serve not only organisational goals but also the wellbeing of the people affected. This is the type of management I would aspire to practise.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Artefact 3 -->
+        <div class="artifact-container">
+            <div class="artifact-header">
+                <span class="artifact-number">3</span>
+                <h2 class="artifact-title">Designing My Cultural Transformation Approach</h2>
+            </div>
+
+            <div class="artifact-content">
+                <div class="artifact-image-container">
+                    <img src="../assets/artifacts/photo_2025-06-15 16.07.36.jpeg" alt="Cultural transformation notes" class="artifact-image">
+                </div>
+
+                <h3>Context and Challenges</h3>
+                <p>For this activity, I imagined myself within a health organisation struggling with siloed departments and low staff morale. The main challenges I identified were:</p>
+                <ul>
+                    <li>A lack of communication across teams.</li>
+                    <li>Resistance to change.</li>
+                    <li>A history of top-down leadership leaving staff excluded from decision-making.</li>
+                </ul>
+
+                <h3>Step-by-Step Plan</h3>
+                <ol>
+                    <li><strong>Listening Phase</strong> – Engage staff through focus groups and informal conversations, documenting their perspectives.</li>
+                    <li><strong>Communicate the Vision</strong> – Share a clear vision centred on inclusivity, collaboration, and respect.</li>
+                    <li><strong>Build Partnerships</strong> – Identify and support change champions across the organisation.</li>
+                    <li><strong>Roll Out Interventions</strong> – Introduce small cross-departmental projects to model collaboration.</li>
+                    <li><strong>Measure Progress</strong> – Collect staff feedback and monitor key performance indicators to track change.</li>
+                </ol>
+
+                <h3>Theoretical Insights</h3>
+                <p>Drawing on Maak and Pless’s (2006) relational model of responsible leadership, I recognised the importance of involving people in shaping the vision and owning the process. Responsible leadership is about enabling and co-creating transformation rather than imposing it.</p>
+
+                <h3>Anticipated Challenges and Solutions</h3>
+                <ul>
+                    <li><strong>Resistance to Change</strong> – Addressed by transparency: consistently showing how staff input shapes decisions.</li>
+                    <li><strong>Sustaining Momentum</strong> – Addressed by celebrating small wins and communicating progress regularly.</li>
+                </ul>
+
+                <h3>Reflection</h3>
+                
+                <p>This activity strengthened my understanding that cultural transformation is less about enforcing new structures and more about cultivating trust, values, and collective responsibility. I learnt that responsible leaders must balance authority with dialogue, and vision with humility. Cultural transformation, in this sense, is not a project but a shared journey where ownership is distributed, and leadership is relational.</p>
+            </div>
+        </div>
+
+        <a href="../index.html#education" class="btn-back"><i class="fas fa-arrow-left"></i> Back to Education</a>
+    </div>
+
+    <footer>
+        <p style="text-align:center; padding:1.2rem 0; color:var(--dark-gray)">&copy; 2025 Ethan Terblanche | Responsible Health Portfolio</p>
+    </footer>
+</body>
+</html>
