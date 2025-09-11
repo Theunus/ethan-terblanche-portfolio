@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="100%" height="100%" fill="#fffef8"/>
+  <g transform="translate(60,40)">
+    <rect x="0" y="0" width="680" height="520" rx="16" fill="#fff" stroke="#f0e6ff"/>
+    <text x="340" y="70" font-family="Montserrat, sans-serif" font-size="28" text-anchor="middle" fill="#1e88e5">Defining Health Innovation</text>
+    <rect x="60" y="120" width="180" height="120" rx="10" fill="#81d4fa"/>
+    <rect x="260" y="120" width="180" height="120" rx="10" fill="#a5d6a7"/>
+    <rect x="460" y="120" width="180" height="120" rx="10" fill="#ffcc80"/>
+  </g>
+</svg>

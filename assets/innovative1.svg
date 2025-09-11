@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <rect width="100%" height="100%" fill="#f5f8ff"/>
+  <g transform="translate(120,100)">
+    <rect x="0" y="0" width="560" height="560" rx="20" fill="#fff" stroke="#e6eefc"/>
+    <text x="280" y="120" font-family="Montserrat, sans-serif" font-size="34" text-anchor="middle" fill="#1e88e5">Innovation</text>
+    <g transform="translate(120,160)">
+      <circle cx="80" cy="80" r="70" fill="#ffd54f"/>
+      <rect x="160" y="40" width="220" height="120" rx="12" fill="#ce93d8"/>
+      <path d="M30 260 L220 60" stroke="#42a5f5" stroke-width="12" stroke-linecap="round" />
+    </g>
+  </g>
+</svg>
