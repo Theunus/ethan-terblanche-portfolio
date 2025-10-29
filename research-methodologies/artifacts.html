@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artifacts — Research Methodology — Ethan Terblanche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1e88e5;
+            --dark-blue: #0d47a1;
+            --light-blue: #64b5f6;
+            --black: #212121;
+            --dark-gray: #424242;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: var(--black); background-color: var(--light-gray); }
+        header { background-color: var(--black); color: var(--white); padding: 1.5rem 2rem; position: fixed; width: 100%; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header-content { max-width: 1200px; margin: 0 auto; display:flex; align-items:center; }
+        .logo { font-family: 'Playfair Display', serif; font-size:1.6rem; font-weight:700; }
+        .logo span { color: var(--primary-blue); }
+        .container { max-width: 900px; margin: 0 auto; padding: 7rem 2rem 4rem; background-color: var(--white); min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
+        .back-link { display:inline-flex; align-items:center; color: var(--primary-blue); text-decoration:none; margin-bottom: 2rem; font-weight:500; }
+        .back-link i { margin-right: 0.5rem; }
+        .back-link:hover { color: var(--dark-blue); }
+        .content-header { margin-bottom: 2.5rem; border-bottom: 2px solid var(--light-gray); padding-bottom: 1.5rem; }
+        .content-header h1 { font-family: 'Playfair Display', serif; font-size:2.2rem; margin-bottom: 0.6rem; color: var(--black); }
+        .course-info { color: var(--dark-gray); display:flex; gap:1rem; align-items:center; margin-bottom:0.6rem; }
+        .content-section { margin-bottom: 1.5rem; }
+        .content-section h2 { font-size:1.2rem; margin-bottom:0.6rem; color:var(--black); border-left:4px solid var(--primary-blue); padding-left:0.8rem; }
+        .content-section p, .content-section li { margin-bottom: 0.8rem; color: var(--dark-gray); }
+
+        /* PDF viewer styles (matching other pages) */
+        .pdf-container { background-color: var(--light-gray); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid var(--primary-blue); }
+        .pdf-container h3 { margin-top: 0; color: var(--dark-blue); border-bottom: 1px solid var(--light-blue); padding-bottom: 0.5rem; margin-bottom: 1rem; }
+        .pdf-viewer { border: 1px solid var(--light-blue); border-radius: 4px; overflow: hidden; margin-bottom: 1rem; }
+        .pdf-actions { display: flex; gap: 1rem; margin-top: 0.5rem; }
+        .pdf-download-btn, .pdf-open-btn { display: inline-flex; align-items: center; text-decoration: none; padding: 0.6rem 1rem; border-radius: 4px; font-size: 0.9rem; font-weight: 500; transition: all 0.2s ease; }
+        .pdf-download-btn { background-color: var(--primary-blue); color: var(--white); }
+        .pdf-download-btn:hover { background-color: var(--dark-blue); }
+        .pdf-open-btn { background-color: var(--white); color: var(--dark-blue); border: 1px solid var(--light-blue); }
+        .pdf-open-btn:hover { background-color: rgba(30,136,229,0.06); }
+        .pdf-download-btn i, .pdf-open-btn i { margin-right: 0.5rem; }
+
+        .video-embed { margin: 1rem 0; border: 1px solid var(--light-blue); border-radius:6px; overflow:hidden; }
+
+        .btn-back { display:inline-block; background-color: var(--primary-blue); color: var(--white); padding:0.7rem 1.2rem; text-decoration:none; border-radius:5px; font-weight:500; margin-top:1rem; }
+        .btn-back:hover { background-color: var(--dark-blue); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Ethan<span>T</span></div>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="../index.html#education" class="back-link"><i class="fas fa-arrow-left"></i> Back to Education</a>
+
+        <div class="content-header">
+            <h1>Artifacts</h1>
+            <div class="course-info">
+                <i class="fas fa-archive" style="color:var(--primary-blue)"></i>
+                <span>FAMH4012A - Research Methodology</span>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <p>Looking back on the research methodology process, I can see how each step, document, and engagement opportunity has contributed to shaping me into a more confident and ethical researcher. This journey has not only developed my technical skills but also strengthened my understanding of what it means to be responsible, reflective, and consistent in the pursuit of knowledge.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Included Documents</h2>
+            <p>Document before each heading below is embedded (or linked) for viewing. Place the PDF files in <code>research-methodologies/assets/</code> (or this page's local <code>assets/</code> folder) with the filenames shown in each block.</p>
+
+            <!-- 1 -->
+            <div class="pdf-container">
+                <h3>1. Academic Integrity Honour Pledge</h3>
+                <div class="pdf-viewer">
+                    <object data="assets/Academic%20Integrity%20Pledge.pdf" type="application/pdf" width="100%" height="600px">
+                        <p>It appears your browser doesn't support embedded PDFs. You can <a href="assets/Academic%20Integrity%20Pledge.pdf" target="_blank">click here to view the PDF file</a> instead.</p>
+                    </object>
+                </div>
+                <div class="doc-desc">
+                    <p>The Academic Integrity Honour Pledge represented more than a formality for me. It was a personal commitment to uphold honesty and respect throughout my academic journey. It reminded me that research is a shared space built on trust, where credibility and authenticity are the foundation of meaningful scholarship. Signing it encouraged me to approach my work with a strong sense of ownership and accountability. It also prompted me to think deeply about how integrity forms part of everyday academic decision-making, from referencing to collaboration.</p>
+                </div>
+                <div class="pdf-actions">
+                    <a href="assets/Academic%20Integrity%20Pledge.pdf" target="_blank" class="pdf-open-btn"><i class="fas fa-external-link-alt"></i> Open in New Tab</a>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="pdf-container">
+                <h3>2. Plagiarism Acknowledgement</h3>
+                <div class="pdf-viewer">
+                    <object data="assets/Plagerism%20Acknowledgement%20.pdf" type="application/pdf" width="100%" height="600px">
+                        <p>It appears your browser doesn't support embedded PDFs. You can <a href="assets/Plagerism%20Acknowledgement%20.pdf" target="_blank">click here to view the PDF file</a> instead.</p>
+                    </object>
+                </div>
+                <div class="doc-desc">
+                    <p>Completing the Plagiarism Acknowledgement was a valuable reminder of the importance of academic respect and intellectual honesty. It deepened my awareness of how easily unintentional plagiarism can occur, and how essential it is to engage critically and responsibly with existing literature. This process made me more deliberate in my writing, ensuring that my voice remains clear while acknowledging the ideas that inform it. It was also a moment of reflection on how learning builds on others’ contributions, and how we honour that by citing appropriately.</p>
+                </div>
+                <div class="pdf-actions">
+                    <a href="assets/Plagerism%20Acknowledgement%20.pdf" target="_blank" class="pdf-open-btn"><i class="fas fa-external-link-alt"></i> Open in New Tab</a>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="pdf-container">
+                <h3>3. Supervisor Agreement / Letter</h3>
+                <div class="pdf-viewer">
+                    <object data="assets/Supervisor%20Letter.pdf" type="application/pdf" width="100%" height="600px">
+                        <p>It appears your browser doesn't support embedded PDFs. You can <a href="assets/Supervisor%20Letter.pdf" target="_blank">click here to view the PDF file</a> instead.</p>
+                    </object>
+                </div>
+                <div class="doc-desc">
+                    <p>The Supervisor Agreement marked the start of a collaborative and guided process. It established the foundation for clear communication and mutual understanding between myself and my supervisor. It gave me reassurance that I would be supported while also being held accountable for my own progress.</p>
+                    <p>Developing the Research Protocol that followed was one of the most formative stages in my learning. Translating a research idea into a structured plan taught me how to think systematically. It also helped me balance creativity with discipline, ensuring that my study was feasible, relevant, and aligned with ethical principles. Writing the protocol encouraged me to articulate my research problem clearly, select suitable methods, and anticipate challenges thoughtfully.</p>
+                </div>
+                <div class="pdf-actions">
+                    <a href="assets/Supervisor%20Letter.pdf" target="_blank" class="pdf-open-btn"><i class="fas fa-external-link-alt"></i> Open in New Tab</a>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="pdf-container">
+                <h3>4. Research Presentations</h3>
+                <div class="pdf-viewer">
+                    <object data="assets/Quantitative%20Presentation%201.pdf.pdf" type="application/pdf" width="100%" height="600px">
+                        <p>It appears your browser doesn't support embedded PDFs. You can <a href="assets/Quantitative%20Presentation%201.pdf.pdf" target="_blank">click here to view the PDF file</a> instead.</p>
+                    </object>
+                </div>
+                <div class="doc-desc">
+                    <p>The research presentations were key moments of growth in confidence and communication. Preparing for them helped me clarify my own understanding of the topic, while presenting allowed me to practise sharing research ideas with an audience. The questions and feedback I received highlighted the value of open dialogue and the importance of being able to explain one’s work in a clear and accessible way. These experiences also reminded me that research is not done in isolation but is enriched by constructive engagement and exchange of ideas.</p>
+                </div>
+                <div class="pdf-actions">
+                    <a href="assets/Quantitative%20Presentation%201.pdf.pdf" target="_blank" class="pdf-open-btn"><i class="fas fa-external-link-alt"></i> Open in New Tab</a>
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="pdf-container">
+                <h3>5. Research Protocol</h3>
+                <div class="pdf-viewer">
+                    <object data="assets/Research%20Protocol.docx.pdf" type="application/pdf" width="100%" height="600px">
+                        <p>It appears your browser doesn't support embedded PDFs. You can <a href="assets/Research%20Protocol.docx.pdf" target="_blank">click here to view the PDF file</a> instead.</p>
+                    </object>
+                </div>
+                <div class="doc-desc">
+                    <p>Developing and refining the Research Protocol was an exercise in patience and precision. It required attention to detail and the ability to connect theoretical understanding with practical application. Through this process, I learned how to align a research question with a clear design and methodology, and how each element of a proposal contributes to the credibility of the overall study. The experience helped me grow in self-discipline and critical reflection, as I continually reviewed and improved my approach.</p>
+                </div>
+                <div class="pdf-actions">
+                    <a href="assets/Research%20Protocol.docx.pdf" target="_blank" class="pdf-open-btn"><i class="fas fa-external-link-alt"></i> Open in New Tab</a>
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="pdf-container">
+                <h3>6. TREE Ethics Certificate</h3>
+                <div class="pdf-viewer">
+                    <object data="assets/TREE%20Ethics%20Certificate.pdf" type="application/pdf" width="100%" height="600px">
+                        <p>It appears your browser doesn't support embedded PDFs. You can <a href="assets/TREE%20Ethics%20Certificate.pdf" target="_blank">click here to view the PDF file</a> instead.</p>
+                    </object>
+                </div>
+                <div class="doc-desc">
+                    <p>Receiving the TREE Ethics Certificate was both affirming and humbling. It signified that my project met the ethical standards required for research, but it also reminded me of the moral weight that comes with academic inquiry. I learned that ethical research is not just about compliance but about genuine care and respect for participants, institutions, and the community. It made me more aware of my role as a steward of data and of the need to protect the dignity and privacy of all involved in the study.</p>
+                </div>
+                <div class="pdf-actions">
+                    <a href="assets/TREE%20Ethics%20Certificate.pdf" target="_blank" class="pdf-open-btn"><i class="fas fa-external-link-alt"></i> Open in New Tab</a>
+                </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="pdf-container">
+                <h3>7. Ethics Clearance Certificate</h3>
+                <div class="pdf-viewer">
+                    <object data="assets/Ethics%20Certificate%20Clearnace.pdf" type="application/pdf" width="100%" height="600px">
+                        <p>It appears your browser doesn't support embedded PDFs. You can <a href="assets/Ethics%20Certificate%20Clearnace.pdf" target="_blank">click here to view the PDF file</a> instead.</p>
+                    </object>
+                </div>
+                <div class="doc-desc">
+                    <p>The Ethics Clearance Certificate process was detailed and reflective. It required me to think through every aspect of my research design, from recruitment to data storage and dissemination. Completing it encouraged me to anticipate ethical challenges and find practical solutions that align with institutional standards. Receiving clearance felt like a moment of validation, showing that my study was not only academically sound but also ethically responsible. It was a turning point where I began to view ethics as an ongoing commitment rather than a single requirement.</p>
+                </div>
+                <div class="pdf-actions">
+                    <a href="assets/Ethics%20Certificate%20Clearnace.pdf" target="_blank" class="pdf-open-btn"><i class="fas fa-external-link-alt"></i> Open in New Tab</a>
+                </div>
+            </div>
+
+            <!-- 8 -->
+            <div class="pdf-container">
+                <h3>8. Evidence of Engagement</h3>
+                <div class="pdf-viewer">
+                    <object data="assets/Scoping%20Review%20Presentation.pdf" type="application/pdf" width="100%" height="600px">
+                        <p>It appears your browser doesn't support embedded PDFs. You can <a href="assets/Scoping%20Review%20Presentation.pdf" target="_blank">click here to view the PDF file</a> instead.</p>
+                    </object>
+                </div>
+                <div class="doc-desc">
+                    <p>The evidence of engagement captures the ongoing process of participation, reflection, and collaboration throughout this journey. Each interaction with peers, supervisors, and academic activities deepened my understanding of how learning extends beyond individual effort. These engagements strengthened my confidence, improved my communication skills, and gave me new perspectives on research as a collective process of growth and learning. It reminded me that progress often comes from consistency and openness to others’ ideas.</p>
+                </div>
+                <div class="pdf-actions">
+                    <a href="assets/Scoping%20Review%20Presentation.pdf" target="_blank" class="pdf-open-btn"><i class="fas fa-external-link-alt"></i> Open in New Tab</a>
+                </div>
+            </div>
+
+            <!-- JBI Scoping Review Resources -->
+            <div class="pdf-container">
+                <h3>JBI Scoping Review — Workshop Booklet (JBI, 2023)</h3>
+                <p>The Scoping Review Workshop booklet provided a strong foundation for understanding the full process of conducting a JBI-aligned scoping review. Working through the activities helped me understand how to structure a review question using the PCC framework and how inclusion and exclusion criteria flow naturally from that question. I found the section on developing a logic grid particularly useful, as it gave me a way to organise the relationships between population, concept, and context in a clear and systematic way. The examples and explanations made the methodology feel less abstract, and the workbook helped me visualise how my own research question could be refined and aligned with JBI principles. It also emphasised that scoping reviews are exploratory in nature, designed to map evidence and clarify concepts rather than to test interventions. This document guided me to see how careful planning, transparency, and structured searching support the credibility and rigour of evidence synthesis.</p>
+                <div class="pdf-viewer">
+                    <object data="assets/Scoping%20Review%20Workshop%20Booklet_Student%20April2024.pdf" type="application/pdf" width="100%" height="600px">
+                        <p>It appears your browser doesn't support embedded PDFs. You can <a href="assets/Scoping%20Review%20Workshop%20Booklet_Student%20April2024.pdf" target="_blank">click here to view the PDF file</a> instead.</p>
+                    </object>
+                </div>
+                <div class="doc-desc">
+                    <p>The Scoping Review Workshop booklet provided a strong foundation for understanding the full process of conducting a JBI-aligned scoping review. Working through the activities helped me understand how to structure a review question using the PCC framework and how inclusion and exclusion criteria flow naturally from that question. I found the section on developing a logic grid particularly useful, as it gave me a way to organise the relationships between population, concept, and context in a clear and systematic way. The examples and explanations made the methodology feel less abstract, and the workbook helped me visualise how my own research question could be refined and aligned with JBI principles. It also emphasised that scoping reviews are exploratory in nature, designed to map evidence and clarify concepts rather than to test interventions. This document guided me to see how careful planning, transparency, and structured searching support the credibility and rigour of evidence synthesis.</p>
+                </div>
+                <div class="pdf-actions">
+                    <a href="assets/Scoping%20Review%20Workshop%20Booklet_Student%20April2024.pdf" target="_blank" class="pdf-open-btn"><i class="fas fa-external-link-alt"></i> Open in New Tab</a>
+                </div>
+            </div>
+
+            <div class="pdf-container">
+                <h3>References Used for Scoping Review Workshop Slides (JBI, 2024)</h3>
+                <p>The reference list used during the workshop gave me a deeper appreciation of how the scoping review methodology has evolved over time. Reviewing these sources—such as the foundational works by Arksey and O’Malley (2005), Levac et al. (2010), and Peters et al. (2020)—helped me understand how the JBI approach built on earlier frameworks while strengthening methodological clarity and transparency. It showed me that the JBI method is part of a broader, evolving conversation about how evidence can be synthesised to inform health practice and policy. Reading across the cited works also helped me differentiate between scoping, systematic, and realist reviews, and to appreciate why scoping reviews are well suited to emerging or complex areas of research, such as those found in Health Systems Science. These references served as a roadmap, linking theory to the practical elements of the workshop and reinforcing the importance of aligning each step of the review process with recognised methodological standards.</p>
+                <div class="pdf-viewer">
+                    <object data="assets/References_used_for_Scoping_Review_Workshop_Slides_April2024.pdf" type="application/pdf" width="100%" height="600px">
+                        <p>It appears your browser doesn't support embedded PDFs. You can <a href="assets/References_used_for_Scoping_Review_Workshop_Slides_April2024.pdf" target="_blank">click here to view the PDF file</a> instead.</p>
+                    </object>
+                </div>
+                <div class="doc-desc">
+                    <p>The reference list used during the workshop gave me a deeper appreciation of how the scoping review methodology has evolved over time. Reviewing these sources—such as the foundational works by Arksey and O’Malley (2005), Levac et al. (2010), and Peters et al. (2020)—helped me understand how the JBI approach built on earlier frameworks while strengthening methodological clarity and transparency. It showed me that the JBI method is part of a broader, evolving conversation about how evidence can be synthesised to inform health practice and policy. Reading across the cited works also helped me differentiate between scoping, systematic, and realist reviews, and to appreciate why scoping reviews are well suited to emerging or complex areas of research, such as those found in Health Systems Science. These references served as a roadmap, linking theory to the practical elements of the workshop and reinforcing the importance of aligning each step of the review process with recognised methodological standards.</p>
+                </div>
+                <div class="pdf-actions">
+                    <a href="assets/References_used_for_Scoping_Review_Workshop_Slides_April2024.pdf" target="_blank" class="pdf-open-btn"><i class="fas fa-external-link-alt"></i> Open in New Tab</a>
+                </div>
+            </div>
+
+            <div class="pdf-container">
+                <h3>Davies et al. (2022) – Reporting and Conducting Patient Journey Mapping Research in Healthcare: A Scoping Review</h3>
+                <p>The article by Davies et al. (2022) was an excellent practical example of how JBI guidance can be applied in a real research project. Reading it after the workshop helped me connect the theory of evidence synthesis with how data are actually extracted, analysed, and presented in published scoping reviews. I learned how an inductive approach can be used to identify themes and justifications across studies, and how findings are synthesised narratively rather than statistically. The paper also reinforced the importance of transparency, detailed reporting, and ethical engagement when working with complex healthcare data. It was especially insightful to see how the authors used the JBI framework and PRISMA-ScR to ensure methodological rigour. This document guided my own thinking about how to structure my scoping review and encouraged me to be more intentional about documenting my process clearly and systematically.</p>
+                <div class="pdf-viewer">
+                    <object data="assets/Davies%20et%20al.%202022-For%20Activity%206.pdf" type="application/pdf" width="100%" height="600px">
+                        <p>It appears your browser doesn't support embedded PDFs. You can <a href="assets/Davies%20et%20al.%202022-For%20Activity%206.pdf" target="_blank">click here to view the PDF file</a> instead.</p>
+                    </object>
+                </div>
+                <div class="doc-desc">
+                    <p>The article by Davies et al. (2022) was an excellent practical example of how JBI guidance can be applied in a real research project. Reading it after the workshop helped me connect the theory of evidence synthesis with how data are actually extracted, analysed, and presented in published scoping reviews. I learned how an inductive approach can be used to identify themes and justifications across studies, and how findings are synthesised narratively rather than statistically. The paper also reinforced the importance of transparency, detailed reporting, and ethical engagement when working with complex healthcare data. It was especially insightful to see how the authors used the JBI framework and PRISMA-ScR to ensure methodological rigour. This document guided my own thinking about how to structure my scoping review and encouraged me to be more intentional about documenting my process clearly and systematically.</p>
+                </div>
+                <div class="pdf-actions">
+                    <a href="assets/Davies%20et%20al.%202022-For%20Activity%206.pdf" target="_blank" class="pdf-open-btn"><i class="fas fa-external-link-alt"></i> Open in New Tab</a>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>JBI Scoping Review — YouTube Overview</h2>
+                <p>Watching the JBI scoping review video helped me gain a clearer and more practical understanding of how the scoping review process unfolds in real research settings.</p>
+                <div class="video-embed">
+                    <iframe width="100%" height="480" src="https://www.youtube.com/embed/96SQWWQXQ6U" title="JBI Scoping Review" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Overall Reflection</h2>
+                <p>Taken together, these artefacts tell the story of my development as a researcher in Health Systems Science. They represent not only what I have accomplished, but also how I have grown in self-awareness, responsibility, and curiosity. Research methodology has taught me to value structure without losing creativity, to think critically while staying grounded, and to remain humble in the pursuit of truth.</p>
+                <p>I now see research not as a set of tasks, but as a continuous journey of learning, guided by integrity, empathy, and purpose. Each document in this portfolio reflects a step in that journey and a growing confidence in my ability to contribute meaningfully to knowledge and practice in the field of Health Systems Science.</p>
+            </div>
+
+        </div>
+
+        <a href="../index.html#education" class="btn-back"><i class="fas fa-arrow-left"></i> Back to Education</a>
+    </div>
+</body>
+</html>

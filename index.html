@@ -92,7 +92,8 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: var(--white);
+                gap: 10px;
+                align-items: center;
             padding-top: 60px;
         }
         
@@ -818,6 +819,20 @@
             margin-right: 8px;
             font-size: 1rem;
         }
+        /* Research Methodology tab sizing to keep Portfolio Objectives and Artifacts consistent */
+        .rm-tab {
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: flex-start; /* left-align text and icon */
+            min-width: 220px;
+            height: 44px;
+            padding: 0 12px;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .rm-tab i {
+            margin-right: 8px;
+        }
         .course-link:hover {
             background-color: rgba(30, 136, 229, 0.15);
             transform: translateY(-2px);
@@ -1192,11 +1207,20 @@
                         <div class="course-card">
                             <h5>FAMH4012A</h5>
                             <p>Research Methodology</p>
-                            <div class="course-skills">
-                                <span class="course-skill">Data Analysis</span>
-                                <span class="course-skill">Study Design</span>
-                                <span class="course-skill">Statistical Methods</span>
-                                <span class="course-skill">Research Ethics</span>
+                            
+                            <div class="course-tabs" style="margin-top:12px;">
+                                <a href="research-methodologies/portfolio-objectives.html" class="course-link rm-tab">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span>Portfolio Objectives</span>
+                                </a>
+                                <a href="research-methodologies/artifacts.html" class="course-link rm-tab">
+                                    <i class="fas fa-archive"></i>
+                                    <span>Artifacts</span>
+                                </a>
+                                <a href="research-methodologies/reflections.html" class="course-link rm-tab">
+                                    <i class="fas fa-pen-fancy"></i>
+                                    <span>Reflections on the course</span>
+                                </a>
                             </div>
                         </div>
                         
